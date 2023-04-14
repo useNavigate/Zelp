@@ -1,0 +1,16 @@
+.slider {
+  height: 600px;
+  background-color: rgba(250, 235, 215, 0.8);
+  width: 100%;
+  position: relative;
+}
+
+.mainImgHeader{
+    position:absolute;
+    color:white;
+    font-size: 60px;
+    font-weight: 600;
+    bottom:8rem;
+    left:15rem;
+    text-shadow: 5px 5px 3px rgba(0, 0, 0, 0.35);
+}

@@ -1,0 +1,72 @@
+import React from "react";
+import { Route, Switch, useLocation } from "react-router-dom";
+import LoginFormPage from "./components/LoginFormPage/LoginFormPage";
+import SignupFormPage from "./components/SignupFormPage/SignupFormPage";
+import Navigation from "./components/Navigation";
+import "./index.css";
+import Homepage from "./components/Homepage/homepage";
+import SearchResult from "./components/SearchResult/SearchResult";
+import ReviewPage from "./components/ReviewPage/ReviewPage";
+import BusinessPage from "./components/Business/BusinessPage";
+import Post from "./components/Post/post";
+import ReviewEditPage from "./components/ReviewEditPage/ReviewEditPage";
+import Home from "./components/Map/Map";
+import MapMarker from "./components/Map/Marker";
+import CategorySearch from "./components/CategorySearch/CategorySearch";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+function App() {
+  const location = useLocation()
+const url = location.pathname;
+
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to top on component mount
+  }, [location]);
+  return (
+    <>
+      { location.pathname !=="/" && (
+        <div className="navWrapper">
+          <Navigation />
+        </div>
+      )}
+
+
+      <div className="contentWrapper">
+        <Route exact path="/">
+          <Homepage />
+        </Route>
+        <Switch>
+          <Route path="/login">
+            <LoginFormPage />
+          </Route>
+          <Route path="/signup">
+            <SignupFormPage />
+          </Route>
+          <Route path="/search/:searchTerm">
+            <SearchResult />
+          </Route>
+          <Route path="/review/:review">
+            <ReviewPage />
+          </Route>
+          <Route exact path="/edit/:review">
+            <ReviewEditPage />
+          </Route>
+          <Route path="/business/:id">
+            <BusinessPage />
+          </Route>
+          <Route exact path="/posts">
+            <Post />
+          </Route>
+          <Route exact path="/maps">
+            <Home />
+          </Route>
+          <Route exact path="/marker">
+            <MapMarker />
+          </Route>
+        </Switch>
+      </div>
+    </>
+  );
+}
+export default App;

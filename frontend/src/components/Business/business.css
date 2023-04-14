@@ -1,0 +1,310 @@
+.bizProfileDiv {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.DeleteIcon{
+  background-color: transparent;
+  border: none;
+  cursor:pointer;
+}
+.bizImageHolder {
+  width: 100%;
+  height: 500px;
+  display: flex;
+
+  position: relative;
+  background-color: rgba(255, 0, 0, 0.529);
+  justify-content: flex-end;
+  flex-direction: column;
+  padding-bottom: 20px;
+  margin-bottom: 50px;
+}
+
+.bizRating {
+  /* max-width: 500px; */
+  display: flex;
+  position: absolute;
+  height: 160px;
+  flex-direction: column;
+  justify-content: space-evenly;
+  left:10rem;
+}
+.ReviewPicDiv{
+  display:flex;
+}
+.userReviewPictures{
+  margin-right:10px;
+  margin-bottom:10px;
+  width:200px;
+  height:200px;
+  border-radius: 6px;
+box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+
+}
+.bizRating h1 {
+  font-size: 70px;
+  font-weight: 700;
+  color: white;
+  text-shadow: 5px 5px 3px rgba(0, 0, 0, 0.35);
+}
+
+.bizRating div {
+  display: flex;
+  align-items: center;
+  /* justify-content: center;
+	*/
+  width: 300px;
+}
+
+.ratingLength {
+  margin-left: 5px;
+  display: flex;
+  color: white;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-weight: 500;
+  text-shadow: 5px 5px 3px rgba(0, 0, 0, 0.35);
+
+}
+
+.bizCategory {
+  color: white;
+  font-weight: 500;
+  text-shadow: 5px 5px 3px rgba(0, 0, 0, 0.35);
+}
+
+._reviewButton {
+  display: flex;
+  width: 200px;
+  height: 50px !important;
+  background-color: var(--red);
+  color: white;
+  padding: 10px;
+  font-size: 20px;
+  justify-content: space-evenly;
+  align-items: center;
+  border-radius: 5px;
+  align-self: flex-start;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+._reviewButton:hover{
+  background-color: rgba(255, 0, 0, 1);
+  transition: ease-in-out 0.2s;
+}
+.reviewLinkButton {
+  width: 100%;
+  height: 100%;
+}
+
+.bizComments {
+  margin-top: 30px;
+}
+
+._comments {
+
+  /* display: flex; */
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+
+}
+.bizShowPageInfo {
+  margin: auto;
+  width: 60rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+}
+.ratingDate{
+  display:flex;
+  align-items: center;
+}
+
+.ratingDate h1{
+
+      margin-left: 10px;
+
+}
+.authorProfile {
+
+  padding:20px;
+
+  width:60rem;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border-radius: 10px;
+  margin-top: 20px;
+    margin-bottom: 20px;
+}
+.commentReviewBodyP {
+  line-height: 2;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.commentReviewBodyDiv{
+  display:flex;
+  flex-wrap: nowrap;
+}
+.divider {
+  height: 30px;
+  /* border: 1px solid red; */
+  display: block;
+  position: relative;
+}
+
+.bizLocation {
+  display: flex;
+
+  height: 300px;
+  align-items: center;
+}
+/* .border{
+  border-bottom:1px solid rgba(0,0,0,0.2);
+  height:60px;
+width: 60rem;
+  z-index: 9999;
+} */
+.locationWrapper {
+  margin-top: 30px;
+  width: 60rem;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+      border-radius: 10px;
+      padding:20px;
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding-bottom: 50px;
+}
+
+/* .locationMap {
+
+
+  display:flex;
+  align-items: center;
+  justify-content: center;
+
+} */
+.locationMap *{
+width:28rem;
+height:20rem;
+margin-right:5rem;
+}
+.hours {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.userInfoSide{
+  display:flex;
+  align-items: center;
+}
+.myInfoComment{
+      display: flex;
+        align-items: center;
+        /* border: 1px solid red; */
+        justify-content: space-between;
+}
+.userInfoComment  {
+    display: flex;
+    align-items: center;
+    /* border: 1px solid red; */
+}
+.myInfoComment i{
+font-size: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.761);
+}
+
+
+.myInfoComment h1{
+  margin-left: 10px;
+    font-weight: 700;
+    font-size: 18px;
+}
+.userInfoComment i {
+  font-size: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: rgba(0,0,0,0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color:rgba(255, 255, 255, 0.761);
+}
+
+#moreButton {
+  width: 2rem;
+  height: 2rem;
+background-color: white;
+color:rgba(149, 157, 165, 0.5)
+}
+.userInfoComment h1{
+ margin-left:10px;
+ font-weight:700;
+ font-size: 18px;
+}
+.commentBody {
+  min-height: 10px;
+  max-height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+
+.yourReview{
+  margin-top:5px;
+  margin-bottom:5px;
+  color:rgba(0,0,0,0.3)
+}
+.userProfilePicURL{
+  border-radius: 50%;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.5);
+}
+.review_Wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding:40px;
+}
+
+.infoWrapper{
+margin:20px;
+
+}
+
+.WRAPPER {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  max-height: 100%;
+  width: 100%;
+}
+
+.content_Wrapper {
+  display: flex;
+  width: 100%;
+  /* flex-wrap: wrap; */
+}

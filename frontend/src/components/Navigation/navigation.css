@@ -1,0 +1,135 @@
+:root {
+  --red: #e00707;
+  --linkBlue: #0073bb;
+  --white: white;
+  --gray: gray;
+  --inputWidth: 18.25rem;
+  --inputHeight: 1.8rem;
+  --formWidth: 18.75rem;
+  --formHeight: 19.5rem;
+  --login-H1-Size: 1.375rem;
+  --login-H1-Weight: 450;
+  --lightGray: #ebebeb;
+}
+.login {
+  width: 78.88;
+  height: 40px;
+  padding: 8px 16px;
+  border: 1px solid rgba(200, 201, 202, 1);
+  border-radius: 4px;
+  color: #2d2e2f;
+  font-weight: 450;
+  display: flex;
+  align-items: center;
+  background: #ebebeb;
+}
+
+.login:hover {
+  background-color: #c7c6c6;;
+  transition: all ease-in-out 0.4s;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.signUp {
+  width: 78.88;
+  height: 40px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  background-color: var(--red);
+  color: white;
+  font-weight: 450;
+  display: flex;
+  align-items: center;
+}
+
+
+
+.signUp:hover {
+  background-color: var(--red);
+  transition: all ease-in-out 0.4s;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.iconLinks{
+  display:flex;
+  align-items: center;
+}
+
+
+
+
+
+.fa-brands .fa-github{
+font-size: 60px;
+}
+.navbar {
+  height: 4.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+
+  padding: 30px;
+  align-items: center;
+  margin: auto;
+}
+/* .navbar li {
+  width:300px;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  position:relative
+} */
+
+.navbar li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+.navbar li * {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.fa-brands {
+  font-size: 30px;
+  margin-left: 5px;
+}
+.home {
+  font-size: 28px;
+  font-weight: 600;
+  color: white;
+}
+
+.notHome{
+    font-size: 28px;
+      font-weight: 600;
+      color: black;
+}
+.homeNavLink{
+    display: flex;
+      align-items: center;
+}
+i.fa-brands.fa-github{
+  font-size: 30px;
+  color:white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding:8px;
+  border-radius: 50%;
+}
+i.fa-brands.fa-github:hover{
+  transform: scale(1.2);
+  transition: all 0.6s ease-out;
+}
+
+i.fa-brands.fa-linkedin{
+    font-size: 30px;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 8px;
+      border-radius: 50%;
+}
+i.fa-brands.fa-linkedin:hover {
+  transform: scale(1.2);
+    transition: all 0.6s ease-out;
+}

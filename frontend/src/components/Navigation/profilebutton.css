@@ -1,0 +1,94 @@
+
+.profile-wrapper{
+    position:relative;
+    width:100%;
+}
+.userIcon{
+    width:50px;
+    height:50px;
+    align-self: flex-start;
+    border-radius: 50%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    border:none;
+    cursor: pointer;
+}
+.userIcon *{
+    font-size: 25px;
+    color:rgba(0,0,0,0.5);
+
+}
+
+img.profileImage {
+    object-fit: cover;
+    width: 50px;
+    height: 50px;
+border-radius:50%;
+        box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.5);
+}
+.DELETE-dropdown{
+    position: absolute;
+        right: 0;
+        padding:2rem;
+        /* width: 100%; */
+        height: 100%;
+        border: solid 1px rgba(0, 0, 0, 0.073);
+        background-color: white;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        padding-left: 20px;
+        z-index: 99;
+        justify-content: space-between;
+            box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.1);
+}
+.DELETE-dropdown li{
+    margin-top:2px;
+    margin-bottom: 5px;
+    cursor:pointer;
+}
+.profile-dropdown{
+    position:absolute;
+    right:0;
+    margin-top:3px;
+    width:258px;
+    height:300px;
+    border:solid 1px rgba(0, 0, 0, 0.073);
+    background-color: white;
+    border-radius: 5px;
+    display:flex;
+    flex-direction: column;
+    padding-left:20px;
+    z-index: 99;
+    justify-content: space-evenly;
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.5);
+
+}
+.profile-dropdown *{
+color: #2d2e2f;
+
+
+}
+.profile-dropdown li {
+
+ align-self: flex-start;
+
+}
+
+.profile-dropdown li i{
+    margin-right:15px;
+
+}
+
+/* .profile-dropdown li:hover{
+    border-bottom:1px solid rgba(0,0,0,0.1);
+
+
+    cursor:pointer;
+} */
+.logoutButton{
+    cursor:pointer;
+}
+
+

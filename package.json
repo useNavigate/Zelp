@@ -1,0 +1,31 @@
+{
+  "name": "zelp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "build": "npm install --prefix frontend && npm run build --prefix frontend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/useNavigate/Zelp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/useNavigate/Zelp/issues"
+  },
+  "homepage": "https://github.com/useNavigate/Zelp#readme",
+  "engines": {
+    "node": "16.19.0"
+  },
+  "dependencies": {
+    "@googlemaps/markerclusterer": "^2.0.15",
+    "@ubilabs/google-maps-react-hooks": "^2.0.2",
+    "use-places-autocomplete": "^4.0.0"
+  }
+}

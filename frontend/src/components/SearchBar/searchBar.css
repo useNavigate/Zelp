@@ -1,0 +1,61 @@
+:root {
+    --red: #e00707;
+    --linkBlue: #0073bb;
+    --white: white;
+    --gray: gray;
+    --inputWidth: 18.25rem;
+    --inputHeight: 1.8rem;
+    --formWidth: 18.75rem;
+    --formHeight: 19.5rem;
+    --login-H1-Size: 1.375rem;
+    --login-H1-Weight: 450;
+    --lightGray: #ebebeb;
+}
+
+.searchbarWrapper {
+    border-radius: 5px;
+    width: 40%;
+    height: 48px;
+    display: flex;
+    align-items: center;
+box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.searchbarWrapper input{
+
+width:85%;
+height:46px;
+border:none;
+background-color: white;
+padding-left:10px;
+font-size: 18px;
+border-top-left-radius: 8px;
+border-bottom-left-radius: 8px
+
+}
+
+.searchbarWrapper input:focus{
+    outline: none;
+}
+
+.searchLink{
+    width:15%;
+    height:100%;
+}
+.searchbarWrapper button{
+    width:100%;
+    height:100%;
+    background-color: var(--red);
+    font-size: 25px;
+    color:white;
+    border:none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    cursor:pointer;
+
+}
+
+.searchbarWrapper button:hover{
+    background-color: rgba(255, 0, 0, 1);
+        transition: ease-in-out 0.2s;
+}

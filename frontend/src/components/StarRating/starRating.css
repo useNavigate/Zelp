@@ -1,0 +1,31 @@
+.star-rating button{
+    background-color: transparent;
+    border:none;
+    outline:none;
+    cursor:pointer;
+
+}
+
+.fa-star{
+    font-size:24px;
+}
+.on{
+    color:#ffea00
+}
+
+.off{
+    color:#ccc
+}
+
+
+.star-rating{
+        margin-top: 10px;
+            margin-bottom: 10px;
+}
+
+.star-rating span {
+    background-color: transparent;
+    border: none;
+    outline: none;
+
+}

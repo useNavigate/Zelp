@@ -1,0 +1,34 @@
+:root {
+    --red: #e00707;
+    --linkBlue: #0073bb;
+    --white: white;
+    --gray: gray;
+    --inputWidth: 18.25rem;
+    --inputHeight: 1.8rem;
+    --formWidth: 18.75rem;
+    --formHeight: 19.5rem;
+    --login-H1-Size: 1.375rem;
+    --login-H1-Weight: 450;
+    --lightGray: #ebebeb
+}
+
+.demoLogin{
+width: 78.88;
+    height: 40px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    background-color: var(--linkBlue);
+    color: white;
+    font-weight: 450;
+    display: flex;
+    align-items: center;
+}
+
+.demoLogin:hover {
+    background-color: royalblue;
+    border-color:royalblue ;
+    color:white;
+    transition: all ease-in-out 0.6s;
+    cursor:pointer;
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.5);
+}

@@ -1,0 +1,44 @@
+.searchPageWrapper {
+  width: 100%;
+  min-height: 100vh;
+  max-height: 100%;
+  display: flex;
+
+}
+
+.searchPageWrapper h1{
+  margin:15px;
+
+}
+
+.searchCardsHolder {
+  display: flex;
+  flex-direction: column;
+  width: 30rem;
+  min-height: 100vh;
+  max-height:100vh;
+  overflow: scroll;
+  align-items: center;
+  /* margin:auto; */
+ /* justify-content: space-evenly; */
+
+
+}
+
+.searchCardsHolder h1 {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.searchCardsHolder::-webkit-scrollbar {
+  display: none;
+}
+.googleMap {
+  padding: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(243, 237, 229, 0.566);
+}
