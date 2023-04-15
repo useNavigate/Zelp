@@ -72,7 +72,7 @@ export const businessReducer = (state = {}, action) => {
     case RECEIVE_BUSINESSES:
       return { ...state, ...action.business.business };
     case RECEIVE_BUSINESS:
-      debugger
+
       return { [action.business.business.id]: action.business.business };
     case RECEIVE_UNREVIEWED_BUSINESS:
       return { ...action.businesses };
