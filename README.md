@@ -20,25 +20,11 @@ The technologies used in this project include:
 
 Zelp users can easily share their dining experiences by writing reviews with ratings and multiple pictures. The latest reviews will appear on the front page, and if a user has already written a review for a restaurant, it will show up at the top of the review section for convenience.
 
-```js
-const handleFiles = ({ currentTarget }) => {
-  const files = currentTarget.files;
-
-  setImageFiles(files);
-  if (files.length !== 0) {
-    let filesLoaded = 0;
-    const urls = [];
-    Array.from(files).forEach((file, index) => {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-      fileReader.onload = () => {
-        urls[index] = fileReader.result;
-
-        if (++filesLoaded === files.length) setImageUrls(urls);
-      };
-    });
-  } else setImageUrls([]);
-};
+```ruby
+  def unreviewed
+    @businesses = Business.where.not(id: current_user.reviews.pluck(:business_id)).order("RANDOM()").limit(6)
+    render :unreviewed
+  end
 
 ```
 
@@ -47,6 +33,8 @@ const handleFiles = ({ currentTarget }) => {
 
 
 a Zelp user can easily update their reviews and ratings by clicking updating button to update their review
+> Updating a review
+> ![update review](/app/assets/images/update.gif)
 
 a Zelp user easily can see their review it will be always on the top of review section
 
@@ -59,8 +47,7 @@ a Zelp user easily can see their review it will be always on the top of review s
 > ![making a review_1](/app/assets/images/starReview_1.gif)
 
 
-> Updating a review
-> ![update review](/app/assets/images/update.gif)
+
 
 > Deleting a review
 > ![delete a review_1](/app/assets/images/deleteReview.gif)
@@ -89,7 +76,7 @@ Zelp user leaves a rating for a restaurant, Zelp automatically updates the resta
 }
 ```
 ```ruby
-#when reviews is deleted it it updates the restaurant's ratings
+#when reviews is deleted @business updates the restaurant's ratings
  def destroy
     @review = Review.find(params[:id])
     @business = Business.find(@review.business_id)
