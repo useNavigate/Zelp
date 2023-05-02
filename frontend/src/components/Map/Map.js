@@ -6,6 +6,7 @@ import {
   Marker,
   InfoWindow,
 } from "@react-google-maps/api";
+import { Link } from "react-router-dom";
 
 import FixedStarRating from "../StarRating/FixedStarRating";
 
@@ -46,7 +47,6 @@ function Map({ business }) {
 
   const markers = [];
   Object.values(business).forEach((biz) => {
-    console.log(biz)
     let location = { lat: biz.lat, lng: biz.lng };
     markers.push({
       position: location,
@@ -54,6 +54,7 @@ function Map({ business }) {
       category: biz.category,
       photo: biz.photo,
       rating: biz.rating,
+      id:biz.id
     });
   });
 
@@ -78,19 +79,33 @@ function Map({ business }) {
           />
         ))}
         {selectedBusiness && (
+           <Link to={`/business/${selectedBusiness.id}`}>
           <InfoWindow
             position={selectedBusiness.position}
             onCloseClick={() => setSelectedBusiness(null)}
           >
-            <div>
-              <img src={selectedBusiness.photo} height="50px" />
+
+            <div className="infoWindow">
+              <div className="infoWindow_img"
+                style={{
+                  backgroundImage: `url(${selectedBusiness.photo})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+              ></div>
               <FixedStarRating rating={selectedBusiness.rating} />
               <h2>{selectedBusiness.name}</h2>
               <p>{selectedBusiness.category}</p>
             </div>
           </InfoWindow>
+          </Link>
         )}
       </GoogleMap>
     </>
   );
 }
+
+
+
+
+

@@ -24,3 +24,30 @@
     width:100%;
     padding:0.5rem;
 }
+
+.infoWindow{
+    width:150px;
+    height:150px;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    cursor:pointer;
+}
+.infoWindow_img{
+    height:100px;
+    width:130px;
+}
+
+.infoWindow h2{
+    font-weight: bold;
+    font-size:14px
+}
+
+.infoWindow p{
+    margin-top:5px;
+    padding:3px;
+    background-color: #f3f3f3;
+    border-radius: 6px;
+    font-weight: 400;
+}

@@ -22,12 +22,13 @@ const SearchResult = () => {
         <h1>All "{searchTerm}" results</h1>
         {businesses &&
           businesses.business &&
-          Object.values(businesses.business).map((business) => {
+          Object.values(businesses.business).map((business,i) => {
             return (
               <SearchCard
                 key={business.name}
                 biz={business}
                 reviews={businesses.reviews && businesses.reviews[business.id]}
+                index = {i}
               />
             );
           })}

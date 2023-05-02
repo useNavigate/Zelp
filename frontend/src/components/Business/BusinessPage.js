@@ -65,3 +65,5 @@ const BusinessPage = () => {
 };
 
 export default BusinessPage;
+
+
