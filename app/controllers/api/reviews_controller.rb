@@ -45,6 +45,7 @@ class Api::ReviewsController < ApplicationController
   def update
     @review = Review.find(params[:id])
     if @review.update(review_params)
+      @review.business.update_average_rating
       render json: @review
     end
   end

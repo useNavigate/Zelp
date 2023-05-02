@@ -58,7 +58,6 @@ const ReviewEditPage = () => {
      setImageFiles([]);
      setImageUrls([]);
      setRedirect(true);
-
    }
  };
   const handleFiles = ({ currentTarget }) => {
