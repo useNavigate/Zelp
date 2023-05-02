@@ -108,8 +108,17 @@ box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8p
   /* display: flex; */
   margin-top: 20px;
   margin-bottom: 20px;
-
-
+}
+.allComments{
+  width:100%;
+ display:flex;
+ justify-content: start;
+ font-weight: 600;
+ font-size: 1.5rem;
+ color:rgba(0, 0, 0, 0.8)
+}
+.myReview{
+  background-color: #c1c1c153;
 }
 .bizShowPageInfo {
   margin: auto;
@@ -275,7 +284,8 @@ color:rgba(149, 157, 165, 0.5)
 .yourReview{
   margin-top:5px;
   margin-bottom:5px;
-  color:rgba(0,0,0,0.3)
+  font-weight: 600;
+  font-size: 24px;
 }
 .userProfilePicURL{
   border-radius: 50%;

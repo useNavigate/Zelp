@@ -47,6 +47,8 @@ border-radius:50%;
     margin-top:2px;
     margin-bottom: 5px;
     cursor:pointer;
+    text-decoration: none;
+    color:black;
 }
 .profile-dropdown{
     position:absolute;

@@ -49,14 +49,18 @@ const BusinessPage = () => {
         )}
 
         <BizLocation business={business[id]} />
+
         {myReview && (
-          <MyComments
-            review={myReview}
-            business={business[id]}
-            bizId={id}
-            myReview={myReview}
-          />
+          <>
+            <MyComments
+              review={myReview}
+              business={business[id]}
+              bizId={id}
+              myReview={myReview}
+            />
+          </>
         )}
+        <div className="allComments">All Comments</div>
         {Object.values(reviews)
           .reverse()
           .map((review) => {

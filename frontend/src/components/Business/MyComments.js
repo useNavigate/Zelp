@@ -8,7 +8,7 @@ const MyComments = ({ review, business, bizId, myReview }) => {
 
   return (
     <div className="_comments">
-      <div className="authorProfile">
+      <div className="authorProfile myReview">
         <h1 className="yourReview"> Your Review</h1>
 
         <div className="myInfoComment">
@@ -28,8 +28,12 @@ const MyComments = ({ review, business, bizId, myReview }) => {
             </h1>
           </div>
           <div>
-            <CommentDropDown reviewId={review.id} business={business}
-            bizId={bizId} myReview={myReview} />
+            <CommentDropDown
+              reviewId={review.id}
+              business={business}
+              bizId={bizId}
+              myReview={myReview}
+            />
           </div>
         </div>
         <div className="commentBody">
