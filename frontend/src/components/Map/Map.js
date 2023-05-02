@@ -1,9 +1,13 @@
 import "./map.css";
-
-import { useDispatch, useSelector } from "react-redux";
 import { useState, useMemo, useEffect } from "react";
-import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
+import {
+  GoogleMap,
+  useLoadScript,
+  Marker,
+  InfoWindow,
+} from "@react-google-maps/api";
 
+import FixedStarRating from "../StarRating/FixedStarRating";
 
 const place = ["places"];
 export default function GMap({ business }) {
@@ -18,6 +22,23 @@ export default function GMap({ business }) {
 function Map({ business }) {
   const center = useMemo(() => ({ lat: 40.736181, lng: -73.993937 }), []);
   const [show, setShow] = useState(false);
+  const [selectedBusiness, setSelectedBusiness] = useState(null);
+
+  useEffect(() => {
+    if (!show) return;
+
+    const closeMenu = () => {
+      setShow(false);
+    };
+
+    document.addEventListener("click", closeMenu);
+
+    return () => document.removeEventListener("click", closeMenu);
+  }, [show]);
+
+  useEffect(() => {
+    setSelectedBusiness(null);
+  }, [business]);
 
   if (!business) {
     return null;
@@ -25,29 +46,51 @@ function Map({ business }) {
 
   const markers = [];
   Object.values(business).forEach((biz) => {
+    console.log(biz)
     let location = { lat: biz.lat, lng: biz.lng };
-    markers.push(location);
+    markers.push({
+      position: location,
+      name: biz.name,
+      category: biz.category,
+      photo: biz.photo,
+      rating: biz.rating,
+    });
   });
+
+  const handleMarkerClick = (business) => {
+    setSelectedBusiness(business);
+  };
 
   return (
     <>
-      <div className="places-container">
-      </div>
+      <div className="places-container"></div>
       <GoogleMap
         zoom={15}
         center={center}
         mapContainerClassName="map-container"
       >
-        {markers.map((location, i) => (
+        {markers.map((business, i) => (
           <Marker
-            position={location}
+            position={business.position}
             animation={window.google.maps.Animation.DROP}
-            key={i+9999999}
+            key={i + 9999999}
+            onClick={() => handleMarkerClick(business)}
           />
         ))}
-        {show && <h1>{business.name}</h1>}
+        {selectedBusiness && (
+          <InfoWindow
+            position={selectedBusiness.position}
+            onCloseClick={() => setSelectedBusiness(null)}
+          >
+            <div>
+              <img src={selectedBusiness.photo} height="50px" />
+              <FixedStarRating rating={selectedBusiness.rating} />
+              <h2>{selectedBusiness.name}</h2>
+              <p>{selectedBusiness.category}</p>
+            </div>
+          </InfoWindow>
+        )}
       </GoogleMap>
     </>
   );
 }
-
