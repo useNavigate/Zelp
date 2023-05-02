@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom"
 import FixedStarRating from "../StarRating/FixedStarRating";
 import CommentDropDown from "./CommentDropDown";
 import "./business.css";
-const MyComments =({review})=>{
+const MyComments = ({ review, business, bizId, myReview }) => {
   const { id } = useParams();
 
   return (
@@ -28,7 +28,8 @@ const MyComments =({review})=>{
             </h1>
           </div>
           <div>
-            <CommentDropDown reviewId={review.id} id={id} />
+            <CommentDropDown reviewId={review.id} business={business}
+            bizId={bizId} myReview={myReview} />
           </div>
         </div>
         <div className="commentBody">
@@ -55,7 +56,7 @@ const MyComments =({review})=>{
       </div>
     </div>
   );
-}
+};
 
 
 export default MyComments

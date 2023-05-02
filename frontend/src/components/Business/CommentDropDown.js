@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+
 import "./business.css";
 import { fetchDestroyReview } from "../../store/review";
-import { fetchUpdateBusinessRating } from "../../store/business";
-function CommentDropDown({reviewId,id}) {
+import { Link } from "react-router-dom";
+function CommentDropDown({reviewId,business,bizId,myReview}) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const openMenu = () => {
@@ -29,12 +29,20 @@ function CommentDropDown({reviewId,id}) {
   return (
     <div className="profile-wrapper">
       <button className="DeleteIcon" onClick={openMenu}>
-          <i id ="moreButton" className="fa-solid fa-ellipsis"></i>
+        <i id="moreButton" className="fa-solid fa-ellipsis"></i>
       </button>
       {showMenu && (
         <ul className="DELETE-dropdown">
-
           <li onClick={deleteComment}>Delete</li>
+
+          <Link
+            to={{
+              pathname: `/edit/${business.rating}-${bizId}-${business.name}`,
+              state: { myReview },
+            }}
+          >
+           <li>edit</li>
+          </Link>
         </ul>
       )}
     </div>

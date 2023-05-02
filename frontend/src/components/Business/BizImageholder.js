@@ -1,6 +1,9 @@
+
 import FixedStarRating from "../StarRating/FixedStarRating";
 import "./business.css";
 const BizImageHolder =({business})=>{
+
+
 // debugger
     return (
       <div

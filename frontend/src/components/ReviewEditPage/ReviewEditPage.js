@@ -58,7 +58,7 @@ const ReviewEditPage = () => {
      setImageFiles([]);
      setImageUrls([]);
      setRedirect(true);
-        // dispatch(receiveReview(post))
+
    }
  };
   const handleFiles = ({ currentTarget }) => {
