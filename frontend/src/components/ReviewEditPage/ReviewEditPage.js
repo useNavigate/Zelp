@@ -12,12 +12,11 @@ const ReviewEditPage = () => {
   const location = useLocation()
   const {myReview} = location.state
   const dispatch = useDispatch();
-
   const bizInfo = review.split("-")
   const arr = review.split("-");
   const [hover, setHover] = useState(0);
   const [BID, setBID] = useState(arr[1]);
-  const [rating, setRating] = useState(arr[0]);
+  const [rating, setRating] = useState(myReview.rating);
   const [body, setBody] = useState(myReview.body);
   const [userId, setUserId] = useState(myReview.userId);
   const [redirect, setRedirect] = useState(false);
