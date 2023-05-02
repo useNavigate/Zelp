@@ -44,9 +44,6 @@ const CategorySearch =()=>{
                 <h1>Coffee</h1>
               </Link>
 
-              <Link to={`/search/steak`}>
-                <h1>Steak</h1>
-              </Link>
             </div>
           )}
         </div>

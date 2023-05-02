@@ -19,11 +19,9 @@ const BusinessPage = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const [userReview, setUserReview] = useState(null);
 
-
   useEffect(() => {
     dispatch(fetchBusiness(id));
   }, [id]);
-
 
   let myReview = "";
   sessionUser?.reviews?.forEach((reviewId) => {
@@ -31,8 +29,6 @@ const BusinessPage = () => {
       myReview = reviews[reviewId];
     }
   });
-
-
 
   if (business === undefined || business === null || business.length === 0) {
     return null;
@@ -53,7 +49,14 @@ const BusinessPage = () => {
         )}
 
         <BizLocation business={business[id]} />
-        {myReview && <MyComments review={myReview}  />}
+        {myReview && (
+          <MyComments
+            review={myReview}
+            business={business[id]}
+            bizId={id}
+            myReview={myReview}
+          />
+        )}
         {Object.values(reviews)
           .reverse()
           .map((review) => {
@@ -65,5 +68,3 @@ const BusinessPage = () => {
 };
 
 export default BusinessPage;
-
-

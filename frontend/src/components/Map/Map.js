@@ -5,6 +5,7 @@ import {
   useLoadScript,
   Marker,
   InfoWindow,
+  OverlayView,
 } from "@react-google-maps/api";
 import { Link } from "react-router-dom";
 
@@ -62,6 +63,7 @@ function Map({ business }) {
     setSelectedBusiness(business);
   };
 
+
   return (
     <>
       <div className="places-container"></div>
@@ -76,28 +78,41 @@ function Map({ business }) {
             animation={window.google.maps.Animation.DROP}
             key={i + 9999999}
             onClick={() => handleMarkerClick(business)}
+            label={{
+              text: business.name,
+              fontSize: "12px",
+              fontWeight: "bold",
+              color: "black",
+              backgroundColor: "#fff", // set background color here
+              padding: "10px", // set padding here
+              labelOrigin: new window.google.maps.Point(50, -2),
+              strokeColor: "white",
+              strokeWeight: 2,
+              strokeOpacity: 1,
+            }}
           />
         ))}
-        {selectedBusiness && (
-           <Link to={`/business/${selectedBusiness.id}`}>
-          <InfoWindow
-            position={selectedBusiness.position}
-            onCloseClick={() => setSelectedBusiness(null)}
-          >
 
-            <div className="infoWindow">
-              <div className="infoWindow_img"
-                style={{
-                  backgroundImage: `url(${selectedBusiness.photo})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                }}
-              ></div>
-              <FixedStarRating rating={selectedBusiness.rating} />
-              <h2>{selectedBusiness.name}</h2>
-              <p>{selectedBusiness.category}</p>
-            </div>
-          </InfoWindow>
+        {selectedBusiness && (
+          <Link to={`/business/${selectedBusiness.id}`}>
+            <InfoWindow
+              position={selectedBusiness.position}
+              onCloseClick={() => setSelectedBusiness(null)}
+            >
+              <div className="infoWindow">
+                <div
+                  className="infoWindow_img"
+                  style={{
+                    backgroundImage: `url(${selectedBusiness.photo})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                  }}
+                ></div>
+                <FixedStarRating rating={selectedBusiness.rating} />
+                <h2>{selectedBusiness.name}</h2>
+                <p>{selectedBusiness.category}</p>
+              </div>
+            </InfoWindow>
           </Link>
         )}
       </GoogleMap>

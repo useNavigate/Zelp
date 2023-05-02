@@ -16,29 +16,32 @@ const SearchResult = () => {
 
   const businesses = useSelector((state) => state.business);
 
-  return (
-
-businesses && businesses.business && Object.values(businesses.business).length > 0 ? (
-  <div className="searchPageWrapper">
-    <div className="searchCardsHolder">
-      <h1>All "{searchTerm}" results</h1>
-      {Object.values(businesses.business).map((business, i) => (
-        <SearchCard
-          key={business.name}
-          biz={business}
-          reviews={businesses.reviews && businesses.reviews[business.id]}
-          index={i}
-        />
-      ))}
+  return businesses &&
+    businesses.business &&
+    Object.values(businesses.business).length > 0 ? (
+    <div className="searchPageWrapper">
+      <div className="searchCardsHolder">
+        <h1>All "{searchTerm}" results</h1>
+        {Object.values(businesses.business).map((business, i) => (
+          <SearchCard
+            key={business.name}
+            biz={business}
+            reviews={businesses.reviews && businesses.reviews[business.id]}
+            index={i}
+          />
+        ))}
+      </div>
+      <div className="googleMap">
+        <GMap business={businesses.business} />
+      </div>
     </div>
-    <div className="googleMap">
-      <GMap business={businesses.business} />
-    </div>
-  </div>
-) : (
-  <div>No result for {searchTerm}</div>
-)
+  ) : (
+    <div className="noResult">
+      <h1>
+        No result for <span className="invalidSearchTerm"> "{searchTerm}"</span>
+      </h1>
 
+    </div>
   );
 };
 export default SearchResult;

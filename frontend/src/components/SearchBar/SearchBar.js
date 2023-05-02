@@ -1,16 +1,21 @@
+
+
 import { useEffect, useState } from "react";
 import "./searchBar.css";
-
-
 import { Link } from "react-router-dom";
+
 const SearchBar = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
+  useEffect(() => {}, [searchTerm]);
 
-  useEffect(() => {
-
-  }, [searchTerm]);
-
+  const handleSearch = () => {
+    if (searchTerm.trim() === "") {
+      alert("Please enter a search term.");
+      return;
+    }
+     setSearchTerm("");
+  };
 
   return (
     <>
@@ -23,20 +28,26 @@ const SearchBar = () => {
             setSearchTerm(e.target.value);
           }}
         />
-
-
-
-
-        <Link className="searchLink" to={`/search/${searchTerm}`}>
-          <button>
-            <i className="fa-solid fa-magnifying-glass"></i>
-          </button>
-        </Link>
+        {searchTerm ? (
+          <Link
+            className="searchLink"
+            to={`/search/${searchTerm}`}
+            disabled={searchTerm.trim() === ""}
+          >
+            <button onClick={handleSearch}>
+              <i className="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </Link>
+        ) : (
+          <span className="searchLink">
+            <button onClick={handleSearch}>
+              <i className="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </span>
+        )}
       </div>
-
     </>
   );
 };
-
 
 export default SearchBar;
