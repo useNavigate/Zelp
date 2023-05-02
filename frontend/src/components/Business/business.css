@@ -106,7 +106,6 @@ box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8p
 ._comments {
 
   /* display: flex; */
-  margin-top: 20px;
   margin-bottom: 20px;
 }
 .allComments{
@@ -115,11 +114,10 @@ box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8p
  justify-content: start;
  font-weight: 600;
  font-size: 1.5rem;
- color:rgba(0, 0, 0, 0.8)
+ color:rgba(0, 0, 0, 0.8);
+ margin-top:20px;
 }
-.myReview{
-  background-color: #c1c1c153;
-}
+
 .bizShowPageInfo {
   margin: auto;
   width: 60rem;
@@ -171,14 +169,10 @@ box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8p
   height: 300px;
   align-items: center;
 }
-/* .border{
-  border-bottom:1px solid rgba(0,0,0,0.2);
-  height:60px;
-width: 60rem;
-  z-index: 9999;
-} */
+
 .locationWrapper {
   margin-top: 30px;
+    margin-bottom: 30px;
   width: 60rem;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
       border-radius: 10px;
