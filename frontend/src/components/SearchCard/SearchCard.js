@@ -15,7 +15,11 @@ const SearchCard = (biz) => {
             backgroundSize: "cover",
           }}
         ></li>
-        <li className="searchName">{biz.biz.name}</li>
+
+        <li className="searchName">
+          {biz.index+1+" "}
+          {biz.biz.name}
+        </li>
         <li className="starRatingDiv">
           <FixedStarRating rating={biz.biz.rating} />
           <p>{biz.biz.reviews.length}</p>

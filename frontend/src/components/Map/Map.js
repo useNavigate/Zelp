@@ -47,7 +47,7 @@ function Map({ business }) {
   }
 
   const markers = [];
-  Object.values(business).forEach((biz) => {
+  Object.values(business).forEach((biz,i) => {
     let location = { lat: biz.lat, lng: biz.lng };
     markers.push({
       position: location,
@@ -79,20 +79,13 @@ function Map({ business }) {
             key={i + 9999999}
             onClick={() => handleMarkerClick(business)}
             label={{
-              text: business.name,
-              fontSize: "12px",
-              fontWeight: "bold",
-              color: "black",
-              backgroundColor: "#fff", // set background color here
-              padding: "10px", // set padding here
-              labelOrigin: new window.google.maps.Point(50, -2),
-              strokeColor: "white",
-              strokeWeight: 2,
-              strokeOpacity: 1,
+              text: (i + 1).toString(),
+                   fontSize: "12px",
+                  fontWeight: "bold",
             }}
           />
         ))}
-
+          {console.log(selectedBusiness)}
         {selectedBusiness && (
           <Link to={`/business/${selectedBusiness.id}`}>
             <InfoWindow

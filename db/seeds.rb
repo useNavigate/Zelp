@@ -160,8 +160,8 @@ bravoPizza = Business.create!(
   phone_number: "1234567890",
   price_range: 10,
   category: "Pizza",
-  lat: 28.76026620843044,
-  lng: -53.82781998446661,
+  lat: 40.7348907426551,
+  lng: -73.98893610818187,
 )
 
 bravoPizza.photo.attach(io: URI.open("https://zelp-seeds.s3.amazonaws.com/pizz3.jpg"), filename: "pizza-3.jpg")
@@ -363,8 +363,8 @@ tabeTomo = Business.create!(
   phone_number: "1234567890",
   price_range: 20,
   category: "Ramen",
-  lat: 40.73236543667624,
-  lng: -73.98293565608375,
+  lat: 40.7271436442279,
+  lng: -73.98318252421609,
 )
 tabeTomo.photo.attach(io: URI.open("https://zelp-seeds.s3.amazonaws.com/ramen3.jpg"), filename: "ramen2.jpeg")
 
