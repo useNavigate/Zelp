@@ -25,14 +25,17 @@ const CommentSections = ({ review }) => {
             <i className="fa-solid fa-user" />
           )}
 
-          {review.firstName && <h1>{review?.firstName} {review?.lastName[0]}</h1>}
+          {review.firstName && (
+            <h1>
+              {review?.firstName} {review?.lastName[0]}
+            </h1>
+          )}
         </div>
 
         <div className="ratingDate">
           <FixedStarRating rating={review?.rating} />
 
-            <h1>{review?.createdAt?.split("T")[0].split("-").join("/")}</h1>
-
+          <h1>{review?.createdAt?.split("T")[0].split("-").join("/")}</h1>
         </div>
         <p className="commentReviewBodyP">{review?.body}</p>
         <div className="ReviewPicDiv">

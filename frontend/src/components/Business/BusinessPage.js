@@ -60,7 +60,10 @@ const BusinessPage = () => {
             />
           </>
         )}
-        <div className="allComments">All Comments</div>
+
+        {Object.keys(reviews).length > 0 && (
+          <div className="allComments">All Comments</div>
+        )}
         {Object.values(reviews)
           .reverse()
           .map((review) => {
