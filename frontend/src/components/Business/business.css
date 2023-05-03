@@ -32,6 +32,7 @@
 }
 .ReviewPicDiv{
   display:flex;
+  flex-wrap: wrap;
 }
 .userReviewPictures{
   margin-right:10px;

@@ -121,7 +121,24 @@ const ReviewPage = () => {
       <div className="reviewFormWrapper reviewPicPreview">
         {imageUrls &&
           imageUrls.map((url, i) => (
-            <img className="image__" src={url} key={url} />
+            // <img className="image__" src={url} key={url} />
+            <div
+              className="image__"
+              key={url + i}
+              style={{
+                backgroundImage: `url(${url})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+              onClick={() => {
+                const updatedImageUrls = [...imageUrls];
+                updatedImageUrls.splice(i, 1);
+                setImageUrls(updatedImageUrls)
+                const updatedImageFiles=[...imageFiles];
+                updatedImageFiles.splice(i,1)
+                setImageFiles(updatedImageFiles)
+              }}
+            ></div>
           ))}
       </div>
       <div

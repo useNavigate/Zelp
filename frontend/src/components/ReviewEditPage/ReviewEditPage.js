@@ -22,10 +22,10 @@ const ReviewEditPage = () => {
   const [redirect, setRedirect] = useState(false);
   const [bName, setBname] = useState(arr[2]);
   const [photoFile, setPhotoFile] = useState(null);
-  const [photoUrl, setPhotoUrl] = useState(null);
   const [imageFiles, setImageFiles] = useState([]);
   const [imageUrls, setImageUrls] = useState([]);
   const myButton = useRef();
+  console.log(myReview)
 // debugger
   useEffect(() => {
     dispatch(fetchBusiness(BID));
@@ -116,8 +116,24 @@ const ReviewEditPage = () => {
       </div>
       <div className="reviewFormWrapper reviewPicPreview">
         {imageUrls &&
-          imageUrls.map((url) => (
-            <img className="image__" src={url} key={url} />
+          imageUrls.map((url, i) => (
+            <div
+              className="image__"
+              key={url + i}
+              style={{
+                backgroundImage: `url(${url})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+              onClick={() => {
+                const updatedImageUrls = [...imageUrls];
+                updatedImageUrls.splice(i, 1);
+                setImageUrls(updatedImageUrls);
+                const updatedImageFiles = [...imageFiles];
+                updatedImageFiles.splice(i, 1);
+                setImageFiles(updatedImageFiles);
+              }}
+            ></div>
           ))}
       </div>
 

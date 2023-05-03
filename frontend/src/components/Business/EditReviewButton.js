@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { useEffect } from "react";
+
 import "./business.css";
 const EditReviewButton = ({ business,bizId,myReview}) => {
   if (business === undefined || business === null || business.length === 0) {
