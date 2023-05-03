@@ -1,5 +1,3 @@
-
-
 import { useEffect, useState } from "react";
 import "./searchBar.css";
 import { Link } from "react-router-dom";
@@ -14,7 +12,13 @@ const SearchBar = () => {
       alert("Please enter a search term.");
       return;
     }
-     setSearchTerm("");
+    setSearchTerm("");
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      handleSearch();
+    }
   };
 
   return (
@@ -27,6 +31,7 @@ const SearchBar = () => {
           onChange={(e) => {
             setSearchTerm(e.target.value);
           }}
+          onKeyPress={handleKeyPress}
         />
         {searchTerm ? (
           <Link

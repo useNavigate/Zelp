@@ -4,6 +4,7 @@
    License: none (public domain)
 */
 
+
 html,
 body,
 div,
@@ -152,4 +153,16 @@ table {
   width: 100%;
   height: 100%;
   overflow: hidden;
+}
+#root {
+  height: 100%;
+  width: 100%;
+  margin: auto;
+  overflow: hidden important !;
+}
+
+
+#root * {
+  text-decoration: none;
+  list-style: none;
 }

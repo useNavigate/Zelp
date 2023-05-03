@@ -69,17 +69,11 @@ font-size: 60px;
   justify-content: space-between;
 
 
-  padding: 30px;
+
   align-items: center;
   margin: auto;
 }
-/* .navbar li {
-  width:300px;
-  display:flex;
-  align-items: center;
-  justify-content: space-between;
-  position:relative
-} */
+
 
 .navbar li {
   display: flex;
