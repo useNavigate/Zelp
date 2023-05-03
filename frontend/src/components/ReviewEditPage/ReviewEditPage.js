@@ -85,7 +85,6 @@ const ReviewEditPage = () => {
     return <Redirect to={`/business/${BID}`} />;
   }
 
-
   return (
     <form className="reviewForm" onSubmit={handleSubmit}>
       <h2>{bName}</h2>
@@ -125,15 +124,8 @@ const ReviewEditPage = () => {
                 backgroundSize: "cover",
                 backgroundPosition: "center",
               }}
-              onClick={() => {
-                const updatedImageUrls = [...imageUrls];
-                updatedImageUrls.splice(i, 1);
-                setImageUrls(updatedImageUrls);
-                const updatedImageFiles = [...imageFiles];
-                updatedImageFiles.splice(i, 1);
-                setImageFiles(updatedImageFiles);
-              }}
-            ></div>
+            >
+            </div>
           ))}
       </div>
 

@@ -17,7 +17,7 @@
   border-radius: 5px;
   display: flex;
   margin: 24px;
-  width: 640px;
+  width: 650px;
   height: auto;
   max-height: 220px;
   overflow-x: hidden;
@@ -28,12 +28,38 @@
 }
 
 .image__ {
-  width: 300px;
+  width: 298px;
   height: 200px;
   margin: 5px;
-  display: relative;
+  position: relative;
+    border-radius: 5px;
 }
 
+.image__ div{
+  position:absolute;
+  right:5px;
+  top:5px;
+  padding:10px;
+  border-radius: 50%;
+  background-color: #ebebebbe;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  width:15px;
+  height:15px;
+  cursor:pointer;
+
+}
+
+.image__ div:hover{
+    background-color: #fa0101;
+    color:white;
+    transition:all 0.3s
+}
+
+.image__ div i{
+  font-size: 20px;
+}
 
 .photoButtonDiv {
   position: absolute;
@@ -43,7 +69,7 @@
 .reviewFormWrapper {
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 5px;
-  padding: 12px;
+  padding: 6px;
   margin: 24px;
   width: 640px;
   height: 400px;

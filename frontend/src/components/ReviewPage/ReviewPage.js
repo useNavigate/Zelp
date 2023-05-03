@@ -80,6 +80,14 @@ const ReviewPage = () => {
     } else setImageUrls([]);
   };
 
+const handleImageDelete = (i) => {
+  const updatedImageUrls = [...imageUrls];
+  updatedImageUrls.splice(i, 1);
+  setImageUrls(updatedImageUrls);
+  const updatedImageFiles = [...imageFiles];
+  updatedImageFiles.splice(i, 1);
+  setImageFiles(updatedImageFiles);
+};
   if (!sessionUser) {
     return <Redirect to="/login" />;
   }
@@ -130,15 +138,11 @@ const ReviewPage = () => {
                 backgroundSize: "cover",
                 backgroundPosition: "center",
               }}
-              onClick={() => {
-                const updatedImageUrls = [...imageUrls];
-                updatedImageUrls.splice(i, 1);
-                setImageUrls(updatedImageUrls)
-                const updatedImageFiles=[...imageFiles];
-                updatedImageFiles.splice(i,1)
-                setImageFiles(updatedImageFiles)
-              }}
-            ></div>
+            >
+              <div onClick={() => handleImageDelete(i)}>
+                <i class="fa-solid fa-xmark"></i>
+              </div>
+            </div>
           ))}
       </div>
       <div
