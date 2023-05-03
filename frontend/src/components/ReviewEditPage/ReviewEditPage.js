@@ -84,7 +84,14 @@ const ReviewEditPage = () => {
   if (redirect) {
     return <Redirect to={`/business/${BID}`} />;
   }
-
+const handleImageDelete = (i) => {
+  const updatedImageUrls = [...imageUrls];
+  updatedImageUrls.splice(i, 1);
+  setImageUrls(updatedImageUrls);
+  const updatedImageFiles = [...imageFiles];
+  updatedImageFiles.splice(i, 1);
+  setImageFiles(updatedImageFiles);
+};
   return (
     <form className="reviewForm" onSubmit={handleSubmit}>
       <h2>{bName}</h2>
@@ -125,6 +132,10 @@ const ReviewEditPage = () => {
                 backgroundPosition: "center",
               }}
             >
+
+              <div onClick={() => handleImageDelete(i)}>
+                <i className="fa-solid fa-xmark"></i>
+              </div>
             </div>
           ))}
       </div>

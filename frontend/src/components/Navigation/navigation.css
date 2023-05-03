@@ -63,15 +63,13 @@
 font-size: 60px;
 }
 .navbar {
+  width:90%;
   height: 4.5rem;
-  width: 100%;
   display: flex;
   justify-content: space-between;
-
-
-
   align-items: center;
   margin: auto;
+  padding:10px;
 }
 
 
