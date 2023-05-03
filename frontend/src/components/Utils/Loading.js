@@ -1,10 +1,10 @@
 import "./loading.css"
 const Loading =()=>{
-    debugger
+    // debugger
     return (
       <div className="loadingScreen">
         <h1>Loading!</h1>
-        <div class="lds-spinner">
+        <div className="lds-spinner">
           <div></div>
           <div></div>
           <div></div>
@@ -18,7 +18,9 @@ const Loading =()=>{
           <div></div>
           <div></div>
         </div>
+
       </div>
+
     );
 }
 

@@ -10,10 +10,13 @@
     flex-direction: column;
     z-index: 9999;
     background-color: rgb(255, 0, 0);
+
 }
 .loadingScreen h1{
     font-size: 3rem;
     color:white;
+    margin-bottom:1rem;
+    font-weight: 600;
 }
 .lds-spinner {
     color: official;

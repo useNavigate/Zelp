@@ -19,7 +19,8 @@ class Api::BusinessesController < ApplicationController
   def search
     query = params[:query].downcase
     category = params[:category]&.downcase
-    @businesses = Business.includes(:reviews).where("LOWER(category) LIKE ?", "%#{query}%")
+    search_term = "%#{query}%"
+    @businesses = Business.includes(:reviews).where("LOWER(category) LIKE ? OR LOWER(name) LIKE ?", search_term, search_term)
     render :search
   end
 
