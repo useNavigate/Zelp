@@ -33,6 +33,7 @@
   margin: 5px;
   position: relative;
     border-radius: 5px;
+      border: 1px solid rgba(0, 0, 0, 0.1)
 }
 
 .image__ div{
@@ -49,12 +50,14 @@
   height:15px;
   cursor:pointer;
 
+
 }
 
 .image__ div:hover{
     background-color: #fa0101;
     color:white;
     transition:all 0.3s
+
 }
 
 .image__ div i{

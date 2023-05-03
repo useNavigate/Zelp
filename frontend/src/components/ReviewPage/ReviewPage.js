@@ -140,7 +140,7 @@ const handleImageDelete = (i) => {
               }}
             >
               <div onClick={() => handleImageDelete(i)}>
-                <i class="fa-solid fa-xmark"></i>
+                <i className="fa-solid fa-xmark"></i>
               </div>
             </div>
           ))}
