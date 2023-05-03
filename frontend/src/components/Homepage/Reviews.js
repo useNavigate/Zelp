@@ -4,6 +4,7 @@ import { fetchLatestReviews } from "../../store/review";
 
 import ReviewCard from "./ReviewCard";
 import "./reviewCard.css";
+import Loading from "../Utils/Loading";
 const Reviews = () => {
   const dispatch = useDispatch();
 
@@ -18,7 +19,7 @@ const Reviews = () => {
   }, []);
 
   if (isLoading) {
-    return <h1>Loading...</h1>;
+    return <Loading/>;
   }
 
   return (

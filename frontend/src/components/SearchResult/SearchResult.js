@@ -1,21 +1,26 @@
-import { useEffect } from "react";
+import { useEffect ,useState} from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSearchTerm } from "../../store/business";
 import SearchCard from "../SearchCard/SearchCard";
 import "./searchPage.css";
 import GMap from "../Map/Map";
+import Loading from "../Utils/Loading";
 
 const SearchResult = () => {
   const { searchTerm } = useParams();
-
+  const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchSearchTerm(searchTerm));
+    dispatch(fetchSearchTerm(searchTerm)).then(()=>{
+      setIsLoading(false);
+    });
   }, [searchTerm]);
 
   const businesses = useSelector((state) => state.business);
-
+  if (isLoading) {
+    return <Loading/>;
+  }
   return businesses &&
     businesses.business &&
     Object.values(businesses.business).length > 0 ? (

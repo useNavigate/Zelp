@@ -43,7 +43,8 @@ const ReviewCard = ({ review }) => {
           <li
             className="reviewPicture"
             style={{
-              display: "none",
+              backgroundImage: `url(https://cdn.discordapp.com/attachments/952591530626023464/1103138053075255326/image.png)`,
+              backgroundSize: "cover",
               boxShadow: "1px 2px 5px rgba(0, 0, 0, 0.5)",
             }}
           ></li>

@@ -10,6 +10,7 @@ import WriteAReviewButton from "./WriteAReviewButton";
 import MyComments from "./MyComments";
 import EditReviewButton from "./EditReviewButton.js";
 import { Link } from "react-router-dom";
+import Loading from "../Utils/Loading";
 
 const BusinessPage = () => {
   const dispatch = useDispatch();
@@ -18,9 +19,9 @@ const BusinessPage = () => {
   const reviews = useSelector((state) => state.review);
   const sessionUser = useSelector((state) => state.session.user);
   const [userReview, setUserReview] = useState(null);
-
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
-    dispatch(fetchBusiness(id));
+    dispatch(fetchBusiness(id)).then(()=>setLoading(false));
   }, [id]);
 
   let myReview = "";
@@ -29,6 +30,9 @@ const BusinessPage = () => {
       myReview = reviews[reviewId];
     }
   });
+  if (loading) {
+    return <Loading/>;
+  }
 
   if (business === undefined || business === null || business.length === 0) {
     return null;
