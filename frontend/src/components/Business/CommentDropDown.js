@@ -41,7 +41,7 @@ function CommentDropDown({reviewId,business,bizId,myReview}) {
               state: { myReview },
             }}
           >
-           <li>edit</li>
+           <li>Edit</li>
           </Link>
         </ul>
       )}
