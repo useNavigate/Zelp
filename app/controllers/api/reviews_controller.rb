@@ -44,6 +44,11 @@ class Api::ReviewsController < ApplicationController
 
   def update
     @review = Review.find(params[:id])
+    if params[:review][:images].present?
+      params[:review][:images].each do |image|
+        @review.images.attach(io: image.tempfile, filename: image.original_filename)
+      end
+    end
     if @review.update(review_params)
       @review.business.update_average_rating
       render json: @review

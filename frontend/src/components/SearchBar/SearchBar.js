@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import "./searchBar.css";
 import { Link } from "react-router-dom";
-
+import { useHistory } from "react-router-dom";
 const SearchBar = () => {
   const [searchTerm, setSearchTerm] = useState("");
-
+  const history = useHistory();
   useEffect(() => {}, [searchTerm]);
 
   const handleSearch = () => {
@@ -12,7 +12,8 @@ const SearchBar = () => {
       alert("Please enter a search term.");
       return;
     }
-    setSearchTerm("");
+   history.push(`/search/${searchTerm}`);
+   setSearchTerm("");
   };
 
   const handleKeyPress = (event) => {

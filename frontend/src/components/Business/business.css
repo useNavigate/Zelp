@@ -3,10 +3,10 @@
   width: 100%;
   height: 100%;
 }
-.DeleteIcon{
+.DeleteIcon {
   background-color: transparent;
   border: none;
-  cursor:pointer;
+  cursor: pointer;
 }
 .bizImageHolder {
   width: 100%;
@@ -28,20 +28,24 @@
   height: 160px;
   flex-direction: column;
   justify-content: space-evenly;
-  left:10rem;
+  left: 10rem;
 }
-.ReviewPicDiv{
-  display:flex;
+.ReviewPicDiv {
+  display: flex;
   flex-wrap: wrap;
+  max-height: 250px;
+  overflow: auto;
+justify-content: flex-start;
+margin:auto;
 }
-.userReviewPictures{
-  margin-right:10px;
-  margin-bottom:10px;
-  width:200px;
-  height:200px;
+.userReviewPictures {
+  margin-right: 10px;
+  margin-bottom: 10px;
+  width: 300px;
+  height: 200px;
   border-radius: 6px;
-box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 .bizRating h1 {
   font-size: 70px;
@@ -67,7 +71,6 @@ box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8p
   height: 100%;
   font-weight: 500;
   text-shadow: 5px 5px 3px rgba(0, 0, 0, 0.35);
-
 }
 
 .bizCategory {
@@ -91,7 +94,7 @@ box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8p
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
-._reviewButton:hover{
+._reviewButton:hover {
   background-color: rgba(255, 0, 0, 1);
   transition: ease-in-out 0.2s;
 }
@@ -105,18 +108,17 @@ box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8p
 }
 
 ._comments {
-
   /* display: flex; */
   margin-bottom: 20px;
 }
-.allComments{
-  width:100%;
- display:flex;
- justify-content: start;
- font-weight: 600;
- font-size: 1.5rem;
- color:rgba(0, 0, 0, 0.8);
- margin-top:20px;
+.allComments {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: rgba(0, 0, 0, 0.8);
+  margin-top: 20px;
 }
 
 .bizShowPageInfo {
@@ -126,35 +128,31 @@ box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8p
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-
 }
-.ratingDate{
-  display:flex;
+.ratingDate {
+  display: flex;
   align-items: center;
 }
 
-.ratingDate h1{
-
-      margin-left: 10px;
-
+.ratingDate h1 {
+  margin-left: 10px;
 }
 .authorProfile {
+  padding: 20px;
 
-  padding:20px;
-
-  width:60rem;
+  width: 60rem;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   border-radius: 10px;
   margin-top: 20px;
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 .commentReviewBodyP {
   line-height: 2;
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
-.commentReviewBodyDiv{
-  display:flex;
+.commentReviewBodyDiv {
+  display: flex;
   flex-wrap: nowrap;
 }
 .divider {
@@ -173,16 +171,16 @@ box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8p
 
 .locationWrapper {
   margin-top: 30px;
-    margin-bottom: 30px;
+  margin-bottom: 30px;
   width: 60rem;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-      border-radius: 10px;
-      padding:20px;
-      display:flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      padding-bottom: 50px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 50px;
 }
 
 /* .locationMap {
@@ -193,10 +191,10 @@ box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8p
   justify-content: center;
 
 } */
-.locationMap *{
-width:28rem;
-height:20rem;
-margin-right:5rem;
+.locationMap * {
+  width: 28rem;
+  height: 20rem;
+  margin-right: 5rem;
 }
 .hours {
   width: 100%;
@@ -205,23 +203,23 @@ margin-right:5rem;
   flex-direction: column;
   justify-content: space-between;
 }
-.userInfoSide{
-  display:flex;
+.userInfoSide {
+  display: flex;
   align-items: center;
 }
-.myInfoComment{
-      display: flex;
-        align-items: center;
-        /* border: 1px solid red; */
-        justify-content: space-between;
+.myInfoComment {
+  display: flex;
+  align-items: center;
+  /* border: 1px solid red; */
+  justify-content: space-between;
 }
-.userInfoComment  {
-    display: flex;
-    align-items: center;
-    /* border: 1px solid red; */
+.userInfoComment {
+  display: flex;
+  align-items: center;
+  /* border: 1px solid red; */
 }
-.myInfoComment i{
-font-size: 30px;
+.myInfoComment i {
+  font-size: 30px;
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -232,34 +230,33 @@ font-size: 30px;
   color: rgba(255, 255, 255, 0.761);
 }
 
-
-.myInfoComment h1{
+.myInfoComment h1 {
   margin-left: 10px;
-    font-weight: 700;
-    font-size: 18px;
+  font-weight: 700;
+  font-size: 18px;
 }
 .userInfoComment i {
   font-size: 30px;
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background-color: rgba(0,0,0,0.2);
+  background-color: rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: center;
   align-items: center;
-  color:rgba(255, 255, 255, 0.761);
+  color: rgba(255, 255, 255, 0.761);
 }
 
 #moreButton {
   width: 2rem;
   height: 2rem;
-background-color: white;
-color:rgba(149, 157, 165, 0.5)
+  background-color: white;
+  color: rgba(149, 157, 165, 0.5);
 }
-.userInfoComment h1{
- margin-left:10px;
- font-weight:700;
- font-size: 18px;
+.userInfoComment h1 {
+  margin-left: 10px;
+  font-weight: 700;
+  font-size: 18px;
 }
 .commentBody {
   min-height: 10px;
@@ -275,14 +272,13 @@ color:rgba(149, 157, 165, 0.5)
   -webkit-box-orient: vertical;
 }
 
-
-.yourReview{
-  margin-top:5px;
-  margin-bottom:5px;
+.yourReview {
+  margin-top: 5px;
+  margin-bottom: 5px;
   font-weight: 600;
   font-size: 24px;
 }
-.userProfilePicURL{
+.userProfilePicURL {
   border-radius: 50%;
   box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.5);
 }
@@ -290,12 +286,11 @@ color:rgba(149, 157, 165, 0.5)
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  padding:40px;
+  padding: 40px;
 }
 
-.infoWrapper{
-margin:20px;
-
+.infoWrapper {
+  margin: 20px;
 }
 
 .WRAPPER {

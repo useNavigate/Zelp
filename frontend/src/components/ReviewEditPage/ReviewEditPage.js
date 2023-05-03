@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import csrfFetch from "../../store/csrf";
 import { fetchBusiness } from "../../store/business";
-import { receiveReview } from "../../store/review";
+
 
 const ReviewEditPage = () => {
   const {review} = useParams()
@@ -25,8 +25,9 @@ const ReviewEditPage = () => {
   const [imageFiles, setImageFiles] = useState([]);
   const [imageUrls, setImageUrls] = useState([]);
   const myButton = useRef();
-  console.log(myReview)
-// debugger
+
+
+
   useEffect(() => {
     dispatch(fetchBusiness(BID));
   }, []);
