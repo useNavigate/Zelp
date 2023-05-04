@@ -137,7 +137,7 @@
 }
 
 .fa-solid.fa-camera-retro {
-  font-size: 8rem;
+  font-size: 6rem;
   color: rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
@@ -149,4 +149,16 @@
   align-items: center;
   justify-content: center;
   height: 220px;
+  cursor:pointer;
+
+}
+.imageUplodeDiv i{
+  margin-bottom:10px;
+}
+.imageUplodeDiv:hover i{
+
+color:#0073bb;
+transition:all 0.3s;
+transform:scale(1.1);
+
 }

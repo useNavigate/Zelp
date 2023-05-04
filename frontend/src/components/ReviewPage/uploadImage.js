@@ -3,6 +3,10 @@ import  {useRef } from "react";
 const UploadImage =({setShowModal,handleFiles})=>{
     const myButton = useRef();
 
+    const handleClick=(e)=>{
+        e.currentTarget.value = null;
+
+    }
     return (
       <div>
         <h1>image uploading here </h1>
@@ -23,6 +27,7 @@ const UploadImage =({setShowModal,handleFiles})=>{
           ref={myButton}
           className="submitButton"
           type="file"
+          style={{ display: "none" }}
           onChange={handleFiles}
           multiple
           onClick={(e) => (e.currentTarget.value = null)}

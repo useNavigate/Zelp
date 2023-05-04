@@ -71,3 +71,21 @@
   color: red;
   font-size: 18px;
 }
+
+
+
+
+/* ReviewErrorModal */
+
+.reviewErrorModal_warning{
+display: flex;
+width:350px;
+  height: 150px;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  line-height: 1.5;
+  text-align: center;
+
+}
+

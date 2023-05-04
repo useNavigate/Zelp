@@ -8,6 +8,7 @@ import "./reviewPage.css";
 import csrfFetch from "../../store/csrf";
 import { Modal } from "../../Context/Modal";
 import UploadImage from "./uploadImage";
+import ReviewErrorModal from "./ReviewErrorModal";
 
 const ReviewPage = () => {
   const sessionUser = useSelector((state) => state.session.user);
@@ -200,10 +201,7 @@ setImageButtonClick(true)
 
       {imageButtonClick && body.length === 0 && (
         <Modal>
-          <div>
-            <button onClick={() => setImageButtonClick(false)}>close</button>
-            <h1>You need to write something first bro </h1>
-          </div>
+         <ReviewErrorModal setImageButtonClick={setImageButtonClick}/>
         </Modal>
       )}
 
