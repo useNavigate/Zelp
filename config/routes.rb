@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     end
     resources :reviews, only: [:index, :create, :show, :update, :destroy] do
       get :latest, on: :collection
-      delete :delete_image, on: :member
+      patch :delete_image, on: :member
     end
   end
 

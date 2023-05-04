@@ -85,11 +85,9 @@ class Api::ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     index = params[:index].to_i
     if @review.images.attached? && @review.images.count > index
-      @review.images[index].purge
-      @review.save
-    else
-      render json: { message: "Image not found" }, status: :unprocessable_entity
+      @review.images[index].purge_later
     end
+    @review.save
   end
 
   def latest

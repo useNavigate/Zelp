@@ -51,7 +51,7 @@ console.log(myReview.id)
 
   const handleDelete = async (i) => {
     const res = await csrfFetch(`/api/reviews/${myReview.id}/delete_image`, {
-      method: "DELETE",
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
