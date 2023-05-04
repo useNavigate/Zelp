@@ -63,11 +63,33 @@ class Api::ReviewsController < ApplicationController
     render "/api/businesses/show"
   end
 
+  # def delete_image
+
+  #   @review = Review.find(params[:id])
+  #   @review.images.pop(params[:images])
+  #   @review.save
+  #   render json: @review
+  # end
+
+  # def delete_image
+  #   @review = Review.find(params[:id])
+  #   image_url = params[:images]
+  #   if @review.images.attached?
+  #     image_to_delete = @review.images.select { |image| image == image_url }.first
+  #     image_to_delete&.purge
+  #   else
+  #     render json: { message: "Review has no images attached" }, status: :unprocessable_entity
+  #   end
+  # end
   def delete_image
     @review = Review.find(params[:id])
-    @review.image.delete(params[:images])
-    @review.save
-    render json: @review
+    index = params[:index].to_i
+    if @review.images.attached? && @review.images.count > index
+      @review.images[index].purge
+      @review.save
+    else
+      render json: { message: "Image not found" }, status: :unprocessable_entity
+    end
   end
 
   def latest
@@ -76,6 +98,6 @@ class Api::ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:business_id, :user_id, :rating, :body, :photo, images: [])
+    params.require(:review).permit(:business_id, :user_id, :rating, :body, :photo, :images, :index)
   end
 end

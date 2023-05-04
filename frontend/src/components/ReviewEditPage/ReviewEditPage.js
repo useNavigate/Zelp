@@ -23,13 +23,48 @@ const ReviewEditPage = () => {
   const [bName, setBname] = useState(arr[2]);
   // const [photoFile, setPhotoFile] = useState(null);
   const [imageFiles, setImageFiles] = useState([]);
-  const [imageUrls, setImageUrls] = useState([...myReview.imageUrls]);
+  const [imageUrls, setImageUrls] = useState([]);
+  const [prevImageUrls , setPrevImageUrls] = useState([...myReview.imageUrls])
   const myButton = useRef();
 
 
   useEffect(() => {
     dispatch(fetchBusiness(BID));
   }, []);
+
+console.log(myReview.id)
+  // const handleDelete = async (i) => {
+  //  const res = await csrfFetch(`/api/reviews/${myReview.id}/delete_image`, {
+  //    method: "DELETE",
+  //    headers: {
+  //      "Content-Type": "application/json",
+  //    },
+  //    body: JSON.stringify({ images: prevImageUrls[i] }),
+  //  });
+
+  //   if (res.ok) {
+  //     const updatedImageUrls = [...prevImageUrls];
+  //     updatedImageUrls.splice(i, 1);
+  //     setPrevImageUrls(updatedImageUrls);
+  //   }
+  // };
+
+  const handleDelete = async (i) => {
+    const res = await csrfFetch(`/api/reviews/${myReview.id}/delete_image`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ index: i }),
+    });
+
+    if (res.ok) {
+      const updatedImageUrls = [...prevImageUrls];
+      updatedImageUrls.splice(i, 1);
+      setPrevImageUrls(updatedImageUrls);
+    }
+  };
+
  const handleSubmit = async (e) => {
    e.preventDefault();
    const formData = new FormData();
@@ -123,6 +158,27 @@ const handleImageDelete = (i) => {
           onChange={(e) => setBody(e.target.value)}
         />
       </div>
+      <h1>Your Previous Images</h1>
+      <div className="reviewFormWrapper reviewPicPreview">
+        {prevImageUrls &&
+          prevImageUrls.map((url, i) => (
+            <div
+              className="image__"
+              key={url + i}
+              style={{
+                backgroundImage: `url(${url})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            >
+              <div onClick={() => handleDelete(i)}>
+                <i className="fa-solid fa-xmark"></i>
+              </div>
+
+            </div>
+          ))}
+      </div>
+      <h1>New Images</h1>
       <div className="reviewFormWrapper reviewPicPreview">
         {imageUrls &&
           imageUrls.map((url, i) => (
@@ -135,7 +191,6 @@ const handleImageDelete = (i) => {
                 backgroundPosition: "center",
               }}
             >
-
               <div onClick={() => handleImageDelete(i)}>
                 <i className="fa-solid fa-xmark"></i>
               </div>
@@ -162,8 +217,8 @@ const handleImageDelete = (i) => {
         type="file"
         style={{ display: "none" }}
         onChange={handleFiles}
+        onClick={(e) => (e.currentTarget.value = null)}
         multiple
-        name="review[images][]"
       />
 
       <button className="submitButton">Update Review</button>
