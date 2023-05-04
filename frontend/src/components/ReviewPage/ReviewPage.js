@@ -6,6 +6,8 @@ import { receiveReview } from "../../store/review";
 import { useLocation } from "react-router-dom";
 import "./reviewPage.css";
 import csrfFetch from "../../store/csrf";
+import { Modal } from "../../Context/Modal";
+import uploadImage from "./uploadImage";
 
 const ReviewPage = () => {
   const sessionUser = useSelector((state) => state.session.user);
@@ -23,12 +25,10 @@ const ReviewPage = () => {
   const [userId, setUserId] = useState(sessionUser?.id);
   const [redirect, setRedirect] = useState(false);
   const [bName, setBname] = useState(arr[2]);
-
   const [photoFile, setPhotoFile] = useState(null);
-
   const [imageFiles, setImageFiles] = useState([]);
   const [imageUrls, setImageUrls] = useState([]);
-
+ const [showModal, setShowModal] = useState(false);
   const myButton = useRef();
 
 
