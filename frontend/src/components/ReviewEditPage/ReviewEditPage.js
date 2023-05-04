@@ -64,7 +64,6 @@ useEffect(() => {
    formData.append("review[rating]", rating);
    formData.append("review[body]", body);
 
-
    for (let i = 0; i < imageFiles.length; i++) {
      formData.append("review[images][]", imageFiles[i]);
    }
