@@ -135,7 +135,7 @@ const handleImageDelete = (i) => {
       </div>
       {imageUrls.length !==0&&
       <>
-      <h1>Your Images</h1>
+      <h1 style={{fontSize:"30px",fontWeight: "700"}}>Images</h1>
       <div className="reviewFormWrapper reviewPicPreview">
         {imageUrls.length &&
           imageUrls.map((url, i) => (
@@ -168,7 +168,7 @@ const handleImageDelete = (i) => {
           marginBottom: "10px",
         }}
       >
-        choose image
+        Choose image
       </div>
       <input
         ref={myButton}
