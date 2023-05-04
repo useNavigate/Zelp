@@ -25,14 +25,20 @@ const ReviewEditPage = () => {
   const [imageFiles, setImageFiles] = useState([]);
   const [imageUrls, setImageUrls] = useState([]);
   const [prevImageUrls , setPrevImageUrls] = useState([...myReview.imageUrls])
+  const [wasImage,setWasImage] = useState(false)
   const myButton = useRef();
+
 
 
   useEffect(() => {
     dispatch(fetchBusiness(BID));
   }, []);
 
-
+useEffect(() => {
+  if (prevImageUrls.length !== 0) {
+    setWasImage(true);
+  }
+}, [prevImageUrls]);
 
   const handleDelete = async (i) => {
     const res = await csrfFetch(`/api/reviews/${myReview.id}/delete_image`, {
@@ -115,9 +121,14 @@ const handleImageDelete = (i) => {
   updatedImageFiles.splice(i, 1);
   setImageFiles(updatedImageFiles);
 };
+
+
   return (
     <form className="reviewForm" onSubmit={handleSubmit}>
-      <h2>{bName}</h2>
+      <div className="imageUploadDiv">
+        <h2>{bName}</h2>
+      </div>
+
       <div className="reviewFormWrapper">
         <div className="star-rating">
           {[...Array(5)].map((star, i) => {
@@ -137,13 +148,13 @@ const handleImageDelete = (i) => {
 
         <textarea
           value={body}
-          placeholder={
-            "Doesn’t look like much when you walk past, but I was practically dying of hunger so I popped in. The definition of a hole-in-the-wall. I got the regular hamburger and wow…  there are no words. A classic burger done right. Crisp bun, juicy patty, stuffed with all the essentials (ketchup, shredded lettuce, tomato, and pickles). There’s about a million options available between the menu board and wall full of specials, so it can get a little overwhelming, but you really can’t go wrong. Not much else to say besides go see for yourself! You won’t be disappointed."
-          }
+          placeholder={"startEditing!"}
           onChange={(e) => setBody(e.target.value)}
         />
       </div>
-      <h1>Your Previous Images</h1>
+      <div className="imageUploadDiv">
+        <h3>Your Previous Images</h3>
+      </div>
       <div className="reviewFormWrapper reviewPicPreview">
         {prevImageUrls &&
           prevImageUrls.map((url, i) => (
@@ -159,11 +170,25 @@ const handleImageDelete = (i) => {
               <div onClick={() => handleDelete(i)}>
                 <i className="fa-solid fa-xmark"></i>
               </div>
-
             </div>
           ))}
+{console.log(wasImage)}
+        {wasImage === false && prevImageUrls.length === 0 && (
+          <div>
+            <i className="fa-solid fa-image"></i>
+            <h1>There have been no images submitted previously.</h1>
+          </div>
+        )}
+        {wasImage && prevImageUrls.length === 0 && (
+          <div>
+            <i className="fa-solid fa-image"></i>
+            <h1>You deleted all the previous image</h1>
+          </div>
+        )}
       </div>
-      <h1>New Images</h1>
+      <div className="imageUploadDiv">
+        <h3>New Images</h3>
+      </div>
       <div className="reviewFormWrapper reviewPicPreview">
         {imageUrls &&
           imageUrls.map((url, i) => (

@@ -21,6 +21,7 @@
   margin:5px;
   padding:5px;
   transition: all, 0.4s;
+  font-weight: 400;
 box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.36);
 }
 
@@ -29,6 +30,9 @@ box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.36);
   background-color: #0073bb;
   transition: all, 0.3s;
   color:white
+}
+.modal_button.submit:hover{
+    background-color: #05b13b;
 }
 .modalImageDiv {
   display: flex;

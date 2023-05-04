@@ -92,6 +92,7 @@ margin:auto;
   border-radius: 5px;
   align-self: flex-start;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  margin-bottom: 20px;
 }
 
 ._reviewButton:hover {

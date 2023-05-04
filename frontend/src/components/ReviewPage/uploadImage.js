@@ -46,16 +46,21 @@ const UploadImage = ({
           {imageUrls.length == 0 && (
             <img src="https://s3-media0.fl.yelpcdn.com/assets/public/photo_review_325x200_v2.yji-9de7a3277cea44fd0377.svg" />
           )}
-          <h1>Let's add images to beautify your review!</h1>
+          {imageUrls.length == 0 ? (
+            <h1>Let's add images to beautify your review!</h1>
+          ) : (
+            <h1>Amazing images!</h1>
+          )}
+
           <div className="uploadImage_ButtonsDiv">
             <div
               className="modal_button"
               onClick={() => myButton.current.click()}
             >
-              {imageUrls.length == 0 ? "Choose images" : "Change images"}
+              {imageUrls.length == 0 ? "Attach Images" : "Change Images"}
             </div>
             {imageUrls.length !== 0 && (
-              <div className="modal_button" onClick={() => setShowModal(false)}>
+              <div className="modal_button submit" onClick={() => setShowModal(false)}>
                 Submit
               </div>
             )}
