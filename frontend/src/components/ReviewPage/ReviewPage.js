@@ -31,6 +31,8 @@ const ReviewPage = () => {
 
   const myButton = useRef();
 
+console.log(imageFiles)
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -61,24 +63,58 @@ const ReviewPage = () => {
     }
   };
 
-  const handleFiles = ({ currentTarget }) => {
-    const files = currentTarget.files;
+  // const handleFiles = ({ currentTarget }) => {
+  //   const files = currentTarget.files;
 
-    setImageFiles(files);
-    if (files.length !== 0) {
-      let filesLoaded = 0;
-      const urls = [];
-      Array.from(files).forEach((file, index) => {
-        const fileReader = new FileReader();
-        fileReader.readAsDataURL(file);
-        fileReader.onload = () => {
-          urls[index] = fileReader.result;
+  //   setImageFiles(files);
+  //   if (files.length !== 0) {
+  //     let filesLoaded = 0;
+  //     const urls = [];
+  //     Array.from(files).forEach((file, index) => {
+  //       const fileReader = new FileReader();
+  //       fileReader.readAsDataURL(file);
+  //       fileReader.onload = () => {
+  //         urls[index] = fileReader.result;
+  //         if (++filesLoaded === files.length) setImageUrls(urls);
+  //       };
+  //     });
+  //   } else setImageUrls([]);
 
-          if (++filesLoaded === files.length) setImageUrls(urls);
-        };
-      });
-    } else setImageUrls([]);
-  };
+  // };
+const handleFiles = ({ currentTarget }) => {
+  const files = currentTarget.files;
+
+  // Create an array of existing file names
+  const existingFileNames = imageFiles.map((file) => file.name);
+
+  // Check if any of the new files have the same name as an existing file
+  const newFiles = Array.from(files).filter((file) => {
+    return !existingFileNames.includes(file.name);
+  });
+
+  // Add the new files to the existing files
+  const allFiles = [...imageFiles, ...newFiles];
+  setImageFiles(allFiles);
+
+  if (allFiles.length !== 0) {
+    let filesLoaded = 0;
+    const urls = [];
+    allFiles.forEach((file, index) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        urls[index] = fileReader.result;
+
+        if (++filesLoaded === allFiles.length) setImageUrls(urls);
+      };
+    });
+  } else {
+    setImageUrls([]);
+  }
+};
+
+
+
 
 const handleImageDelete = (i) => {
   const updatedImageUrls = [...imageUrls];
@@ -88,6 +124,9 @@ const handleImageDelete = (i) => {
   updatedImageFiles.splice(i, 1);
   setImageFiles(updatedImageFiles);
 };
+
+
+
   if (!sessionUser) {
     return <Redirect to="/login" />;
   }
@@ -165,6 +204,7 @@ const handleImageDelete = (i) => {
         style={{ display: "none" }}
         onChange={handleFiles}
         multiple
+        onClick={(e) => e.currentTarget.value = null}
       />
       <button className="submitButton">Post Review</button>
     </form>

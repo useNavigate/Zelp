@@ -5,6 +5,7 @@ export const RECEIVE_REVIEW = "review/review";
 const RECEIVE_LATEST_REVIEWS = "review/latestReview";
 export const REMOVE_REVIEW = "review/remove";
 const RECEIVE_UPDATE_REVIEW = "review/receiveUpdate";
+const REMOVE_REVIEW_IMAGE="review/delete_image"
 
 export const receiveReviews = (reviews) => ({
   type: RECEIVE_REVIEWS,
@@ -26,6 +27,11 @@ export const removeReview = (reviewId) => ({
   reviewId,
 });
 
+export const removeReviewImage = (reviewId, imageUrl) => ({
+  type: REMOVE_REVIEW_IMAGE,
+  reviewId,
+  imageUrl,
+});
 export const receiveUpdateReview = (review)=>({
   type:RECEIVE_UPDATE_REVIEW,
   review
@@ -80,6 +86,18 @@ export const fetchDestroyReview = (reviewId) => async (dispatch) => {
   }
 };
 
+// export const fetchDestroyImage =(reviewId,imageUrl)=>async(dispatch)=>{
+//   const res = await csrfFetch(`/api/reviews/${delete_image}`,{
+//     method:"DELETE",
+//     headers:{
+//       "Content-Type":"application/json"
+//     }
+//   })
+//   if(res.ok){
+//     const data = await res.json()
+//     dispatch(removeReviewImage(data))
+//   }
+// }
 const reviewReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_BUSINESS:

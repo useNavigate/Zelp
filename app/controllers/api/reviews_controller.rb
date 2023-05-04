@@ -39,7 +39,7 @@ class Api::ReviewsController < ApplicationController
 
   def show
     @review = Review.find(params[:id])
-    render json: @review
+    render :show
   end
 
   def update
@@ -63,12 +63,19 @@ class Api::ReviewsController < ApplicationController
     render "/api/businesses/show"
   end
 
+  def delete_image
+    @review = Review.find(params[:id])
+    @review.image.delete(params[:images])
+    @review.save
+    render json: @review
+  end
+
   def latest
     @reviews = Review.includes(:user, :business).order(created_at: :desc).limit(6)
     render :latest
   end
 
   def review_params
-    params.require(:review).permit(:five_stars, :four_stars, :three_stars, :two_starts, :one_star, :business_id, :user_id, :rating, :body, :photo, images: [])
+    params.require(:review).permit(:business_id, :user_id, :rating, :body, :photo, images: [])
   end
 end

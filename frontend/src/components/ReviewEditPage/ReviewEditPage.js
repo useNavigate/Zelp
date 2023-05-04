@@ -21,11 +21,10 @@ const ReviewEditPage = () => {
   const [userId, setUserId] = useState(myReview.userId);
   const [redirect, setRedirect] = useState(false);
   const [bName, setBname] = useState(arr[2]);
-  const [photoFile, setPhotoFile] = useState(null);
+  // const [photoFile, setPhotoFile] = useState(null);
   const [imageFiles, setImageFiles] = useState([]);
-  const [imageUrls, setImageUrls] = useState([]);
+  const [imageUrls, setImageUrls] = useState([...myReview.imageUrls]);
   const myButton = useRef();
-
 
 
   useEffect(() => {
@@ -39,9 +38,7 @@ const ReviewEditPage = () => {
    formData.append("review[rating]", rating);
    formData.append("review[body]", body);
 
-   if (photoFile) {
-     formData.append("review[photo]", photoFile);
-   }
+
    for (let i = 0; i < imageFiles.length; i++) {
      formData.append("review[images][]", imageFiles[i]);
    }
@@ -54,7 +51,7 @@ const ReviewEditPage = () => {
    if (response.ok) {
      const post = await response.json();
 
-     setPhotoFile(null);
+    //  setPhotoFile(null);
      setImageFiles([]);
      setImageUrls([]);
      setRedirect(true);
@@ -73,7 +70,12 @@ const ReviewEditPage = () => {
         fileReader.onload = () => {
           urls[index] = fileReader.result;
 
-          if (++filesLoaded === files.length) setImageUrls(urls);
+        if (++filesLoaded === files.length) {
+          // Combine old and new URLs and set state
+          const allUrls = [...imageUrls, ...urls];
+          setImageUrls(allUrls);
+          setImageFiles(files);
+        }
         };
       });
     } else setImageUrls([]);
