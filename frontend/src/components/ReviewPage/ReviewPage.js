@@ -31,7 +31,7 @@ const ReviewPage = () => {
 
   const myButton = useRef();
 
-console.log(imageFiles)
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -81,37 +81,6 @@ console.log(imageFiles)
     } else setImageUrls([]);
 
   };
-// const handleFiles = ({ currentTarget }) => {
-//   const files = currentTarget.files;
-
-//   // Create an array of existing file names
-//   const existingFileNames = imageFiles.map((file) => file.name);
-
-//   // Check if any of the new files have the same name as an existing file
-//   const newFiles = Array.from(files).filter((file) => {
-//     return !existingFileNames.includes(file.name);
-//   });
-
-//   // Add the new files to the existing files
-//   const allFiles = [...imageFiles, ...newFiles];
-//   setImageFiles(allFiles);
-
-//   if (allFiles.length !== 0) {
-//     let filesLoaded = 0;
-//     const urls = [];
-//     allFiles.forEach((file, index) => {
-//       const fileReader = new FileReader();
-//       fileReader.readAsDataURL(file);
-//       fileReader.onload = () => {
-//         urls[index] = fileReader.result;
-
-//         if (++filesLoaded === allFiles.length) setImageUrls(urls);
-//       };
-//     });
-//   } else {
-//     setImageUrls([]);
-//   }
-// };
 
 
 
@@ -164,9 +133,11 @@ const handleImageDelete = (i) => {
           onChange={(e) => setBody(e.target.value)}
         />
       </div>
-
+      {imageUrls.length !==0&&
+      <>
+      <h1>Your Images</h1>
       <div className="reviewFormWrapper reviewPicPreview">
-        {imageUrls &&
+        {imageUrls.length &&
           imageUrls.map((url, i) => (
             // <img className="image__" src={url} key={url} />
             <div
@@ -184,6 +155,8 @@ const handleImageDelete = (i) => {
             </div>
           ))}
       </div>
+      </>}
+
       <div
         className="photoButton"
         onClick={() => myButton.current.click()}
@@ -204,7 +177,7 @@ const handleImageDelete = (i) => {
         style={{ display: "none" }}
         onChange={handleFiles}
         multiple
-        onClick={(e) => e.currentTarget.value = null}
+        onClick={(e) => (e.currentTarget.value = null)}
       />
       <button className="submitButton">Post Review</button>
     </form>

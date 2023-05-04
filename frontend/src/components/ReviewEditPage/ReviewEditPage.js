@@ -32,22 +32,7 @@ const ReviewEditPage = () => {
     dispatch(fetchBusiness(BID));
   }, []);
 
-console.log(myReview.id)
-  // const handleDelete = async (i) => {
-  //  const res = await csrfFetch(`/api/reviews/${myReview.id}/delete_image`, {
-  //    method: "DELETE",
-  //    headers: {
-  //      "Content-Type": "application/json",
-  //    },
-  //    body: JSON.stringify({ images: prevImageUrls[i] }),
-  //  });
 
-  //   if (res.ok) {
-  //     const updatedImageUrls = [...prevImageUrls];
-  //     updatedImageUrls.splice(i, 1);
-  //     setPrevImageUrls(updatedImageUrls);
-  //   }
-  // };
 
   const handleDelete = async (i) => {
     const res = await csrfFetch(`/api/reviews/${myReview.id}/delete_image`, {
