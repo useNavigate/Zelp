@@ -1,40 +1,78 @@
 import  {useRef } from "react";
+import "./uploadImage.css"
+const UploadImage = ({
+  setShowModal,
+  handleFiles,
+  imageUrls,
+  handleImageDelete,
+}) => {
+  const myButton = useRef();
 
-const UploadImage =({setShowModal,handleFiles})=>{
-    const myButton = useRef();
-
-    const handleClick=(e)=>{
-        e.currentTarget.value = null;
-
-    }
-    return (
-      <div>
-        <h1>image uploading here </h1>
-        <div
-          className="photoButton"
-          onClick={() => myButton.current.click()}
-          style={{
-            display: "flex",
-            textAlign: "center",
-            justifyContent: "center",
-            alignItems: "center",
-            marginBottom: "10px",
-          }}
-        >
-          Choose image
+  return (
+    <div className="uploadImageModalDiv">
+      <div className="searchBar_heading">
+        <div>
+          <h1>Zelp</h1>
+          <i className="fa-brands fa-yelp" style={{ fontSize: "25px" }}></i>
         </div>
-        <input
-          ref={myButton}
-          className="submitButton"
-          type="file"
-          style={{ display: "none" }}
-          onChange={handleFiles}
-          multiple
-          onClick={(e) => (e.currentTarget.value = null)}
-        />
-        <button onClick={() => setShowModal(false)}>close</button>
+        <div
+          className="searchBar_closeModal"
+          onClick={() => setShowModal(false)}
+        >
+          <i className="fa-solid fa-xmark"></i>
+        </div>
       </div>
-    );
-}
+      <div className="uploadImageWrapper">
+        <div className="modalImageDiv">
+          {imageUrls &&
+            imageUrls.map((url, i) => (
+              <div
+                className="image__"
+                key={url + i}
+                style={{
+                  backgroundImage: `url(${url})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+              >
+                <div onClick={() => handleImageDelete(i)}>
+                  <i className="fa-solid fa-xmark"></i>
+                </div>
+              </div>
+            ))}
+        </div>
+
+        <div className="imageInfoDiv">
+          {imageUrls.length == 0 && (
+            <img src="https://s3-media0.fl.yelpcdn.com/assets/public/photo_review_325x200_v2.yji-9de7a3277cea44fd0377.svg" />
+          )}
+          <h1>Let's add images to beautify your review!</h1>
+          <div className="uploadImage_ButtonsDiv">
+            <div
+              className="modal_button"
+              onClick={() => myButton.current.click()}
+            >
+              {imageUrls.length == 0 ? "Choose images" : "Change images"}
+            </div>
+            {imageUrls.length !== 0 && (
+              <div className="modal_button" onClick={() => setShowModal(false)}>
+                Submit
+              </div>
+            )}
+          </div>
+          <input
+            ref={myButton}
+            className="submitButton"
+            type="file"
+            style={{ display: "none" }}
+            onChange={handleFiles}
+            multiple
+            onClick={(e) => (e.currentTarget.value = null)}
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default UploadImage

@@ -167,7 +167,7 @@ setImageButtonClick(true)
       </div>
 
       <div className="reviewFormWrapper reviewPicPreview">
-        {imageUrls.length !== 0 ? (
+        {!showModal&&imageUrls.length !== 0 ? (
           <>
             {imageUrls.length &&
               imageUrls.map((url, i) => (
@@ -195,38 +195,16 @@ setImageButtonClick(true)
       </div>
       {showModal && body.length !== 0 && imageButtonClick && (
         <Modal>
-          <UploadImage setShowModal={setShowModal} handleFiles={handleFiles} />
+          <UploadImage setShowModal={setShowModal} handleFiles={handleFiles} imageUrls={imageUrls} handleImageDelete={handleImageDelete} />
         </Modal>
       )}
 
-      {imageButtonClick && body.length === 0 && (
+      {showModal && imageButtonClick && body.length === 0 && (
         <Modal>
          <ReviewErrorModal setImageButtonClick={setImageButtonClick}/>
         </Modal>
       )}
 
-      {/* <div
-        className="photoButton"
-        onClick={() => myButton.current.click()}
-        style={{
-          display: "flex",
-          textAlign: "center",
-          justifyContent: "center",
-          alignItems: "center",
-          marginBottom: "10px",
-        }}
-      >
-        Choose image
-      </div> */}
-      {/* <input
-        ref={myButton}
-        className="submitButton"
-        type="file"
-        style={{ display: "none" }}
-        onChange={handleFiles}
-        multiple
-        onClick={(e) => (e.currentTarget.value = null)}
-      /> */}
       <button className="submitButton">Post Review</button>
     </form>
   );

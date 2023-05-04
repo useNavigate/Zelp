@@ -1,0 +1,62 @@
+.uploadImageModalDiv {
+  width: 700px;
+  min-height: 200px;
+  max-height: 700px;
+  transition: all, 0.3s;
+}
+
+.modal_button {
+  width: 150px;
+  font-size: 20px;
+  height: 35px;
+  background-color: #f3f3f3;
+  cursor: pointer;
+  color: rgb(65, 65, 65);
+  border-radius: 5px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  margin:5px;
+  padding:5px;
+  transition: all, 0.4s;
+box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.36);
+}
+
+.modal_button:hover {
+  /* background-color: rgb(4, 191, 85); */
+  background-color: #0073bb;
+  transition: all, 0.3s;
+  color:white
+}
+.modalImageDiv {
+  display: flex;
+  flex-wrap: wrap;
+  overflow: auto;
+  max-height: 300px;
+}
+.uploadImageWrapper {
+  margin: 10px;
+  border-style: dashed;
+  border-width: 3px;
+  border-color: rgba(0, 0, 0, 0.22);
+  padding: 15px;
+}
+
+.imageInfoDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.imageInfoDiv h1 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-size: 30px;
+  font-weight: 450;
+}
+.uploadImage_ButtonsDiv {
+  display: flex;
+}

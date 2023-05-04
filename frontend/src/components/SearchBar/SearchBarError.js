@@ -15,12 +15,12 @@ const SearchBarError = ({ setShowModal }) => {
         </div>
       </div>
       <div className="searchBarErrorInfo">
-        <h1>Pleas Type what you want to search!</h1>
+        <h1>Please Type what you want to search!</h1>
         <p>
           You can <span>search</span> by <span>category</span>, such as{" "}
           <span>'Coffee'</span> or <span>'Ramen'</span>, or by the{" "}
           <span>name</span> of a specific restaurant, such as{" "}
-          <span>'Bravo's Pizza</span>
+          <span>'Starbucks</span>
         </p>
       </div>
     </div>
