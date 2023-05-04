@@ -8,13 +8,12 @@
   margin-bottom:15px;
   align-items: center;
   color:black;
-
 }
 
 
 .searchCardLink ul {
   display: flex;
-  width: 100%;
+  width: 90%;
 height:420px;
   flex-direction: column;
 justify-content: space-around;

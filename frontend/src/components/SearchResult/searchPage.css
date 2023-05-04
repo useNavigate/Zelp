@@ -12,7 +12,7 @@
 .searchCardsHolder {
   display: flex;
   flex-direction: column;
-  width: 30rem;
+  width: 35rem;
   min-height: 100vh;
   max-height: 100vh;
   overflow: scroll;
@@ -30,7 +30,7 @@
   display: none;
 }
 .googleMap {
-  padding: 12px;
+
   display: flex;
   justify-content: center;
   align-items: center;
