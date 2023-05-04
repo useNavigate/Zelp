@@ -7,7 +7,7 @@ import { useLocation } from "react-router-dom";
 import "./reviewPage.css";
 import csrfFetch from "../../store/csrf";
 import { Modal } from "../../Context/Modal";
-import uploadImage from "./uploadImage";
+import UploadImage from "./uploadImage";
 
 const ReviewPage = () => {
   const sessionUser = useSelector((state) => state.session.user);
@@ -29,6 +29,7 @@ const ReviewPage = () => {
   const [imageFiles, setImageFiles] = useState([]);
   const [imageUrls, setImageUrls] = useState([]);
  const [showModal, setShowModal] = useState(false);
+ const [imageButtonClick, setImageButtonClick] = useState(false)
   const myButton = useRef();
 
 
@@ -116,7 +117,10 @@ const handleImageDelete = (i) => {
   setImageFiles(updatedImageFiles);
 };
 
-
+const handleModalImage=()=>{
+setShowModal(true)
+setImageButtonClick(true)
+}
 
   if (!sessionUser) {
     return <Redirect to="/login" />;
@@ -128,7 +132,9 @@ const handleImageDelete = (i) => {
 
   return (
     <form className="reviewForm" onSubmit={handleSubmit}>
-      <h2>{bName}</h2>
+      <div className="imageUploadDiv ">
+        <h2>{bName}</h2>
+      </div>
       <div className="reviewFormWrapper">
         <div className="star-rating">
           {[...Array(5)].map((star, i) => {
@@ -155,31 +161,53 @@ const handleImageDelete = (i) => {
           onChange={(e) => setBody(e.target.value)}
         />
       </div>
-      {imageUrls.length !==0&&
-      <>
-      <h1 style={{fontSize:"30px",fontWeight: "700"}}>Images</h1>
-      <div className="reviewFormWrapper reviewPicPreview">
-        {imageUrls.length &&
-          imageUrls.map((url, i) => (
-            // <img className="image__" src={url} key={url} />
-            <div
-              className="image__"
-              key={url + i}
-              style={{
-                backgroundImage: `url(${url})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
-            >
-              <div onClick={() => handleImageDelete(i)}>
-                <i className="fa-solid fa-xmark"></i>
-              </div>
-            </div>
-          ))}
+      <div className="imageUploadDiv">
+        <h3>Attach Photos</h3>
       </div>
-      </>}
 
-      <div
+      <div className="reviewFormWrapper reviewPicPreview">
+        {imageUrls.length !== 0 ? (
+          <>
+            {imageUrls.length &&
+              imageUrls.map((url, i) => (
+                <div
+                  className="image__"
+                  key={url + i}
+                  style={{
+                    backgroundImage: `url(${url})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                  }}
+                >
+                  <div onClick={() => handleImageDelete(i)}>
+                    <i className="fa-solid fa-xmark"></i>
+                  </div>
+                </div>
+              ))}
+          </>
+        ) : (
+          <div className="imageUplodeDiv" onClick={handleModalImage}>
+            <i className="fa-solid fa-camera-retro"></i>
+            <h1>Click Here to upload images!</h1>
+          </div>
+        )}
+      </div>
+      {showModal && body.length !== 0 && imageButtonClick && (
+        <Modal>
+          <UploadImage setShowModal={setShowModal} handleFiles={handleFiles} />
+        </Modal>
+      )}
+
+      {imageButtonClick && body.length === 0 && (
+        <Modal>
+          <div>
+            <button onClick={() => setImageButtonClick(false)}>close</button>
+            <h1>You need to write something first bro </h1>
+          </div>
+        </Modal>
+      )}
+
+      {/* <div
         className="photoButton"
         onClick={() => myButton.current.click()}
         style={{
@@ -191,8 +219,8 @@ const handleImageDelete = (i) => {
         }}
       >
         Choose image
-      </div>
-      <input
+      </div> */}
+      {/* <input
         ref={myButton}
         className="submitButton"
         type="file"
@@ -200,7 +228,7 @@ const handleImageDelete = (i) => {
         onChange={handleFiles}
         multiple
         onClick={(e) => (e.currentTarget.value = null)}
-      />
+      /> */}
       <button className="submitButton">Post Review</button>
     </form>
   );

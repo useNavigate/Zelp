@@ -1,9 +1,35 @@
-const uploadImage =({setShowModal})=>{
-    return(
-        <div>
-            <h1>herro </h1>
+import  {useRef } from "react";
+
+const UploadImage =({setShowModal,handleFiles})=>{
+    const myButton = useRef();
+
+    return (
+      <div>
+        <h1>image uploading here </h1>
+        <div
+          className="photoButton"
+          onClick={() => myButton.current.click()}
+          style={{
+            display: "flex",
+            textAlign: "center",
+            justifyContent: "center",
+            alignItems: "center",
+            marginBottom: "10px",
+          }}
+        >
+          Choose image
         </div>
-    )
+        <input
+          ref={myButton}
+          className="submitButton"
+          type="file"
+          onChange={handleFiles}
+          multiple
+          onClick={(e) => (e.currentTarget.value = null)}
+        />
+        <button onClick={() => setShowModal(false)}>close</button>
+      </div>
+    );
 }
 
-export default uploadImage
+export default UploadImage

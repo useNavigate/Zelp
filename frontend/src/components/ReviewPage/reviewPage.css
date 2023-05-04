@@ -25,6 +25,7 @@
   flex-wrap: wrap;
   transition: all 0.3s;
   justify-content: flex-start;
+  min-height: 100px;
 }
 
 .image__ {
@@ -32,35 +33,32 @@
   height: 200px;
   margin: 5px;
   position: relative;
-    border-radius: 5px;
-      border: 1px solid rgba(0, 0, 0, 0.1)
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.image__ div{
-  position:absolute;
-  right:5px;
-  top:5px;
-  padding:10px;
+.image__ div {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  padding: 10px;
   border-radius: 50%;
   background-color: #ebebebbe;
-  display:flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  width:15px;
-  height:15px;
-  cursor:pointer;
-
-
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
 }
 
-.image__ div:hover{
-    background-color: #fa0101;
-    color:white;
-    transition:all 0.3s
-
+.image__ div:hover {
+  background-color: #fa0101;
+  color: white;
+  transition: all 0.3s;
 }
 
-.image__ div i{
+.image__ div i {
   font-size: 20px;
 }
 
@@ -92,7 +90,10 @@
 .reviewForm h2 {
   font-size: 30px;
   font-weight: 700;
-
+}
+.reviewForm h3 {
+  font-size: 24px;
+  font-weight: 600;
 }
 .reviewForm textarea {
   display: flex;
@@ -129,4 +130,23 @@
   border-radius: 5px;
   cursor: pointer;
   margin-left: 24px;
+}
+
+.imageUploadDiv {
+  width: 640px;
+}
+
+.fa-solid.fa-camera-retro {
+  font-size: 8rem;
+  color: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.reviewFormWrapper.reviewPicPreview .imageUplodeDiv {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 220px;
 }
