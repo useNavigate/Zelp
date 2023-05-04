@@ -2,14 +2,16 @@ import { useEffect, useState } from "react";
 import "./searchBar.css";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import { Modal } from "../../Context/Modal";
+import SearchBarError from "./SearchBarError";
 const SearchBar = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [showModal, setShowModal] = useState(false);
   const history = useHistory();
   useEffect(() => {}, [searchTerm]);
 
   const handleSearch = () => {
     if (searchTerm.trim() === "") {
-      alert("Please enter a search term.");
       return;
     }
    history.push(`/search/${searchTerm}`);
@@ -46,9 +48,12 @@ const SearchBar = () => {
           </Link>
         ) : (
           <span className="searchLink">
-            <button onClick={handleSearch}>
+            <button onClick={() => setShowModal(true)}>
               <i className="fa-solid fa-magnifying-glass"></i>
             </button>
+              {showModal&&<Modal >
+                <SearchBarError setShowModal={setShowModal}/>
+              </Modal>}
           </span>
         )}
       </div>

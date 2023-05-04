@@ -12,8 +12,8 @@ import Post from "./components/Post/post";
 import ReviewEditPage from "./components/ReviewEditPage/ReviewEditPage";
 import Home from "./components/Map/Map";
 import MapMarker from "./components/Map/Marker";
-import CategorySearch from "./components/CategorySearch/CategorySearch";
-import { useParams } from "react-router-dom";
+import { ModalProvider } from "./Context/Modal";
+
 import { useEffect } from "react";
 function App() {
   const location = useLocation()
@@ -25,47 +25,48 @@ const url = location.pathname;
   }, [location]);
   return (
     <>
-      { location.pathname !=="/" && (
-        <div className="navWrapper">
-          <Navigation />
+      <ModalProvider>
+        {location.pathname !== "/" && (
+          <div className="navWrapper">
+            <Navigation />
+          </div>
+        )}
+
+        <div className="contentWrapper">
+          <Route exact path="/">
+            <Homepage />
+          </Route>
+          <Switch>
+            <Route path="/login">
+              <LoginFormPage />
+            </Route>
+            <Route path="/signup">
+              <SignupFormPage />
+            </Route>
+            <Route path="/search/:searchTerm">
+              <SearchResult />
+            </Route>
+            <Route path="/review/:review">
+              <ReviewPage />
+            </Route>
+            <Route exact path="/edit/:review">
+              <ReviewEditPage />
+            </Route>
+            <Route path="/business/:id">
+              <BusinessPage />
+            </Route>
+            <Route exact path="/posts">
+              <Post />
+            </Route>
+            <Route exact path="/maps">
+              <Home />
+            </Route>
+            <Route exact path="/marker">
+              <MapMarker />
+            </Route>
+          </Switch>
         </div>
-      )}
-
-
-      <div className="contentWrapper">
-        <Route exact path="/">
-          <Homepage />
-        </Route>
-        <Switch>
-          <Route path="/login">
-            <LoginFormPage />
-          </Route>
-          <Route path="/signup">
-            <SignupFormPage />
-          </Route>
-          <Route path="/search/:searchTerm">
-            <SearchResult />
-          </Route>
-          <Route path="/review/:review">
-            <ReviewPage />
-          </Route>
-          <Route exact path="/edit/:review">
-            <ReviewEditPage />
-          </Route>
-          <Route path="/business/:id">
-            <BusinessPage />
-          </Route>
-          <Route exact path="/posts">
-            <Post />
-          </Route>
-          <Route exact path="/maps">
-            <Home />
-          </Route>
-          <Route exact path="/marker">
-            <MapMarker />
-          </Route>
-        </Switch>
-      </div>
+      </ModalProvider>
     </>
   );
 }
