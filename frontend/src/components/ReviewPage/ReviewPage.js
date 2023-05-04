@@ -63,27 +63,49 @@ const ReviewPage = () => {
     }
   };
 
-  const handleFiles = ({ currentTarget }) => {
-    const files = currentTarget.files;
+  // const handleFiles = ({ currentTarget }) => {
+  //   const files = currentTarget.files;
 
-    setImageFiles(files);
-    if (files.length !== 0) {
-      let filesLoaded = 0;
-      const urls = [];
-      Array.from(files).forEach((file, index) => {
-        const fileReader = new FileReader();
-        fileReader.readAsDataURL(file);
-        fileReader.onload = () => {
-          urls[index] = fileReader.result;
-          if (++filesLoaded === files.length) setImageUrls(urls);
-        };
-      });
-    } else setImageUrls([]);
+  //   setImageFiles(files);
+  //   if (files.length !== 0) {
+  //     let filesLoaded = 0;
+  //     const urls = [];
+  //     Array.from(files).forEach((file, index) => {
+  //       const fileReader = new FileReader();
+  //       fileReader.readAsDataURL(file);
+  //       fileReader.onload = () => {
+  //         urls[index] = fileReader.result;
+  //         if (++filesLoaded === files.length) setImageUrls(urls);
+  //       };
+  //     });
+  //   } else setImageUrls([]);
 
-  };
+  // };
 
 
+const handleFiles = ({ currentTarget }) => {
+  const files = currentTarget.files;
+  const urlsLoaded = []; // keep track of loaded urls
 
+  setImageFiles(files);
+  if (files.length !== 0) {
+    let filesLoaded = 0;
+    const urls = [];
+    Array.from(files).forEach((file, index) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        const url = fileReader.result;
+        // check if url has already been loaded
+        if (!urlsLoaded.includes(url)) {
+          urlsLoaded.push(url);
+          urls[index] = url;
+        }
+        if (++filesLoaded === files.length) setImageUrls(urls);
+      };
+    });
+  } else setImageUrls([]);
+};
 
 const handleImageDelete = (i) => {
   const updatedImageUrls = [...imageUrls];
