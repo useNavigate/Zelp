@@ -13,11 +13,13 @@ import ReviewErrorModal from "./ReviewErrorModal";
 const ReviewPage = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const [newPicture, setNewPicture] = useState(null);
-  const dispatch = useDispatch();
   const location = useLocation();
+  //  const { myReview } = location.state;
+
+  const dispatch = useDispatch();
   const url = location.pathname;
   const { review } = useParams();
-
+  console.log(location.pathname.includes("/edit"));
   const arr = review.split("-");
   const [hover, setHover] = useState(0);
   const [BID, setBID] = useState(arr[1]);
@@ -26,14 +28,28 @@ const ReviewPage = () => {
   const [userId, setUserId] = useState(sessionUser?.id);
   const [redirect, setRedirect] = useState(false);
   const [bName, setBname] = useState(arr[2]);
-  const [photoFile, setPhotoFile] = useState(null);
   const [imageFiles, setImageFiles] = useState([]);
   const [imageUrls, setImageUrls] = useState([]);
- const [showModal, setShowModal] = useState(false);
- const [imageButtonClick, setImageButtonClick] = useState(false)
-  const myButton = useRef();
+  const [showModal, setShowModal] = useState(false);
+  const [imageButtonClick, setImageButtonClick] = useState(false);
+  const [prevImageUrls, setPrevImageUrls] = useState([]);
+  const [wasImage, setWasImage] = useState(false);
+  const [myReview, setMyReview] = useState("");
+  useEffect(() => {
+    if (prevImageUrls.length !== 0) {
+      setWasImage(true);
+    }
+  }, [prevImageUrls]);
 
-
+  useEffect(() => {
+    if (location.state) {
+      const { myReview } = location.state;
+      setMyReview(myReview);
+      debugger
+      setBody(myReview.body);
+      setPrevImageUrls([...myReview.imageUrls]);
+    }
+  }, [location.state]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -49,79 +65,95 @@ const ReviewPage = () => {
       formData.append("review[images][]", imageFiles[i]);
     }
 
-    const response = await csrfFetch("/api/reviews", {
-      method: "POST",
-      body: formData,
-    });
-
-    if (response.ok) {
-      const post = await response.json();
-      setPhotoFile(null);
+    const handleReviewResponse = (responseJson) => {
       setImageFiles([]);
       setImageUrls([]);
       setRedirect(true);
-      //need this part because it hits sessionUserReducer
-      dispatch(receiveReview(post));
+      dispatch(receiveReview(responseJson));
+    };
+
+    const postReview = async () => {
+      const response = await csrfFetch("/api/reviews", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        const responseJson = await response.json();
+        handleReviewResponse(responseJson);
+      }
+    };
+
+    const patchReview = async () => {
+      const response = await csrfFetch(`/api/reviews/${myReview.id}`, {
+        method: "PATCH",
+        body: formData,
+      });
+
+      if (response.ok) {
+        const responseJson = await response.json();
+        handleReviewResponse(responseJson);
+      }
+    };
+
+    if (location.pathname.includes("/review")) {
+      postReview();
+    } else {
+      patchReview();
     }
   };
 
-  // const handleFiles = ({ currentTarget }) => {
-  //   const files = currentTarget.files;
+  const handleFiles = ({ currentTarget }) => {
+    const files = currentTarget.files;
+    const urlsLoaded = []; // keep track of loaded urls
 
-  //   setImageFiles(files);
-  //   if (files.length !== 0) {
-  //     let filesLoaded = 0;
-  //     const urls = [];
-  //     Array.from(files).forEach((file, index) => {
-  //       const fileReader = new FileReader();
-  //       fileReader.readAsDataURL(file);
-  //       fileReader.onload = () => {
-  //         urls[index] = fileReader.result;
-  //         if (++filesLoaded === files.length) setImageUrls(urls);
-  //       };
-  //     });
-  //   } else setImageUrls([]);
-
-  // };
-
-
-const handleFiles = ({ currentTarget }) => {
-  const files = currentTarget.files;
-  const urlsLoaded = []; // keep track of loaded urls
-
-  setImageFiles(files);
-  if (files.length !== 0) {
-    let filesLoaded = 0;
-    const urls = [];
-    Array.from(files).forEach((file, index) => {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-      fileReader.onload = () => {
-        const url = fileReader.result;
-        // check if url has already been loaded
-        if (!urlsLoaded.includes(url)) {
-          urlsLoaded.push(url);
-          urls[index] = url;
-        }
-        if (++filesLoaded === files.length) setImageUrls(urls);
-      };
+    setImageFiles(files);
+    if (files.length !== 0) {
+      let filesLoaded = 0;
+      const urls = [];
+      Array.from(files).forEach((file, index) => {
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(file);
+        fileReader.onload = () => {
+          const url = fileReader.result;
+          // check if url has already been loaded
+          if (!urlsLoaded.includes(url)) {
+            urlsLoaded.push(url);
+            urls[index] = url;
+          }
+          if (++filesLoaded === files.length) setImageUrls(urls);
+        };
+      });
+    } else setImageUrls([]);
+  };
+  const handleDelete = async (i) => {
+    const res = await csrfFetch(`/api/reviews/${myReview.id}/delete_image`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ index: i }),
     });
-  } else setImageUrls([]);
-};
 
-const handleImageDelete = (i) => {
-  const updatedImageUrls = [...imageUrls];
-  updatedImageUrls.splice(i, 1);
-  setImageUrls(updatedImageUrls);
-  const updatedImageFiles = [...imageFiles];
-  updatedImageFiles.splice(i, 1);
-  setImageFiles(updatedImageFiles);
-};
+    if (res.ok) {
+      const updatedImageUrls = [...prevImageUrls];
+      updatedImageUrls.splice(i, 1);
+      setPrevImageUrls(updatedImageUrls);
+    }
+  };
+  const handleImageDelete = (i) => {
+    const updatedImageUrls = [...imageUrls];
+    updatedImageUrls.splice(i, 1);
+    setImageUrls(updatedImageUrls);
+    const updatedImageFiles = [...imageFiles];
+    updatedImageFiles.splice(i, 1);
+    setImageFiles(updatedImageFiles);
+  };
 
-const handleModalImage=()=>{
-setShowModal(true)
-setImageButtonClick(true)
-}
+  const handleModalImage = () => {
+    setShowModal(true);
+    setImageButtonClick(true);
+  };
 
   if (!sessionUser) {
     return <Redirect to="/login" />;
@@ -132,7 +164,7 @@ setImageButtonClick(true)
   }
 
   return (
-    <form className="reviewForm" onSubmit={handleSubmit}>
+    <form className="reviewForm">
       <div className="imageUploadDiv ">
         <h2>{bName}</h2>
       </div>
@@ -162,12 +194,50 @@ setImageButtonClick(true)
           onChange={(e) => setBody(e.target.value)}
         />
       </div>
-      <div className="imageUploadDiv">
-        <h3>Attach Photos</h3>
-      </div>
+      {location.pathname.includes("/edit") && (
+        <>
+          <div className="imageUploadDiv">
+            <h3>PreviousPhoto</h3>
+          </div>
+          <div className="reviewFormWrapper reviewPicPreview">
+            {prevImageUrls &&
+              prevImageUrls.map((url, i) => (
+                <div
+                  className="image__"
+                  key={url + i}
+                  style={{
+                    backgroundImage: `url(${url})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                  }}
+                >
+                  <div onClick={() => handleDelete(i)}>
+                    <i className="fa-solid fa-xmark"></i>
+                  </div>
+                </div>
+              ))}
 
+            {wasImage === false && prevImageUrls.length === 0 && (
+              <div className="imageUplodeDiv">
+                <i className="fa-solid fa-image"></i>
+                <h1>There have been no images submitted previously.</h1>
+              </div>
+            )}
+            {wasImage && prevImageUrls.length === 0 && (
+              <div className="imageUplodeDiv">
+                <i className="fa-solid fa-image"></i>
+                <h1>You deleted all the previous image</h1>
+              </div>
+            )}
+          </div>
+        </>
+      )}
+
+      <div className="imageUploadDiv">
+        <h3>New Photos</h3>
+      </div>
       <div className="reviewFormWrapper reviewPicPreview">
-        {!showModal&&imageUrls.length !== 0 ? (
+        {!showModal && imageUrls.length !== 0 ? (
           <>
             {imageUrls.length &&
               imageUrls.map((url, i) => (
@@ -195,17 +265,28 @@ setImageButtonClick(true)
       </div>
       {showModal && body.length !== 0 && imageButtonClick && (
         <Modal>
-          <UploadImage setShowModal={setShowModal} handleFiles={handleFiles} imageUrls={imageUrls} handleImageDelete={handleImageDelete} />
+          <UploadImage
+            setShowModal={setShowModal}
+            handleFiles={handleFiles}
+            imageUrls={imageUrls}
+            handleImageDelete={handleImageDelete}
+          />
         </Modal>
       )}
-
       {showModal && imageButtonClick && body.length === 0 && (
         <Modal>
-         <ReviewErrorModal setImageButtonClick={setImageButtonClick}/>
+          <ReviewErrorModal setImageButtonClick={setImageButtonClick} />
         </Modal>
       )}
-
-      <button className="submitButton">Post Review</button>
+      {location.pathname.includes("/edit") ? (
+        <button onClick={handleSubmit} className="submitButton">
+          Update Review
+        </button>
+      ) : (
+        <button onClick={handleSubmit} className="submitButton">
+          Post Review
+        </button>
+      )}
     </form>
   );
 };

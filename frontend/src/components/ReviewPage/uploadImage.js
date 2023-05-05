@@ -47,7 +47,16 @@ const UploadImage = ({
             <img src="https://s3-media0.fl.yelpcdn.com/assets/public/photo_review_325x200_v2.yji-9de7a3277cea44fd0377.svg" />
           )}
           {imageUrls.length == 0 ? (
-            <h1>Let's add images to beautify your review!</h1>
+            <div className="imageHowto">
+              <h1>Attach Photos</h1>
+              <p>
+                <span>To select multiple images</span>, either hold{" "}
+                <span>"Ctrl"</span>
+                (Windows) or <span>"Command"</span> (Mac) and{" "}
+                <span>click on each image</span>, or <span>click and drag</span>{" "}
+                to create a box around them
+              </p>
+            </div>
           ) : (
             <h1>Amazing images!</h1>
           )}
@@ -60,7 +69,10 @@ const UploadImage = ({
               {imageUrls.length == 0 ? "Attach Images" : "Change Images"}
             </div>
             {imageUrls.length !== 0 && (
-              <div className="modal_button submit" onClick={() => setShowModal(false)}>
+              <div
+                className="modal_button submit"
+                onClick={() => setShowModal(false)}
+              >
                 Submit
               </div>
             )}

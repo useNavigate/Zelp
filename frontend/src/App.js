@@ -50,7 +50,8 @@ const url = location.pathname;
               <ReviewPage />
             </Route>
             <Route exact path="/edit/:review">
-              <ReviewEditPage />
+              {/* <ReviewEditPage /> */}
+              <ReviewPage />
             </Route>
             <Route path="/business/:id">
               <BusinessPage />
