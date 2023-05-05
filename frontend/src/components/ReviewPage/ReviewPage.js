@@ -9,6 +9,7 @@ import csrfFetch from "../../store/csrf";
 import { Modal } from "../../Context/Modal";
 import UploadImage from "./uploadImage";
 import ReviewErrorModal from "./ReviewErrorModal";
+import Alert from "./showAlert";
 
 const ReviewPage = () => {
   const sessionUser = useSelector((state) => state.session.user);
@@ -19,7 +20,7 @@ const ReviewPage = () => {
   const dispatch = useDispatch();
   const url = location.pathname;
   const { review } = useParams();
-  console.log(location.pathname.includes("/edit"));
+
   const arr = review.split("-");
   const [hover, setHover] = useState(0);
   const [BID, setBID] = useState(arr[1]);
@@ -31,10 +32,13 @@ const ReviewPage = () => {
   const [imageFiles, setImageFiles] = useState([]);
   const [imageUrls, setImageUrls] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
   const [imageButtonClick, setImageButtonClick] = useState(false);
   const [prevImageUrls, setPrevImageUrls] = useState([]);
   const [wasImage, setWasImage] = useState(false);
   const [myReview, setMyReview] = useState("");
+  const [alertVisible, setAlertVisible] = useState(false);
+
   useEffect(() => {
     if (prevImageUrls.length !== 0) {
       setWasImage(true);
@@ -45,7 +49,6 @@ const ReviewPage = () => {
     if (location.state) {
       const { myReview } = location.state;
       setMyReview(myReview);
-      debugger
       setBody(myReview.body);
       setPrevImageUrls([...myReview.imageUrls]);
     }
@@ -126,6 +129,11 @@ const ReviewPage = () => {
       });
     } else setImageUrls([]);
   };
+  const handleDeleteWarning = () => {
+    setShowAlert(true);
+    setAlertVisible(true);
+  };
+
   const handleDelete = async (i) => {
     const res = await csrfFetch(`/api/reviews/${myReview.id}/delete_image`, {
       method: "PATCH",
@@ -187,7 +195,6 @@ const ReviewPage = () => {
 
         <textarea
           value={body}
-          required
           placeholder={
             "Doesn’t look like much when you walk past, but I was practically dying of hunger so I popped in. The definition of a hole-in-the-wall. I got the regular hamburger and wow…  there are no words. A classic burger done right. Crisp bun, juicy patty, stuffed with all the essentials (ketchup, shredded lettuce, tomato, and pickles). There’s about a million options available between the menu board and wall full of specials, so it can get a little overwhelming, but you really can’t go wrong. Not much else to say besides go see for yourself! You won’t be disappointed."
           }
@@ -278,14 +285,41 @@ const ReviewPage = () => {
           <ReviewErrorModal setImageButtonClick={setImageButtonClick} />
         </Modal>
       )}
-      {location.pathname.includes("/edit") ? (
+      {location.pathname.includes("/edit") && body.length > 0 && rating > 0 && (
         <button onClick={handleSubmit} className="submitButton">
           Update Review
         </button>
-      ) : (
-        <button onClick={handleSubmit} className="submitButton">
+      )}
+      {location.pathname.includes("/review") &&
+        body.length > 0 &&
+        rating > 0 && (
+          <button onClick={handleSubmit} className="submitButton">
+            Post Review
+          </button>
+        )}
+
+
+      {rating > 0 && body.length <= 0 ? (
+        <div>
+          <div onClick={handleDeleteWarning} className="disabledButton">
+            Post Review
+          </div>
+        </div>
+      ) : rating <= 0 && body.length > 0 ? (
+        <div>
+          <div onClick={handleDeleteWarning} className="disabledButton">
+            Post Review
+          </div>
+        </div>
+      ) : rating <= 0 && body.length <= 0 ? (
+        <div onClick={handleDeleteWarning} className="disabledButton">
           Post Review
-        </button>
+        </div>
+      ) : null}
+      {showAlert && (
+        <Modal>
+          <Alert setShowAlert={setShowAlert} />
+        </Modal>
       )}
     </form>
   );

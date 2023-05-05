@@ -81,7 +81,7 @@ function Map({ center, business }) {
 
   return (
     <>
-      <div className="places-container"></div>
+
       <GoogleMap
         zoom={15}
         center={center}

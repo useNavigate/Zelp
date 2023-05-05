@@ -21,7 +21,6 @@ const ReviewEditPage = () => {
   const [userId, setUserId] = useState(myReview.userId);
   const [redirect, setRedirect] = useState(false);
   const [bName, setBname] = useState(arr[2]);
-  // const [photoFile, setPhotoFile] = useState(null);
   const [imageFiles, setImageFiles] = useState([]);
   const [imageUrls, setImageUrls] = useState([]);
   const [prevImageUrls , setPrevImageUrls] = useState([...myReview.imageUrls])

@@ -114,8 +114,22 @@
   font-size: 18px;
   font-weight: 500;
   border-radius: 5px;
-  margin-left: 24px;
   cursor: pointer;
+}
+
+.disabledButton {
+  background-color: rgba(0, 0, 0, 0.2);
+  border: none;
+  width: 200px;
+  height: 40px;
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 5px;
+  cursor: not-allowed;
+  display:flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .photoButton {
@@ -142,12 +156,10 @@
   cursor: pointer;
 }
 
-.fa-image{
+.fa-image {
   font-size: 6rem;
-    color: rgba(0, 0, 0, 0.2);
-
+  color: rgba(0, 0, 0, 0.2);
 }
-
 
 .reviewFormWrapper.reviewPicPreview .imageUplodeDiv {
   display: flex;
@@ -156,16 +168,13 @@
   align-items: center;
   justify-content: center;
   height: 220px;
-
 }
-.imageUplodeDiv i{
-  margin-bottom:10px;
+.imageUplodeDiv i {
+  margin-bottom: 10px;
 }
-.fa-solid.fa-camera-retro:hover{
-
-color:#0073bb;
-transition:all 0.3s;
-transform:scale(1.2);
-cursor: pointer;
-
+.fa-solid.fa-camera-retro:hover {
+  color: #0073bb;
+  transition: all 0.3s;
+  transform: scale(1.2);
+  cursor: pointer;
 }

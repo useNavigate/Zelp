@@ -39,6 +39,7 @@ box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.36);
   flex-wrap: wrap;
   overflow: auto;
   max-height: 300px;
+  margin-left: 8px;
 }
 .uploadImageWrapper {
   margin: 10px;

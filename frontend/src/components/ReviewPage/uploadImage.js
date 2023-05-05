@@ -58,7 +58,7 @@ const UploadImage = ({
               </p>
             </div>
           ) : (
-            <h1>Amazing images!</h1>
+            <h1>looks good!</h1>
           )}
 
           <div className="uploadImage_ButtonsDiv">
