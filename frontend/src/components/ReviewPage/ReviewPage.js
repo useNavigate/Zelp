@@ -293,7 +293,7 @@ const [deletedAlert,setDeletedAlert] = useState(false)
           </div>
         )}
       </div>
-      {showModal && body.length !== 0 && imageButtonClick && (
+      {showModal && body.trim().length !== 0 && imageButtonClick && (
         <Modal>
           <UploadImage
             setShowModal={setShowModal}
