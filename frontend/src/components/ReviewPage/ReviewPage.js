@@ -10,6 +10,8 @@ import { Modal } from "../../Context/Modal";
 import UploadImage from "./uploadImage";
 import ReviewErrorModal from "./ReviewErrorModal";
 import Alert from "./showAlert";
+import DeleteImageWarningModal from "./DeleteImageWarningModal";
+import ImageDeletedModal from "./ImageDeletedModal";
 
 const ReviewPage = () => {
   const sessionUser = useSelector((state) => state.session.user);
@@ -38,6 +40,9 @@ const ReviewPage = () => {
   const [wasImage, setWasImage] = useState(false);
   const [myReview, setMyReview] = useState("");
   const [alertVisible, setAlertVisible] = useState(false);
+  const[deleteImage,setDeleteImage] = useState(false)
+const [currentIndex,setCurrentIndex] = useState("")
+const [deletedAlert,setDeletedAlert] = useState(false)
 
   useEffect(() => {
     if (prevImageUrls.length !== 0) {
@@ -129,10 +134,17 @@ const ReviewPage = () => {
       });
     } else setImageUrls([]);
   };
-  const handleDeleteWarning = () => {
+  const handlePostWarning = () => {
     setShowAlert(true);
     setAlertVisible(true);
   };
+
+  const handleImageDeleteWarning=(e,i)=>{
+    e.preventDefault()
+    setDeleteImage(true)
+    setCurrentIndex(i)
+  }
+
 
   const handleDelete = async (i) => {
     const res = await csrfFetch(`/api/reviews/${myReview.id}/delete_image`, {
@@ -148,6 +160,8 @@ const ReviewPage = () => {
       updatedImageUrls.splice(i, 1);
       setPrevImageUrls(updatedImageUrls);
     }
+    setDeletedAlert(true);
+    setDeleteImage(false)
   };
   const handleImageDelete = (i) => {
     const updatedImageUrls = [...imageUrls];
@@ -218,12 +232,21 @@ const ReviewPage = () => {
                     backgroundPosition: "center",
                   }}
                 >
-                  <div onClick={() => handleDelete(i)}>
+                  {/* <div onClick={() => handleDelete(i)}> */}
+                  <div onClick={(e) => handleImageDeleteWarning(e, i)}>
                     <i className="fa-solid fa-xmark"></i>
                   </div>
                 </div>
               ))}
-
+            {deleteImage && (
+              <Modal>
+                <DeleteImageWarningModal
+                  handleDelete={handleDelete}
+                  setDeleteImage={setDeleteImage}
+                  currentIndex={currentIndex}
+                />
+              </Modal>
+            )}
             {wasImage === false && prevImageUrls.length === 0 && (
               <div className="imageUplodeDiv">
                 <i className="fa-solid fa-image"></i>
@@ -298,27 +321,31 @@ const ReviewPage = () => {
           </button>
         )}
 
-
       {rating > 0 && body.length <= 0 ? (
         <div>
-          <div onClick={handleDeleteWarning} className="disabledButton">
+          <div onClick={handlePostWarning} className="disabledButton">
             Post Review
           </div>
         </div>
       ) : rating <= 0 && body.length > 0 ? (
         <div>
-          <div onClick={handleDeleteWarning} className="disabledButton">
+          <div onClick={handlePostWarning} className="disabledButton">
             Post Review
           </div>
         </div>
       ) : rating <= 0 && body.length <= 0 ? (
-        <div onClick={handleDeleteWarning} className="disabledButton">
+        <div onClick={handlePostWarning} className="disabledButton">
           Post Review
         </div>
       ) : null}
       {showAlert && (
         <Modal>
           <Alert setShowAlert={setShowAlert} />
+        </Modal>
+      )}
+      {deletedAlert && (
+        <Modal>
+         <ImageDeletedModal setDeletedAlert={setDeletedAlert} />
         </Modal>
       )}
     </form>

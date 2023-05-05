@@ -1,0 +1,110 @@
+.deleteWarning {
+  width: 400px;
+}
+
+.areYouSure {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.areYouSure p {
+  text-align: center;
+  line-height: 1.3;
+  margin-top: 5px;
+}
+
+.areYouSure_Button {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.areYouSure_Button div {
+  width: 80px;
+  height: 30px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  background-color: #f3f3f3;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  cursor: pointer;
+}
+
+.yes_delete:hover {
+  color: white;
+  background-color: var(--linkBlue);
+}
+
+.No_:hover {
+    color: white;
+    background-color: red;
+}
+
+.Warning{
+    display:flex;
+    padding:10px;
+    background-color: red;
+    color:white;
+    font-size: 24px;
+    width:100%;
+    justify-content: center;
+    align-items: center;
+    margin-bottom:10px;
+}
+.Warning h1{
+margin-left:10px;
+}
+.areYouSure p{
+    color:rgba(0,0,0,0.6)
+}
+.areYouSure p span{
+    color:rgb(0, 0, 0,0.8);
+    font-weight: 500;
+}
+.areYouSure h2{
+    color: rgb(0, 0, 0, 0.8);
+    text-align: center;
+    margin-top:10px;
+    font-weight: 500;
+}
+
+
+
+/* imageDeletedModal */
+
+.deletedSuccess{
+    padding:15px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height:100%;
+}
+.deletedSuccess i{
+    font-size: 60px;
+    color:var(--linkBlue);
+    border:5px solid rgba(0, 152, 254, 0.341);
+    border-radius: 50%;
+    width:100px;
+    height:100px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom:30px;
+}
+
+.deletedSuccess h1{
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 30px;
+    color:rgba(0, 0, 0, 0.7)
+}
+
+.deletedSuccess p{
+    color: rgba(0, 0, 0, 0.7)
+}
