@@ -303,37 +303,39 @@ const [deletedAlert,setDeletedAlert] = useState(false)
           />
         </Modal>
       )}
-      {showModal && imageButtonClick && body.length === 0 && (
+      {showModal && imageButtonClick && body.trim().length === 0 && (
         <Modal>
           <ReviewErrorModal setImageButtonClick={setImageButtonClick} />
         </Modal>
       )}
-      {location.pathname.includes("/edit") && body.length > 0 && rating > 0 && (
-        <button onClick={handleSubmit} className="submitButton">
-          Update Review
-        </button>
-      )}
+      {location.pathname.includes("/edit") &&
+        body.trim().length > 0 &&
+        rating > 0 && (
+          <button onClick={handleSubmit} className="submitButton">
+            Update Review
+          </button>
+        )}
       {location.pathname.includes("/review") &&
-        body.length > 0 &&
+        body.trim().length > 0 &&
         rating > 0 && (
           <button onClick={handleSubmit} className="submitButton">
             Post Review
           </button>
         )}
 
-      {rating > 0 && body.length <= 0 ? (
+      {rating > 0 && body.trim().length <= 0 ? (
         <div>
           <div onClick={handlePostWarning} className="disabledButton">
             Post Review
           </div>
         </div>
-      ) : rating <= 0 && body.length > 0 ? (
+      ) : rating <= 0 && body.trim().length > 0 ? (
         <div>
           <div onClick={handlePostWarning} className="disabledButton">
             Post Review
           </div>
         </div>
-      ) : rating <= 0 && body.length <= 0 ? (
+      ) : rating <= 0 && body.trim().length <= 0 ? (
         <div onClick={handlePostWarning} className="disabledButton">
           Post Review
         </div>
@@ -345,7 +347,7 @@ const [deletedAlert,setDeletedAlert] = useState(false)
       )}
       {deletedAlert && (
         <Modal>
-         <ImageDeletedModal setDeletedAlert={setDeletedAlert} />
+          <ImageDeletedModal setDeletedAlert={setDeletedAlert} />
         </Modal>
       )}
     </form>
