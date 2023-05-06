@@ -40,7 +40,7 @@ const BusinessPage = () => {
 
   return (
     <div>
-      <BizImageHolder business={business[id]} />
+      <BizImageHolder business={business[id]} reviews={reviews}/>
       <div className="bizShowPageInfo">
         {myReview ? (
           <EditReviewButton
@@ -74,6 +74,7 @@ const BusinessPage = () => {
             return <CommentSections key={review.id + 88} review={review} />;
           })}
       </div>
+
     </div>
   );
 };

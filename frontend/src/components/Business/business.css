@@ -8,18 +8,39 @@
   border: none;
   cursor: pointer;
 }
+
+
 .bizImageHolder {
   width: 100%;
   height: 500px;
   display: flex;
-
   position: relative;
-  background-color: rgba(255, 0, 0, 0.529);
   justify-content: flex-end;
   flex-direction: column;
   padding-bottom: 20px;
   margin-bottom: 50px;
 }
+/* .bizImageHolder:after{
+    content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, transparent 80%, rgba(0, 0, 0, 0.5) 100%);
+} */
+.dark{
+
+width:100%;
+height:10%;
+bottom:0;
+position:absolute;
+      background: linear-gradient(to bottom,transparent 10%,
+        rgba(0, 0, 0, 0.7) 100%);
+        z-index: 0;
+      }
+
+
 
 .bizRating {
   /* max-width: 500px; */
@@ -29,14 +50,15 @@
   flex-direction: column;
   justify-content: space-evenly;
   left: 10rem;
+  /* z-index: 1; */
 }
 .ReviewPicDiv {
   display: flex;
   flex-wrap: wrap;
   max-height: 250px;
   overflow: auto;
-justify-content: flex-start;
-margin:auto;
+  justify-content: flex-start;
+  margin: auto;
 }
 .userReviewPictures {
   margin-right: 10px;
@@ -52,6 +74,7 @@ margin:auto;
   font-weight: 700;
   color: white;
   text-shadow: 5px 5px 3px rgba(0, 0, 0, 0.35);
+
 }
 
 .bizRating div {
@@ -76,7 +99,7 @@ margin:auto;
 .bizCategory {
   color: white;
   font-weight: 500;
-  text-shadow: 5px 5px 3px rgba(0, 0, 0, 0.35);
+  /* text-shadow: 5px 5px 3px rgba(0, 0, 0, 0.35); */
 }
 
 ._reviewButton {
@@ -308,4 +331,30 @@ margin:auto;
   display: flex;
   width: 100%;
   /* flex-wrap: wrap; */
+}
+
+.MoreImages {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+
+}
+.MoreImages h1{
+  margin-right:40px;
+  width:200px;
+  border:3px solid rgb(255, 0, 0);
+  height:40px;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  color:rgb(255, 255, 255);
+  background-color: red;
+  border-radius: 5px;
+  cursor:pointer;
+  font-weight: 500;
+}
+
+.MoreImages h1:hover{
+  transform: scale(1.1);
+  transition: all, 0.3s;
 }
