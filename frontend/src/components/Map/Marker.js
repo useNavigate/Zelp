@@ -27,12 +27,12 @@ function Map({ business }) {
   const [selected, setSelected] = useState(null);
 
   return (
-    <>
+
 
       <GoogleMap
         zoom={15}
         center={center}
-        mapContainerClassName="map-container"
+        // mapContainerClassName="map-container"
         options={{
           keyboardShortcuts: false, // Disable keyboard shortcuts
         }}
@@ -47,6 +47,6 @@ function Map({ business }) {
 
 
       </GoogleMap>
-    </>
+
   );
 }

@@ -13,13 +13,15 @@ const imageNum = Object.values(reviews)
     return acc;
   }, 0);
 
+
   function checkTime() {
     const now = new Date();
     const hours = now.getHours();
     const isOpen = hours >= 9 && hours <= 21;
-
     return isOpen ? "Open" : "Closed";
   }
+
+
   return (
     <div className="blackGrad">
       <div
@@ -49,12 +51,12 @@ const imageNum = Object.values(reviews)
             -{business?.category}
           </span>
           <div>
-            <h3 style={{color:"green"}}>{checkTime()}</h3>:<h4>9:00 am ~ 9:00 pm</h4>
+            <h3 style={{color:"green"}}>{checkTime()}</h3> <h4 style={{color:"white"}}> 9:00 am ~ 9:00 pm</h4>
           </div>
         </div>
         {imageNum > 0 ? (
           <div className="MoreImages">
-            <h1 onClick={() => setShowModal(true)}>View {imageNum} Images</h1>
+            <h1 onClick={() => setShowModal(true)} style={{zIndex: setShowModal ? 0 : '1'}}>View {imageNum} Images</h1>
           </div>
         ) : (
           <div className="MoreImages">

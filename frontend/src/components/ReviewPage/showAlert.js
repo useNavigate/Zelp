@@ -23,8 +23,8 @@ const Alert=({setShowAlert,})=>{
             <div className="imageHowto">
               <p>
                 <span>Please</span> provide both a <span>star rating</span> and
-                an <span>explanation for your review</span> to help others make
-                informed decisions about this business.
+                an <span>explanation for your review</span>.
+
               </p>
               <br></br>
               <p>
