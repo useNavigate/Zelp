@@ -26,7 +26,7 @@ const BizImageHolder = ({ business, reviews }) => {
         style={{
           backgroundImage: `url(${business?.photo})`,
           backgroundSize: "cover",
-          backgroundPosition: "center",
+          // backgroundPosition: "center",
         }}
       >
         <div className="dark"></div>

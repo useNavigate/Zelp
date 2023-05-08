@@ -29,7 +29,7 @@ function CommentDropDown({reviewId,business,bizId,myReview}) {
   return (
     <div className="profile-wrapper">
       <button className="DeleteIcon" onClick={openMenu}>
-        <i id="moreButton" className="fa-solid fa-ellipsis"></i>
+
       </button>
       {showMenu && (
         <ul className="DELETE-dropdown">
@@ -37,7 +37,7 @@ function CommentDropDown({reviewId,business,bizId,myReview}) {
 
           <Link
             to={{
-              pathname: `/edit/${business.rating}-${bizId}-${business.name}`,
+              pathname: `/edit/${myReview.rating}-${bizId}-${business.name}`,
               state: { myReview },
             }}
           >

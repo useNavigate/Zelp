@@ -11,7 +11,7 @@ const EditReviewButton = ({ business,bizId,myReview}) => {
 
     <Link
       className="_reviewButton"
-      to={{pathname:`/edit/${business.rating}-${bizId}-${business.name}`,
+      to={{pathname:`/edit/${myReview.rating}-${bizId}-${business.name}`,
       state:{myReview}}}
     >
       <i className="fa-regular fa-star"></i> Edit Review

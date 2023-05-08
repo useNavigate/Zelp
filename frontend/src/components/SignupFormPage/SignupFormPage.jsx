@@ -4,7 +4,8 @@ import { useState } from "react";
 import * as sessionActions from "../../store/session";
 import "./signup.css";
 import SignupHeader from "./SignupHeader";
-
+import UploadImage from "../ReviewPage/uploadImage";
+import csrfFetch from "../../store/csrf";
 const SignupFormPage = () => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
@@ -19,6 +20,8 @@ const SignupFormPage = () => {
   const [year, setYear] = useState("");
   const [errors, setErrors] = useState([]);
 
+  const [imageFile, setImageFile] = useState(null);
+  const [imageUrl, setImageUrl] = useState(null);
 
   function pickDay(day) {
     return Array.from({ length: day }, (emptyArr, i) => (
@@ -36,15 +39,13 @@ const SignupFormPage = () => {
     ));
   };
 
-
   const today = new Date();
   const yr = today.getFullYear();
 
   if (sessionUser) return <Redirect to="/" />;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
     let birthday = new Date(`${year}-${month}-${day}`);
     let isoBirthday;
     if (year === "" || month === "" || day === "") {
@@ -63,6 +64,7 @@ const SignupFormPage = () => {
         lastName,
         zipCode,
         birthday: isoBirthday,
+        avatar: imageFile,
       });
 
       return dispatch(newUser).catch(async (res) => {
@@ -83,25 +85,86 @@ const SignupFormPage = () => {
     return setErrors([
       "Confirm Password field must be the same as the Password field",
     ]);
-
-
   };
 
+  const handleFiles = ({ currentTarget }) => {
+    const file = currentTarget.files[0];
+    setImageFile(file);
+    if (file) {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => setImageUrl(fileReader.result);
+    } else setImageUrl(null);
+  };
   return (
     <>
-
       <ul className="error">
-
-
-        { errors.flat().map((error) => (
+        {/* {errors.flat().map((error) => (
           <li key={error}>{error}</li>
-        ))}
-
+        ))} */}
       </ul>
       <div className="signupForm-wrapper">
         <form className="signupForm" onSubmit={handleSubmit}>
           <SignupHeader />
 
+          <input
+            // className="submitButton"
+            type="file"
+            onChange={handleFiles}
+            multiple
+            onClick={(e) => (e.currentTarget.value = null)}
+          />
+
+          {imageUrl ? (
+            <div
+              style={{
+                width: "100%",
+                height: "100%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <div
+                className="image__"
+                key={imageUrl}
+                style={{
+                  backgroundImage: `url(${imageUrl})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  width: "150px",
+                  height: "150px",
+                  borderRadius: "50%",
+                }}
+              ></div>
+            </div>
+          ) : (
+            <div
+              style={{
+                width: "100%",
+                height: "100%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <div
+                className="image__"
+                key={imageUrl}
+                style={{
+                  backgroundColor: "#f3f3f3",
+                  width: "150px",
+                  height: "150px",
+                  borderRadius: "50%",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <i class="fa-solid fa-user" style={{fontSize:"60px"}}></i>
+              </div>
+            </div>
+          )}
           <div className="inputHolder">
             <div className="nameInputHolder">
               <input
@@ -190,7 +253,6 @@ const SignupFormPage = () => {
                   : month !== "02" && pickDay(31)}
               </select>
               <select value={year} onChange={(e) => setYear(e.target.value)}>
-
                 <option value="">Year</option>
                 {getYear()}
               </select>

@@ -38,13 +38,21 @@ function ProfileButton({ user }) {
 
   return (
     <div className="profile-wrapper">
-      <button className="userIcon" onClick={openMenu}>
+      <div className="userIcon" onClick={openMenu}>
         {sessionUser?.avatar ? (
-          <img src={`${sessionUser.avatar}`}  className="profileImage"/>
+          // <img src={`${sessionUser.avatar}`}  className="profileImage"/>
+          <div
+            className="profileImage"
+            style={{
+              backgroundImage: `url(${sessionUser.avatar})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          ></div>
         ) : (
-          <i className="fa-solid fa-user" />
+         <div className="profileImage"> <i className="fa-solid fa-user" /></div>
         )}
-      </button>
+      </div>
       {showMenu && (
         <ul className="profile-dropdown">
           <li>{user.firstName}</li>

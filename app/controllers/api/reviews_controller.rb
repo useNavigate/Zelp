@@ -11,7 +11,7 @@ class Api::ReviewsController < ApplicationController
   #   render json: @reviews
   # end
   before_action :require_logged_in, only: [:create]
-  wrap_parameters include: Review.attribute_names + [:images] + [:photo]
+  wrap_parameters include: Review.attribute_names + [:images]
 
   def index
     @reviews = Review.includes(:user).all
