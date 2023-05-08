@@ -89,6 +89,7 @@ export const logout = () => async (dispatch) => {
 //   user: JSON.parse(sessionStorage.getItem("currentUser")),
 // };
 
+
 export const signup = (user) => async (dispatch) => {
   const { email, password, firstName, lastName, birthday, zipCode } = user;
   const response = await csrfFetch("/api/users", {
@@ -113,7 +114,6 @@ export const signup = (user) => async (dispatch) => {
 const initialState = {
   user: JSON.parse(sessionStorage.getItem("currentUser")),
 };
-
 const sessionReducer = (state = initialState, action) => {
   const newState = { ...state };
   switch (action.type) {

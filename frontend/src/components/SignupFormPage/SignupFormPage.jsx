@@ -44,10 +44,10 @@ const SignupFormPage = () => {
 
   if (sessionUser) return <Redirect to="/" />;
 
-  const handleImageDelete = () => {
-    setImageUrl(null)
-    setImageFile(null)
-  };
+  // const handleImageDelete = () => {
+  //   setImageUrl(null)
+  //   setImageFile(null)
+  // };
 
   // const handleSubmit = async (e) => {
   //   e.preventDefault();
@@ -62,7 +62,7 @@ const SignupFormPage = () => {
   //   if (password === confirmPassword) {
   //     setErrors([]);
 
-  //     let avatar =
+
   //     let newUser = sessionActions.signup({
   //       email,
   //       password,
@@ -95,73 +95,66 @@ const SignupFormPage = () => {
 
   // };
 
-  const handleSubmit = async (e) => {
-  e.preventDefault();
-  let birthday = new Date(`${year}-${month}-${day}`);
-  let isoBirthday;
-  if (year === "" || month === "" || day === "") {
-    isoBirthday = "";
-  } else {
-    isoBirthday = birthday.toISOString().substring(0, 10);
-  }
 
-  if (password === confirmPassword) {
-    setErrors([]);
 
-    let newUser;
-    if (imageFile) {
-      newUser = sessionActions.signup({
-        email,
-        password,
-        firstName,
-        lastName,
-        zipCode,
-        birthday: isoBirthday,
-        avatar: imageFile,
-      });
+
+
+  // const handleFiles = ({ currentTarget }) => {
+  //   const file = currentTarget.files[0];
+  //   setImageFile(file);
+  //   if (file) {
+  //     const fileReader = new FileReader();
+  //     fileReader.readAsDataURL(file);
+  //     fileReader.onload = () => setImageUrl(fileReader.result);
+  //   } else setImageUrl(null);
+  // };
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    let birthday = new Date(`${year}-${month}-${day}`);
+    let isoBirthday;
+    if (year === "" || month === "" || day === "") {
+      isoBirthday = "";
     } else {
-      newUser = sessionActions.signup({
+      isoBirthday = birthday.toISOString().substring(0, 10);
+    }
+
+    if (password === confirmPassword) {
+      setErrors([]);
+
+      let newUser = sessionActions.signup({
         email,
         password,
         firstName,
         lastName,
         zipCode,
         birthday: isoBirthday,
-        avatar:null
+      });
+
+      return dispatch(newUser).catch(async (res) => {
+        let data;
+        try {
+          // .clone() essentially allows you to read the response body twice
+
+          data = await res.clone().json();
+        } catch {
+          data = await res.text(); // Will hit this case if the server is down
+        }
+        if (data?.errors) setErrors(data.errors);
+        else if (data) setErrors([data]);
+        else setErrors([res.statusText]);
       });
     }
 
-    return dispatch(newUser).catch(async (res) => {
-      let data;
-      try {
-        // .clone() essentially allows you to read the response body twice
-        data = await res.clone().json();
-      } catch {
-        data = await res.text(); // Will hit this case if the server is down
-      }
-      if (data?.errors) setErrors(data.errors);
-      else if (data) setErrors([data]);
-      else setErrors([res.statusText]);
-    });
-  }
-
-  return setErrors([
-    "Confirm Password field must be the same as the Password field",
-  ]);
-};
+    return setErrors([
+      "Confirm Password field must be the same as the Password field",
+    ]);
 
 
-
-
-  const handleFiles = ({ currentTarget }) => {
-    const file = currentTarget.files[0];
-    setImageFile(file);
-    if (file) {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-      fileReader.onload = () => setImageUrl(fileReader.result);
-    } else setImageUrl(null);
   };
+
   return (
     <>
        <ul className="error">
@@ -181,9 +174,9 @@ const SignupFormPage = () => {
             onChange={handleFiles}
             multiple
             onClick={(e) => (e.currentTarget.value = null)}
-          /> */}
+          />
 
-          {/* {imageUrl ? (
+          {imageUrl ? (
             <div
               style={{
                 width: "100%",

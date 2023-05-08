@@ -49,7 +49,7 @@ function ProfileButton({ user }) {
             }}
           ></div>
         ) : (
-         <div className="profileImage"> <i className="fa-solid fa-user" /></div>
+         <div className="profileImage"> <i className="fa-solid fa-user" style={{fontSize:"25px",opacity:"0.6"}}/></div>
         )}
       </div>
       {showMenu && (
