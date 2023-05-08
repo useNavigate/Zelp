@@ -103,7 +103,14 @@ const SignupFormPage = () => {
   };
   return (
     <>
-      <ul className="error"></ul>
+       <ul className="error">
+
+
+        { errors.flat().map((error) => (
+          <li key={error}>{error}</li>
+        ))}
+
+      </ul>
       <div className="signupForm-wrapper">
         <form className="signupForm" onSubmit={handleSubmit}>
           <SignupHeader />
