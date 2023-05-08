@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -188,7 +188,9 @@ const [deletedAlert,setDeletedAlert] = useState(false)
   return (
     <form className="reviewForm">
       <div className="imageUploadDiv ">
-        <h2>{bName}</h2>
+        <Link to={`/business/${BID}`} style={{color:"black"}}>
+          <h2>{bName}</h2>
+        </Link>
       </div>
       <div className="reviewFormWrapper">
         <div className="star-rating">
@@ -218,7 +220,7 @@ const [deletedAlert,setDeletedAlert] = useState(false)
       {location.pathname.includes("/edit") && (
         <>
           <div className="imageUploadDiv">
-            <h3>PreviousPhoto</h3>
+            {prevImageUrls.length ===1 ?<h3>Previous Photo</h3> :<h3>Previous Photos</h3>}
           </div>
           <div className="reviewFormWrapper reviewPicPreview">
             {prevImageUrls &&
