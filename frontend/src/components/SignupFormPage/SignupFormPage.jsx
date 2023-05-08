@@ -44,6 +44,11 @@ const SignupFormPage = () => {
 
   if (sessionUser) return <Redirect to="/" />;
 
+  const handleImageDelete = () => {
+    setImageUrl(null)
+    setImageFile(null)
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     let birthday = new Date(`${year}-${month}-${day}`);
@@ -98,11 +103,7 @@ const SignupFormPage = () => {
   };
   return (
     <>
-      <ul className="error">
-        {/* {errors.flat().map((error) => (
-          <li key={error}>{error}</li>
-        ))} */}
-      </ul>
+      <ul className="error"></ul>
       <div className="signupForm-wrapper">
         <form className="signupForm" onSubmit={handleSubmit}>
           <SignupHeader />
@@ -125,6 +126,8 @@ const SignupFormPage = () => {
                 alignItems: "center",
               }}
             >
+
+
               <div
                 className="image__"
                 key={imageUrl}
@@ -136,7 +139,11 @@ const SignupFormPage = () => {
                   height: "150px",
                   borderRadius: "50%",
                 }}
-              ></div>
+              >
+                <div className="deleteExit" onClick={handleImageDelete}>
+ <i className="fa-solid fa-xmark"  style={{cursor:"pointer"}}></i>
+ </div>
+              </div>
             </div>
           ) : (
             <div
@@ -161,7 +168,7 @@ const SignupFormPage = () => {
                   alignItems: "center",
                 }}
               >
-                <i class="fa-solid fa-user" style={{fontSize:"60px"}}></i>
+                <i class="fa-solid fa-user" style={{ fontSize: "60px" }}></i>
               </div>
             </div>
           )}
