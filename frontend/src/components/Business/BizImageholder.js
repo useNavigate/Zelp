@@ -42,15 +42,22 @@ const BizImageHolder = ({ business, reviews }) => {
             )}
           </div>
           <span className="bizCategory">
-            <span style={{ color: "rgba(88,180,255,1)" }}>
-              {" "}
+            <span style={{ color: "rgba(88,180,255,1)", marginRight: "10px" }}>
               <i className="fa-solid fa-circle-check"></i>Claimed
             </span>
-            -{business?.category}
+            {business?.category}
           </span>
           <div>
-            <h3 style={{ color: "green" }}>{checkTime()}</h3>{" "}
-            <h4 style={{ color: "white" }}> 9:00 am ~ 9:00 pm</h4>
+            <h3
+              style={{
+                color: "green",
+                fontWeight: "bold",
+                marginRight: "10px",
+              }}
+            >
+              {checkTime()}{" "}
+            </h3>
+            <h4 style={{ color: "white" }}>9:00 am ~ 9:00 pm</h4>
           </div>
         </div>
         {/* {imageNum > 0 ? (
