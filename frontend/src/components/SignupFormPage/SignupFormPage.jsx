@@ -90,6 +90,8 @@ const SignupFormPage = () => {
     return setErrors([
       "Confirm Password field must be the same as the Password field",
     ]);
+
+
   };
 
   const handleFiles = ({ currentTarget }) => {
@@ -106,7 +108,7 @@ const SignupFormPage = () => {
        <ul className="error">
 
 
-        { errors.flat().map((error) => (
+        { errors.map((error) => (
           <li key={error}>{error}</li>
         ))}
 
