@@ -40,41 +40,50 @@ const BusinessPage = () => {
 
   return (
     <div>
-      <BizImageHolder business={business[id]} reviews={reviews}/>
-      <div className="bizShowPageInfo">
-        {myReview ? (
-          <EditReviewButton
-            business={business[id]}
-            bizId={id}
-            myReview={myReview}
-          />
-        ) : (
-          <WriteAReviewButton business={business[id]} id={id} />
-        )}
-
-        <BizLocation business={business[id]} />
-
-        {myReview && (
-          <>
-            <MyComments
-              review={myReview}
+      <BizImageHolder business={business[id]} reviews={reviews} />
+      <div className="bizInfoWrapper">
+        <div className="bizShowPageInfo">
+          {myReview ? (
+            <EditReviewButton
               business={business[id]}
               bizId={id}
               myReview={myReview}
             />
-          </>
-        )}
+          ) : (
+            <WriteAReviewButton business={business[id]} id={id} />
+          )}
 
-        {Object.keys(reviews).length > 0 && (
-          <div className="allComments">All Comments</div>
-        )}
-        {Object.values(reviews)
-          .reverse()
-          .map((review) => {
-            return <CommentSections key={review.id + 88} review={review} />;
-          })}
+          <BizLocation business={business[id]} />
+
+          {myReview && (
+            <>
+              <MyComments
+                review={myReview}
+                business={business[id]}
+                bizId={id}
+                myReview={myReview}
+              />
+            </>
+          )}
+
+          {Object.keys(reviews).length > 0 && (
+            <div className="allComments">All Comments</div>
+          )}
+          {Object.values(reviews)
+            .reverse()
+            .map((review) => {
+              return <CommentSections key={review.id + 88} review={review} />;
+            })}
+        </div>
+        {/* <div className="getDirection">
+          <div className="getDirection">
+            <h1>Get Direction</h1>
+            <h3>
+              {business[id].city} {business[id].state} {business[id].zipCode}
+            </h3>
+          </div>
+        </div> */}
       </div>
-
     </div>
   );
 };

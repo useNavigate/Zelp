@@ -29,7 +29,7 @@ const DeleteImageWarningModal = ({
               width="300px"
             />
             <div className="Warning">
-              <i class="fa-solid fa-triangle-exclamation"></i>
+              <i className="fa-solid fa-triangle-exclamation"></i>
               <h1>Warning</h1>
             </div>
             <p>

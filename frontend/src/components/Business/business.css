@@ -68,8 +68,8 @@ background-color: rgba(0, 0, 0, 0.5); */
 .userReviewPictures {
   margin-right: 10px;
   margin-bottom: 10px;
-  width: 300px;
-  height: 200px;
+  width: 174px;
+  height: 132px;
   border-radius: 6px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
     rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
@@ -149,15 +149,21 @@ background-color: rgba(0, 0, 0, 0.5); */
   font-size: 1.5rem;
   color: rgba(0, 0, 0, 0.8);
   margin-top: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding-bottom:15px;
+  width:762px;
 }
-
+.bizInfoWrapper{
+  display:flex;
+  justify-content: center;
+}
 .bizShowPageInfo {
-  margin: auto;
+  /* margin: auto; */
   width: 60rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  /* align-items: center; */
 }
 .ratingDate {
   display: flex;
@@ -168,14 +174,16 @@ background-color: rgba(0, 0, 0, 0.5); */
   margin-left: 10px;
 }
 .authorProfile {
-  padding: 20px;
+  /* padding: 20px; */
 
-  width: 60rem;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  width: 762px;
+  /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
+  /* border-bottom: 1px solid rgba(0, 0, 0, 0.255); */
   border-radius: 10px;
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
 .commentReviewBodyP {
   line-height: 2;
   margin-top: 1rem;
@@ -194,44 +202,69 @@ background-color: rgba(0, 0, 0, 0.5); */
 
 .bizLocation {
   display: flex;
-
-  height: 300px;
-  align-items: center;
+  /* width:60rem; */
+  /* height: 300px; */
+  /* align-items: center; */
+  flex-direction: column;
 }
 
 .locationWrapper {
   margin-top: 30px;
   margin-bottom: 30px;
-  width: 60rem;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  border-radius: 10px;
-  padding: 20px;
+  width: 762px;
+  /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
+  /* border-radius: 10px; */
+  /* padding: 20px; */
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex-direction: column;
   padding-bottom: 50px;
 }
+.locationAddress{
+  margin-top: 10px;
+  width:315px;
+  font-size: 14px;
+}
 
-/* .locationMap {
+.locationAddress h1{
+  color:rgba(2, 122, 151, 1);
+  font-weight:500;
+}
 
+.locationAddress h2 {
 
-  display:flex;
-  align-items: center;
-  justify-content: center;
+  font-weight: 500;
+}
+.getDirection{
+  width:350px;
+  height:250px;
+  border:1px solid black;
+}
+.getDirection h1{
+  color: rgba(2, 122, 151, 1);
+  font-weight: 500;
 
-} */
-.locationMap * {
-  width: 28rem;
-  height: 20rem;
-  margin-right: 5rem;
+}
+.getDirection h3 {
+  color: rgba(0,0,0,0.5);
+  font-weight: 500;
+
+}
+.locationMap  {
+  width: 314px;
+  height: 150px;
+  /* border:1px solid red; */
 }
 .hours {
   width: 100%;
-  height: 100%;
+margin-left:60px;
+  display: flex;
+}
+
+.hours ul{
+margin: 5px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+justify-content: space-between;
 }
 .userInfoSide {
   display: flex;

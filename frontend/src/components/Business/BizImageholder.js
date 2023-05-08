@@ -7,12 +7,10 @@ import ImageModal from "./ImageModal";
 const BizImageHolder = ({ business, reviews }) => {
   const [showModal, setShowModal] = useState(false);
 
-const imageNum = Object.values(reviews)
-  .reduce((acc, review) => {
+  const imageNum = Object.values(reviews).reduce((acc, review) => {
     acc += review.imageUrls.length;
     return acc;
   }, 0);
-
 
   function checkTime() {
     const now = new Date();
@@ -20,7 +18,6 @@ const imageNum = Object.values(reviews)
     const isOpen = hours >= 9 && hours <= 21;
     return isOpen ? "Open" : "Closed";
   }
-
 
   return (
     <div className="blackGrad">
@@ -46,23 +43,30 @@ const imageNum = Object.values(reviews)
           </div>
           <span className="bizCategory">
             <span style={{ color: "rgba(88,180,255,1)" }}>
-             {" "} <i className="fa-solid fa-circle-check"></i>Claimed
+              {" "}
+              <i className="fa-solid fa-circle-check"></i>Claimed
             </span>
             -{business?.category}
           </span>
           <div>
-            <h3 style={{color:"green"}}>{checkTime()}</h3> <h4 style={{color:"white"}}> 9:00 am ~ 9:00 pm</h4>
+            <h3 style={{ color: "green" }}>{checkTime()}</h3>{" "}
+            <h4 style={{ color: "white" }}> 9:00 am ~ 9:00 pm</h4>
           </div>
         </div>
-        {imageNum > 0 ? (
+        {/* {imageNum > 0 ? (
           <div className="MoreImages">
-            <h1 onClick={() => setShowModal(true)} style={{zIndex: setShowModal ? 0 : '1'}}>View {imageNum} Images</h1>
+            <h1
+              onClick={() => setShowModal(true)}
+              style={{ zIndex: setShowModal ? 0 : "1" }}
+            >
+              View {imageNum} Images
+            </h1>
           </div>
         ) : (
           <div className="MoreImages">
             <h1>No Images available</h1>
           </div>
-        )}
+        )} */}
       </div>
       {showModal && (
         <Modal>
@@ -74,12 +78,4 @@ const imageNum = Object.values(reviews)
 };
 
 export default BizImageHolder;
-// {
-//   Object.values(reviews)
-//     .reverse()
-//     .map((review) => {
-//       return review.imageUrls.map((url) => (
-//         <img key={url} src={url} alt="Review image" />
-//       ));
-//     });
-// }
+

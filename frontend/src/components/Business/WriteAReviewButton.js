@@ -16,7 +16,7 @@ const WriteAReviewButton = ({ business,id}) => {
   return sessionUser ? (
     <Link
       className="_reviewButton"
-      to={`/review/${business.rating}-${id}-${business.name}`}
+      to={`/review/0-${id}-${business.name}`}
     >
       <i className="fa-regular fa-star"></i> Write a Review
     </Link>
