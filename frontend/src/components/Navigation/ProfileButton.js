@@ -40,7 +40,6 @@ function ProfileButton({ user }) {
     <div className="profile-wrapper">
       <div className="userIcon" onClick={openMenu}>
         {sessionUser?.avatar ? (
-          // <img src={`${sessionUser.avatar}`}  className="profileImage"/>
           <div
             className="profileImage"
             style={{

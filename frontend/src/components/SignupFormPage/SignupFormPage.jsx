@@ -49,20 +49,68 @@ const SignupFormPage = () => {
     setImageFile(null)
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   let birthday = new Date(`${year}-${month}-${day}`);
+  //   let isoBirthday;
+  //   if (year === "" || month === "" || day === "") {
+  //     isoBirthday = "";
+  //   } else {
+  //     isoBirthday = birthday.toISOString().substring(0, 10);
+  //   }
+
+  //   if (password === confirmPassword) {
+  //     setErrors([]);
+
+  //     let avatar =
+  //     let newUser = sessionActions.signup({
+  //       email,
+  //       password,
+  //       firstName,
+  //       lastName,
+  //       zipCode,
+  //       birthday: isoBirthday,
+  //       avatar: imageFile,
+  //     });
+
+  //     return dispatch(newUser).catch(async (res) => {
+  //       let data;
+  //       try {
+  //         // .clone() essentially allows you to read the response body twice
+
+  //         data = await res.clone().json();
+  //       } catch {
+  //         data = await res.text(); // Will hit this case if the server is down
+  //       }
+  //       if (data?.errors) setErrors(data.errors);
+  //       else if (data) setErrors([data]);
+  //       else setErrors([res.statusText]);
+  //     });
+  //   }
+
+  //   return setErrors([
+  //     "Confirm Password field must be the same as the Password field",
+  //   ]);
+
+
+  // };
+
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    let birthday = new Date(`${year}-${month}-${day}`);
-    let isoBirthday;
-    if (year === "" || month === "" || day === "") {
-      isoBirthday = "";
-    } else {
-      isoBirthday = birthday.toISOString().substring(0, 10);
-    }
+  e.preventDefault();
+  let birthday = new Date(`${year}-${month}-${day}`);
+  let isoBirthday;
+  if (year === "" || month === "" || day === "") {
+    isoBirthday = "";
+  } else {
+    isoBirthday = birthday.toISOString().substring(0, 10);
+  }
 
-    if (password === confirmPassword) {
-      setErrors([]);
+  if (password === confirmPassword) {
+    setErrors([]);
 
-      let newUser = sessionActions.signup({
+    let newUser;
+    if (imageFile) {
+      newUser = sessionActions.signup({
         email,
         password,
         firstName,
@@ -71,28 +119,39 @@ const SignupFormPage = () => {
         birthday: isoBirthday,
         avatar: imageFile,
       });
-
-      return dispatch(newUser).catch(async (res) => {
-        let data;
-        try {
-          // .clone() essentially allows you to read the response body twice
-
-          data = await res.clone().json();
-        } catch {
-          data = await res.text(); // Will hit this case if the server is down
-        }
-        if (data?.errors) setErrors(data.errors);
-        else if (data) setErrors([data]);
-        else setErrors([res.statusText]);
+    } else {
+      newUser = sessionActions.signup({
+        email,
+        password,
+        firstName,
+        lastName,
+        zipCode,
+        birthday: isoBirthday,
+        avatar:null
       });
     }
 
-    return setErrors([
-      "Confirm Password field must be the same as the Password field",
-    ]);
+    return dispatch(newUser).catch(async (res) => {
+      let data;
+      try {
+        // .clone() essentially allows you to read the response body twice
+        data = await res.clone().json();
+      } catch {
+        data = await res.text(); // Will hit this case if the server is down
+      }
+      if (data?.errors) setErrors(data.errors);
+      else if (data) setErrors([data]);
+      else setErrors([res.statusText]);
+    });
+  }
+
+  return setErrors([
+    "Confirm Password field must be the same as the Password field",
+  ]);
+};
 
 
-  };
+
 
   const handleFiles = ({ currentTarget }) => {
     const file = currentTarget.files[0];
@@ -108,24 +167,23 @@ const SignupFormPage = () => {
        <ul className="error">
 
 
-        { errors.map((error) => (
+       { errors.flat().map((error) => (
           <li key={error}>{error}</li>
         ))}
-
       </ul>
       <div className="signupForm-wrapper">
         <form className="signupForm" onSubmit={handleSubmit}>
           <SignupHeader />
 
-          <input
+          {/* <input
             // className="submitButton"
             type="file"
             onChange={handleFiles}
             multiple
             onClick={(e) => (e.currentTarget.value = null)}
-          />
+          /> */}
 
-          {imageUrl ? (
+          {/* {imageUrl ? (
             <div
               style={{
                 width: "100%",
@@ -180,7 +238,7 @@ const SignupFormPage = () => {
                 <i class="fa-solid fa-user" style={{ fontSize: "60px" }}></i>
               </div>
             </div>
-          )}
+          )} */}
           <div className="inputHolder">
             <div className="nameInputHolder">
               <input
