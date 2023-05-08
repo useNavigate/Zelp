@@ -30,7 +30,7 @@ const SearchBar = () => {
         <input
           type="text"
           value={searchTerm}
-          placeholder="pizza,coffee,ramen"
+          placeholder="pizza, coffee, ramen"
           onChange={(e) => {
             setSearchTerm(e.target.value);
           }}
