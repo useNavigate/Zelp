@@ -34,7 +34,6 @@ const LoginFormPage = () => {
         else setErrors([res.statusText]);
       }
     );
-
   };
   return (
     <>
