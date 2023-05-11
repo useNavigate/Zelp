@@ -111,6 +111,7 @@ const SignupFormPage = () => {
 
 
   const handleSubmit = (e) => {
+
     e.preventDefault();
 
     let birthday = new Date(`${year}-${month}-${day}`);
@@ -133,25 +134,17 @@ const SignupFormPage = () => {
         birthday: isoBirthday,
       });
 
-      return dispatch(newUser).catch(async (res) => {
-        let data;
-        try {
-          // .clone() essentially allows you to read the response body twice
+      dispatch(newUser).then((resData)=>{
+      if(resData.errors){
+        setErrors(resData.errors)
+      }
+      })
 
-          data = await res.clone().json();
-        } catch {
-          data = await res.text(); // Will hit this case if the server is down
-        }
-
-        if (data?.errors) setErrors(data.errors);
-        else if (data) setErrors([data]);
-        else setErrors([res.statusText]);
-      });
-    }
-
-    return setErrors([
+    }else{
+       setErrors([
       "Confirm Password field must be the same as the Password field",
     ]);
+    }
 
 
   };
@@ -159,7 +152,6 @@ const SignupFormPage = () => {
   return (
     <>
        <ul className="error">
-
 
        { errors.flat().map((error,i) => (
           <li key={"error"+i}>{error}</li>

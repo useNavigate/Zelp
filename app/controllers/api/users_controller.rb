@@ -15,7 +15,8 @@ class Api::UsersController < ApplicationController
       login!(@user)
       render :profile
     else
-      render json: @user.errors.full_messages, status: 422
+      # render json: @user.errors.full_messages, status: 422
+      render json: { errors: @user.errors.full_messages }
     end
   end
 
