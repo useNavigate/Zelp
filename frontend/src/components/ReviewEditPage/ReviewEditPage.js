@@ -170,7 +170,7 @@ const handleImageDelete = (i) => {
               </div>
             </div>
           ))}
-{console.log(wasImage)}
+
         {wasImage === false && prevImageUrls.length === 0 && (
           <div>
             <i className="fa-solid fa-image"></i>

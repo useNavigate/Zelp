@@ -4,7 +4,7 @@ const SearchBarError = ({ setShowModal }) => {
     e.preventDefault()
   //  e.stopPropagation();
  setShowModal(false);
- console.log("clicked")
+
   }
   return (
     <div className="searchBarErrorDiv">

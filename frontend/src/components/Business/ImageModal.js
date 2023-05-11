@@ -13,7 +13,7 @@ const ImageModal=({setShowModal,reviews})=>{
             <i className="fa-solid fa-xmark"></i>
           </div>
         </div>
-{console.log(reviews)}
+
         <div style={{ display: "flex" }}>
           {Object.values(reviews)
             .reverse()

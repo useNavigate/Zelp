@@ -22,9 +22,9 @@ const LoginFormPage = () => {
         try {
           data = await res.clone().json();
         } catch {
-          data = await res.text();
+          // data = await res.text();
         }
-        // if (data?.errors) setErrors(data.errors);
+
         if (data?.errors) {
           const errorsArray = Object.keys(data.errors).map((key) => {
             return <li key={key}>{data.errors[key]}</li>;
@@ -40,7 +40,7 @@ const LoginFormPage = () => {
     <>
       <ul className="error">
         {errors.map((error) => (
-          <li  key={error}>The email address or password you entered is incorrect.</li>
+          <li  key="error">The email address or password you entered is incorrect.</li>
         ))}
       </ul>
     <form className="loginForm" onSubmit={handleSubmit}>
