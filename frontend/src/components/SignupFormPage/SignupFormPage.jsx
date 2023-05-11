@@ -142,6 +142,7 @@ const SignupFormPage = () => {
         } catch {
           data = await res.text(); // Will hit this case if the server is down
         }
+
         if (data?.errors) setErrors(data.errors);
         else if (data) setErrors([data]);
         else setErrors([res.statusText]);
@@ -160,8 +161,8 @@ const SignupFormPage = () => {
        <ul className="error">
 
 
-       { errors.flat().map((error) => (
-          <li key={error}>{error}</li>
+       { errors.flat().map((error,i) => (
+          <li key={"error"+i}>{error}</li>
         ))}
       </ul>
       <div className="signupForm-wrapper">
