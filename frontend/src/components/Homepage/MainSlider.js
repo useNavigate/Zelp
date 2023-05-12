@@ -19,7 +19,7 @@ const headings=[
     setUrlIndex((urlIndex + 1) % imageUrls.length);
   };
  useEffect(() => {
-   const interval = setInterval(changeImage, 4000);
+   const interval = setInterval(changeImage, 3000);
    return () => clearInterval(interval);
  }, [urlIndex]);
 

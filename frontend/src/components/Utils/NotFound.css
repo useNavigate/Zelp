@@ -1,0 +1,15 @@
+.cantFind{
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin:auto;
+}
+
+.cantFind h1{
+    width:500px;
+    line-height: 1.5;
+    font-size: 30px;
+    font-weight: 500;
+}

@@ -46,6 +46,18 @@ const SearchResult = () => {
         No result for <span className="invalidSearchTerm"> "{searchTerm}"</span>
       </h1>
 
+      <ul>
+        <li>
+          <h2>Suggestions for improving your results:</h2>
+        </li>
+        <li>
+          ● Try a different location Check the spelling or try alternate
+          spellings
+        </li>
+        <li>
+          ● Try a more general search, e.g. "pizza" instead of "pepperoni"
+        </li>
+      </ul>
     </div>
   );
 };
