@@ -245,6 +245,21 @@ background-color: rgba(0, 0, 0, 0.5); */
   display:flex;
   flex-direction: column;
   justify-content: space-evenly;
+  margin-top:10px;
+  margin-bottom:10px;
+}
+
+.projectCard{
+    width: 350px;
+      height: 200px;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+
+      padding: 1rem;
+      border-radius: 5px;
+      display: flex;
+
+      margin-top: 10px;
+      margin-bottom: 10px;
 }
 .sideBar{
   display:flex;
