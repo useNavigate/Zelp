@@ -10,7 +10,11 @@ const MainSlider=()=>{
     "https://media.istockphoto.com/id/851159308/photo/close-up-of-home-made-burgers.jpg?s=612x612&w=0&k=20&c=TqT6yxMqvv4C-kqq-256tDPHdvgJDQejtxOCsc4_O4A=",
 
   ];
-
+const headings=[
+  "Zelp Your Favorite Places!",
+  "Make a Review!",
+  "Upload Pictures!"
+]
   const changeImage = () => {
     setUrlIndex((urlIndex + 1) % imageUrls.length);
   };
@@ -28,11 +32,24 @@ const MainSlider=()=>{
           backgroundImage: `url(${imageUrls[urlIndex]})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-
         }}
       >
-        <Navigation />
-        <h1 className="mainImgHeader">Zelp Your Favorite Places!</h1>
+        <div className="dark">
+          <Navigation />
+          <div className="mainHeadingDiv">
+            <h1 className="mainImgHeader">
+              {" "}
+              Zelp
+              <i
+                className="fa-brands fa-yelp"
+                style={{ fontSize: "90px", color: "red" }}
+              ></i>
+            </h1>
+            <h1 className="mainImgHeader subHeader">
+              Zelp Your Favorite Places!
+            </h1>
+          </div>
+        </div>
       </div>
     );
 }

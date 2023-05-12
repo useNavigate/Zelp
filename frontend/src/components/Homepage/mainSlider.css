@@ -1,19 +1,36 @@
 .slider {
-  height: 600px;
   background-color: rgba(250, 235, 215, 0.8);
   width: 100%;
   height: 100vh;
   position: relative;
   transition: all 3s;
+}
+
+h1.mainImgHeader {
+  color: white;
+  font-size: 80px;
+  font-weight: 600;
+  width: 100%;
+  text-shadow: 5px 5px 3px rgba(0, 0, 0, 0.581);
+  margin: 15px;
 
 }
 
-.mainImgHeader {
-  position: absolute;
-  color: white;
-  font-size: 60px;
-  font-weight: 600;
-  bottom: 8rem;
-  left: 15rem;
-  text-shadow: 5px 5px 3px rgba(0, 0, 0, 0.35);
+
+.mainImgHeader.subHeader {
+  font-size: 50px;
+  padding: 5px;
+
+
+}
+
+
+.mainHeadingDiv {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
