@@ -62,7 +62,6 @@ const SignupFormPage = () => {
   //   if (password === confirmPassword) {
   //     setErrors([]);
 
-
   //     let newUser = sessionActions.signup({
   //       email,
   //       password,
@@ -92,12 +91,7 @@ const SignupFormPage = () => {
   //     "Confirm Password field must be the same as the Password field",
   //   ]);
 
-
   // };
-
-
-
-
 
   // const handleFiles = ({ currentTarget }) => {
   //   const file = currentTarget.files[0];
@@ -109,9 +103,7 @@ const SignupFormPage = () => {
   //   } else setImageUrl(null);
   // };
 
-
   const handleSubmit = (e) => {
-
     e.preventDefault();
 
     let birthday = new Date(`${year}-${month}-${day}`);
@@ -134,27 +126,23 @@ const SignupFormPage = () => {
         birthday: isoBirthday,
       });
 
-      dispatch(newUser).then((resData)=>{
-      if(resData.errors){
-        setErrors(resData.errors)
-      }
-      })
-
-    }else{
-       setErrors([
-      "Confirm Password field must be the same as the Password field",
-    ]);
+      dispatch(newUser).then((resData) => {
+        if (resData.errors) {
+          setErrors(resData.errors);
+        }
+      });
+    } else {
+      setErrors([
+        "Confirm Password field must be the same as the Password field",
+      ]);
     }
-
-
   };
 
   return (
     <>
-       <ul className="error">
-
-       { errors.flat().map((error,i) => (
-          <li key={"error"+i}>{error}</li>
+      <ul className="error">
+        {errors.flat().map((error, i) => (
+          <li key={"error" + i}>{error}</li>
         ))}
       </ul>
       <div className="signupForm-wrapper">

@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux"
 import * as sessionActions from "../../store/session";
 import "./demoLogin.css"
-const DemoLogin=()=>{
+const DemoLogin=({className,string})=>{
     const dispatch =useDispatch()
 
     const handleClick=(e)=>{
@@ -10,7 +10,7 @@ const DemoLogin=()=>{
     }
     return(
 
-        <span onClick={handleClick} className="demoLogin">Demo</span>
+        <span onClick={handleClick} className={`${className}`}>{string}</span>
 
     )
 }

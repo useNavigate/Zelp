@@ -3,6 +3,7 @@ import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
 import "./LoginForm.css";
+import DemoLogin from "../DemoLogin/DemoLogin";
 
 const LoginFormPage = () => {
   const dispatch = useDispatch();
@@ -76,9 +77,10 @@ const LoginFormPage = () => {
         </label>
         {/* <span>Forgot password?</span> */}
         <button type="submit">Log In</button>
+     <DemoLogin className="demo" string="Demo Login"/>
       </div>
       <div className="signupSmall">
-        <p>New to Zelp?</p>
+        <p>New to Zelp? </p>
         <Link className="signupLink Small" to="/signup">
           Sign Up
         </Link>

@@ -4,7 +4,6 @@
   --white: white;
   --gray: gray;
   --inputWidth: 18.25rem;
-  --inputHeight: rem;
   --formWidth: 18.75rem;
   --formHeight: 19.5rem;
   --login-H1-Size:1.375rem;
@@ -16,7 +15,7 @@
   display: flex;
   flex-direction: column;
   width: var(--formWidth);
-  height: var(--formHeight);
+  height: 20rem;
   justify-content: space-between;
 }
 
@@ -100,6 +99,7 @@
   font-size: 0.75rem;
   color: gray;
   margin-right: 0.313rem;
+  margin-bottom:0.3rem;
 }
 .signupLink{
   text-decoration: none;
