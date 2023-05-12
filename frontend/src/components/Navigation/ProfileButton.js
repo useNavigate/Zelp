@@ -32,7 +32,7 @@ function ProfileButton({ user }) {
     e.preventDefault();
     dispatch(sessionActions.logout()).then(() => {
 
-      history.push("/login");
+      history.push("/seeYouSoon");
     });
   };
 

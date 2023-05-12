@@ -15,6 +15,8 @@ import MapMarker from "./components/Map/Marker";
 import { ModalProvider } from "./Context/Modal";
 
 import { useEffect } from "react";
+import AboutDev from "./components/Dev/AboutDev";
+import NotFound from "./components/Utils/NotFound";
 function App() {
   const location = useLocation()
 const url = location.pathname;
@@ -36,24 +38,25 @@ const url = location.pathname;
           <Route exact path="/">
             <Homepage />
           </Route>
+
           <Switch>
-            <Route path="/login">
+            <Route exact path="/login">
               <LoginFormPage />
             </Route>
-            <Route path="/signup">
+            <Route exact path="/signup">
               <SignupFormPage />
             </Route>
-            <Route path="/search/:searchTerm">
+            <Route exact path="/search/:searchTerm">
               <SearchResult />
             </Route>
-            <Route path="/review/:review">
+            <Route exact path="/review/:review">
               <ReviewPage />
             </Route>
             <Route exact path="/edit/:review">
               {/* <ReviewEditPage /> */}
               <ReviewPage />
             </Route>
-            <Route path="/business/:id">
+            <Route exact path="/business/:id">
               <BusinessPage />
             </Route>
             <Route exact path="/posts">
@@ -64,6 +67,12 @@ const url = location.pathname;
             </Route>
             <Route exact path="/marker">
               <MapMarker />
+            </Route>
+            <Route exact path="/seeYouSoon">
+              <AboutDev />
+            </Route>
+            <Route exact path="/:notFound">
+              <NotFound />
             </Route>
           </Switch>
         </div>
