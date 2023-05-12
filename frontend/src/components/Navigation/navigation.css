@@ -125,3 +125,17 @@ i.fa-brands.fa-linkedin:hover {
   transform: scale(1.2);
     transition: all 0.6s ease-out;
 }
+
+
+i.fa-brands.fa-angellist{
+    font-size: 30px;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 8px;
+      border-radius: 50%;
+}
+
+i.fa-brands.fa-angellist:hover{
+    transform: scale(1.2);
+      transition: all 0.6s ease-out;
+}

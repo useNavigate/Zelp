@@ -36,18 +36,33 @@ function Navigation() {
   return (
     <ul className="navbar">
       <NavLink className="homeNavLink" exact to="/">
-        {location.pathname ==="/" ? <h1 className="home">Zelp</h1> : <h1 className="notHome">Zelp</h1>}
+        {location.pathname === "/" ? (
+          <h1 className="home">Zelp</h1>
+        ) : (
+          <h1 className="notHome">Zelp</h1>
+        )}
 
         <i className="fa-brands fa-yelp" style={{ color: "#ff1a1a" }}></i>
       </NavLink>
       <SearchBar />
       <CategorySearch />
       <div className="iconLinks">
-        <a id="fabLink1" href="https://github.com/useNavigate/Zelp" target="_blank">
+        <a
+          id="fabLink1"
+          href="https://github.com/useNavigate/Zelp"
+          target="_blank"
+        >
           <i className="fa-brands fa-github"></i>
         </a>
-        <a id="fabLink2" href="https://www.linkedin.com/in/sara-ryu-798165261/" target="_blank">
+        <a
+          id="fabLink2"
+          href="https://www.linkedin.com/in/sara-ryu-798165261/"
+          target="_blank"
+        >
           <i className="fa-brands fa-linkedin"></i>
+        </a>
+        <a href="https://wellfound.com/u/sara-ryu" target="_blank">
+          <i class="fa-brands fa-angellist"></i>
         </a>
         <li>{sessionLinks}</li>
       </div>
