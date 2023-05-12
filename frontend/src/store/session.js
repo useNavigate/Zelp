@@ -111,13 +111,7 @@ export const signup = (user) => async (dispatch) => {
 
   storeCurrentUser(data.user);
   dispatch(setCurrentUser(data.user));
-  // console.log("signUp")
-  // console.log(data.errors)
-// if(data.errors){
-//   return data.errors
-// }else{
-//   return response
-// }
+
 return data
 };
 

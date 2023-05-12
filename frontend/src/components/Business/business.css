@@ -236,19 +236,98 @@ background-color: rgba(0, 0, 0, 0.5); */
 }
 .getDirection{
   width:350px;
-  height:250px;
-  border:1px solid black;
+  height:200px;
+  border:1px solid rgba(0,0,0,0.2);
+  /* padding-left:0.8rem;
+  padding-right:0.8rem; */
+  padding:1rem;
+  border-radius: 5px;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.sideBar{
+  display:flex;
+  flex-direction: column;
+}
+.sideBar button{
+
 }
 .getDirection h1{
-  color: rgba(2, 122, 151, 1);
-  font-weight: 500;
+  /* text-align: center; */
+}
+.sara_links{
+  display:flex;
+  justify-content: space-between;
+margin-top: 10px;
 
+}
+.sara_links h1{
+  border-bottom:3px solid rgba(0,0,0,0);
+  font-size: 1rem;
+  color:black;
+}
+
+.sara_links h1:hover {
+  border-bottom: 3px solid red;
+  cursor:pointer;
+  transition: all 0.3s;
+
+}
+.contactMe{
+  /* color: rgba(2, 122, 151, 1); */
+  color:black;
+  font-weight: 500;
+  font-size: 2.5rem;
+  /* margin-bottom:0.2rem; */
+    border-bottom: 1px solid rgba(0, 0, 0,0.2);
+    border-width: 10%;
+}
+.sara{
+  width:100%;
+  margin-top:10px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* text-align: center; */
+}
+
+.sara h1{
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom:8px;
+
+}
+.sara h2{
+  font-size:14px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+.sara p{
+  font-size: 14px;
 }
 .getDirection h3 {
   color: rgba(0,0,0,0.5);
   font-weight: 500;
 
 }
+
+.resumeLink{
+  width:100%;
+  height:35px;
+  background-color: rgb(228, 0, 0);
+  border-radius: 5px;
+  color:white;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.resumeLink:hover{
+  background-color: rgb(255, 0, 0);
+  transition: all 0.3s;
+}
+
 .locationMap  {
   width: 314px;
   height: 150px;
