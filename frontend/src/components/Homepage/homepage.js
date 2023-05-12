@@ -3,7 +3,9 @@ import Business from "./Business"
 import * as sessionActions from "../../store/session";
 import { useSelector } from "react-redux";
 import Reviews from "./Reviews";
-import { useEffect } from "react";
+import Slider from "./Slider";
+import React, { useRef, useState } from "react";
+
 const Homepage=()=>{
     const sessionUser = useSelector((state) => state.session.user);
 
@@ -14,7 +16,9 @@ const Homepage=()=>{
 
        {/* {sessionUser?.avatarz
        <img src={`${sessionUser.avatar}`}/> */}
+
         <Reviews/>
+
       </div>
     );
 }
