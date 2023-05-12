@@ -4,7 +4,7 @@ const ProjectCard = ({url}) => {
       className="projectCard"
       style={{
         backgroundImage: `url(${url})`,
-        backgroundSize: "fit",
+        backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >

@@ -33,7 +33,7 @@ function ProfileButton({ user }) {
     dispatch(sessionActions.logout()).then(() => {
 
       // history.push("/seeYouSoon");
-       history.push("/login");
+       history.push("/SeeYouSoon");
     });
   };
 
