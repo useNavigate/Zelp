@@ -17,6 +17,7 @@ import { ModalProvider } from "./Context/Modal";
 import { useEffect } from "react";
 import AboutDev from "./components/Dev/AboutDev";
 import NotFound from "./components/Utils/NotFound";
+import Footer from "./components/Footer/Footer";
 function App() {
   const location = useLocation()
 const url = location.pathname;
@@ -76,6 +77,7 @@ const url = location.pathname;
             </Route>
           </Switch>
         </div>
+        <Footer/>
       </ModalProvider>
     </>
   );
