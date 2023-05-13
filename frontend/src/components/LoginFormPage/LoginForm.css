@@ -17,6 +17,7 @@
   width: var(--formWidth);
   height: 20rem;
   justify-content: space-between;
+  margin-bottom:25vh;
 }
 
 .loginForm input:focus {
