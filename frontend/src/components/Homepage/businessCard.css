@@ -9,7 +9,8 @@
   width: 100%;
   /* border: 1px solid black; */
   justify-content: center;
-  padding: 20px;
+  padding-top: 20px;
+  padding-bottom:20px;
 }
 
 

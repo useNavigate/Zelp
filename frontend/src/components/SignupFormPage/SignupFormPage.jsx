@@ -4,9 +4,10 @@ import { useState } from "react";
 import * as sessionActions from "../../store/session";
 import "./signup.css";
 import SignupHeader from "./SignupHeader";
-import UploadImage from "../ReviewPage/uploadImage";
-import csrfFetch from "../../store/csrf";
+import { useRef } from "react";
+
 const SignupFormPage = () => {
+  const myButton = useRef();
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
@@ -44,13 +45,72 @@ const SignupFormPage = () => {
 
   if (sessionUser) return <Redirect to="/" />;
 
-  // const handleImageDelete = () => {
-  //   setImageUrl(null)
-  //   setImageFile(null)
-  // };
+  const handleImageDelete = () => {
+    setImageUrl(null)
+    setImageFile(null)
+  };
 
-  // const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    let birthday = new Date(`${year}-${month}-${day}`);
+    let isoBirthday;
+    if (year === "" || month === "" || day === "") {
+      isoBirthday = "";
+    } else {
+      isoBirthday = birthday.toISOString().substring(0, 10);
+    }
+
+    if (password === confirmPassword) {
+      setErrors([]);
+      let newUser
+      if(imageFile){
+
+        newUser = sessionActions.signup({
+          email,
+          password,
+          firstName,
+          lastName,
+          zipCode,
+          birthday: isoBirthday,
+          avatar: imageFile,
+        });
+      }else{
+            newUser = sessionActions.signup({
+          email,
+          password,
+          firstName,
+          lastName,
+          zipCode,
+          birthday: isoBirthday,
+        });
+      }
+
+      dispatch(newUser).then((resData) => {
+        if (resData.errors) {
+          setErrors(resData.errors);
+
+        }
+      });
+    } else {
+      setErrors([
+        "Confirm Password field must be the same as the Password field",
+      ]);
+    }
+  };
+  //---------
+  const handleFiles = ({ currentTarget }) => {
+    const file = currentTarget.files[0];
+    setImageFile(file);
+    if (file) {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => setImageUrl(fileReader.result);
+    } else setImageUrl(null);
+  };
+
+  // const handleSubmit = (e) => {
   //   e.preventDefault();
+
   //   let birthday = new Date(`${year}-${month}-${day}`);
   //   let isoBirthday;
   //   if (year === "" || month === "" || day === "") {
@@ -69,74 +129,19 @@ const SignupFormPage = () => {
   //       lastName,
   //       zipCode,
   //       birthday: isoBirthday,
-  //       avatar: imageFile,
   //     });
 
-  //     return dispatch(newUser).catch(async (res) => {
-  //       let data;
-  //       try {
-  //         // .clone() essentially allows you to read the response body twice
-
-  //         data = await res.clone().json();
-  //       } catch {
-  //         data = await res.text(); // Will hit this case if the server is down
+  //     dispatch(newUser).then((resData) => {
+  //       if (resData.errors) {
+  //         setErrors(resData.errors);
   //       }
-  //       if (data?.errors) setErrors(data.errors);
-  //       else if (data) setErrors([data]);
-  //       else setErrors([res.statusText]);
   //     });
+  //   } else {
+  //     setErrors([
+  //       "Confirm Password field must be the same as the Password field",
+  //     ]);
   //   }
-
-  //   return setErrors([
-  //     "Confirm Password field must be the same as the Password field",
-  //   ]);
-
   // };
-
-  // const handleFiles = ({ currentTarget }) => {
-  //   const file = currentTarget.files[0];
-  //   setImageFile(file);
-  //   if (file) {
-  //     const fileReader = new FileReader();
-  //     fileReader.readAsDataURL(file);
-  //     fileReader.onload = () => setImageUrl(fileReader.result);
-  //   } else setImageUrl(null);
-  // };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    let birthday = new Date(`${year}-${month}-${day}`);
-    let isoBirthday;
-    if (year === "" || month === "" || day === "") {
-      isoBirthday = "";
-    } else {
-      isoBirthday = birthday.toISOString().substring(0, 10);
-    }
-
-    if (password === confirmPassword) {
-      setErrors([]);
-
-      let newUser = sessionActions.signup({
-        email,
-        password,
-        firstName,
-        lastName,
-        zipCode,
-        birthday: isoBirthday,
-      });
-
-      dispatch(newUser).then((resData) => {
-        if (resData.errors) {
-          setErrors(resData.errors);
-        }
-      });
-    } else {
-      setErrors([
-        "Confirm Password field must be the same as the Password field",
-      ]);
-    }
-  };
 
   return (
     <>
@@ -145,74 +150,56 @@ const SignupFormPage = () => {
           <li key={"error" + i}>{error}</li>
         ))}
       </ul>
+
       <div className="signupForm-wrapper">
         <form className="signupForm" onSubmit={handleSubmit}>
           <SignupHeader />
+          {/* -------------- */}
+          <div className="preview_profile">
+            {imageUrl ? (
+              <div className="centered">
+                <div
+                  className="Background"
+                  key={imageUrl}
+                  style={{
+                    backgroundImage: `url(${imageUrl})`,
+                  }}
+                >
 
-          {/* <input
-            // className="submitButton"
-            type="file"
-            onChange={handleFiles}
-            multiple
-            onClick={(e) => (e.currentTarget.value = null)}
-          />
-
-          {imageUrl ? (
-            <div
-              style={{
-                width: "100%",
-                height: "100%",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-
-
-              <div
-                className="image__"
-                key={imageUrl}
-                style={{
-                  backgroundImage: `url(${imageUrl})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  width: "150px",
-                  height: "150px",
-                  borderRadius: "50%",
-                }}
-              >
-                <div className="deleteExit" onClick={handleImageDelete}>
- <i className="fa-solid fa-xmark"  style={{cursor:"pointer"}}></i>
- </div>
+                </div>
+                   <div className="deleteExit" onClick={handleImageDelete}>
+                    <i
+                      className="fa-solid fa-xmark"
+                      style={{ cursor: "pointer" }}
+                    ></i>
+                  </div>
               </div>
-            </div>
-          ) : (
-            <div
-              style={{
-                width: "100%",
-                height: "100%",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <div
-                className="image__"
-                key={imageUrl}
-                style={{
-                  backgroundColor: "#f3f3f3",
-                  width: "150px",
-                  height: "150px",
-                  borderRadius: "50%",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <i class="fa-solid fa-user" style={{ fontSize: "60px" }}></i>
+            ) : (
+              <div className="centered">
+                <div className="image__ Default_icon" key={imageUrl}>
+                  <i
+                    className="fa-solid fa-user"
+                    style={{ fontSize: "60px" }}
+                  ></i>
+                </div>
               </div>
+            )}
+              <div
+              className="profile_image_button"
+              onClick={() => myButton.current.click()}
+            >
+              Add a Profile Picture
             </div>
-          )} */}
+            <input
+                ref={myButton}
+                      style={{ display: "none" }}
+              type="file"
+              onChange={handleFiles}
+              multiple
+              onClick={(e) => (e.currentTarget.value = null)}
+            />
+          </div>
+          {/* ------------ */}
           <div className="inputHolder">
             <div className="nameInputHolder">
               <input

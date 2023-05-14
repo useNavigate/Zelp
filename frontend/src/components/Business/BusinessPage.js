@@ -79,7 +79,6 @@ const BusinessPage = () => {
         </div>
         <div className="sideBar">
           <ContactMe />
-          {/* <ProjectCard url="https://cdn.discordapp.com/attachments/1082730279044657222/1105607720310157352/whale.png"/> */}
         </div>
       </div>
     </div>

@@ -10,7 +10,7 @@ class Api::UsersController < ApplicationController
       image = params[:user][:avatar]
       @user.avatar.attach(io: image.tempfile, filename: image.original_filename)
     end
-
+    # debugger
     if @user.save
       login!(@user)
       render :profile

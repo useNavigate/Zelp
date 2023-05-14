@@ -36,6 +36,15 @@
   border-radius: 5px;
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
+.Default_icon{
+    background-Color: #f3f3f3;
+        width: 150px;
+        height: 150px;
+        border-Radius: 50%;
+        display: flex;
+        justify-Content: center;
+        align-Items: center;
+}
 
 .image__ div {
   position: absolute;

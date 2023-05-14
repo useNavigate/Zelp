@@ -236,6 +236,7 @@ background-color: rgba(0, 0, 0, 0.5); */
   font-weight: 500;
 }
 .getDirection{
+
   width:350px;
   height:200px;
   border:1px solid rgba(0,0,0,0.2);
@@ -248,6 +249,22 @@ background-color: rgba(0, 0, 0, 0.5); */
   justify-content: space-evenly;
   margin-top:10px;
   margin-bottom:10px;
+}
+
+.contactMeHolder{
+
+    width: 350px;
+      height: 200px;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      /* padding-left:0.8rem;
+      padding-right:0.8rem; */
+      padding: 1rem;
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      margin-top: 10px;
+      margin-bottom: 10px;
 }
 
 .projectCard{
@@ -265,6 +282,10 @@ background-color: rgba(0, 0, 0, 0.5); */
 .sideBar{
   display:flex;
   flex-direction: column;
+
+    height: 100%;
+
+        top: 20px;
 }
 .sideBar button{
 
