@@ -37,13 +37,14 @@ const LoginFormPage = () => {
     );
   };
   return (
-    <div style={{height:"100vh",margin:"auto",display:"flex",justifyContent:"center",flexDirection:"column"}}>
+    <div style={{height:"100vh",margin:"auto",display:"flex",justifyContent:"center",flexDirection:"column", }}>
+
       <ul className="error">
-        {console.log(errors)}
         {errors.map((error) => (
           <li  key="error">The email address or password you entered is incorrect.</li>
         ))}
       </ul>
+
     <form className="loginForm" onSubmit={handleSubmit}>
       <div className="loginIntro">
         <h1>Log In to Zelp</h1>
