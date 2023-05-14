@@ -143,17 +143,15 @@ const SignupFormPage = () => {
   //   }
   // };
 
+
   return (
     <>
-      {/* <ul className="error">
-        {errors.flat().map((error, i) => (
-          <li key={"error" + i}>{error}</li>
-        ))}
-      </ul> */}
  <div style={{position:"relative"}}>
-      <ul className="error">
+      <ul className="error" >
+        {errors.length !==0 &&<li id="error_close_button"onClick={()=>setErrors([])}>x</li>}
+
         {errors.map((error,i) => (
-            <li key={"error" + i}>{error}</li>
+            <li key={"error" + i}>{error} </li>
         ))}
       </ul>
       </div>

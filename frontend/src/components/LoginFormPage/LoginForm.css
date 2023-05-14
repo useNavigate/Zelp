@@ -112,28 +112,32 @@
   font-weight: 400;
 }
 
-.error{
+.login_error{
   display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     width: 60rem;
-    height: 100%;
-    min-height: 48px;
-    justify-content: center;
+    height: 50px;
+
+    justify-content: space-between;
     margin: auto;
     margin-top: 18px;
     align-items: center;
     position: relative;
     margin-bottom: 24px;
+      background-color: #fcd6d3;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+          rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 
 }
 
-.error li{
+.login_error li{
     font-size: 14px;
-      width: 100%;
+      /* width: 100%; */
       min-height: 40px;
       max-height: 100%;
       display: flex;
       padding-left: 12px;
+      padding-right:12px;
       padding-top: 3px;
       padding-bottom: 3px;
       align-items: center;
