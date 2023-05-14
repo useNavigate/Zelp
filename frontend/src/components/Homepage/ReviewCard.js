@@ -11,17 +11,19 @@ const ReviewCard = ({ review }) => {
       <ul className="cardUl">
         <li className="profileHolder">
           {review?.userAvatar ? (
-            <img
+            <div
               className="userProfilePicURL"
-              src={`${review.userAvatar}`}
+
               style={{
-                objectFit: "cover",
+                backgroundImage:`url(${review.userAvatar})`,
+                backgroundSize: "cover",
+                backgroundPosition:"center",
                 width: "40px",
                 height: "40px",
                 borderRadius: "50%",
                 boxShadow: "1px 2px 5px rgba(0, 0, 0, 0.5)",
               }}
-            />
+            ></div>
           ) : (
             <i className="fa-solid fa-user profilePicture"></i>
           )}

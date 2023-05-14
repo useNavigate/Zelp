@@ -15,12 +15,18 @@ const CommentSections = ({ review }) => {
       <div className="authorProfile">
         <div className="userInfoComment">
           {review?.avatarUrl ? (
-            <img
+            <div
               className="userProfilePicURL"
-              src={`${review?.avatarUrl}`}
-              width="60px"
-              height="60px"
-            />
+
+               style={{
+                 backgroundImage:`url(${review?.avatarUrl})`,
+                backgroundSize: "cover",
+                backgroundPosition:"center",
+                width: "60px",
+                height: "60px",
+                borderRadius: "50%",
+                boxShadow: "1px 2px 5px rgba(0, 0, 0, 0.5)",
+             }}></div>
           ) : (
             <i className="fa-solid fa-user" />
           )}
