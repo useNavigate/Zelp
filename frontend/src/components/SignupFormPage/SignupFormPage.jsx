@@ -5,7 +5,7 @@ import * as sessionActions from "../../store/session";
 import "./signup.css";
 import SignupHeader from "./SignupHeader";
 import { useRef } from "react";
-
+import { Modal } from "../../Context/Modal";
 const SignupFormPage = () => {
   const myButton = useRef();
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ const SignupFormPage = () => {
 
   const [imageFile, setImageFile] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
-
+const [showModal, setShowModal] = useState(false);
   function pickDay(day) {
     return Array.from({ length: day }, (emptyArr, i) => (
       <option key={i + 1} value={i + 1}>
@@ -88,7 +88,7 @@ const SignupFormPage = () => {
       dispatch(newUser).then((resData) => {
         if (resData.errors) {
           setErrors(resData.errors);
-
+          setShowModal(true)
         }
       });
     } else {
@@ -147,13 +147,32 @@ const SignupFormPage = () => {
   return (
     <>
  <div style={{position:"relative"}}>
-      <ul className="error" >
-        {errors.length !==0 &&<li id="error_close_button"onClick={()=>setErrors([])}>x</li>}
+
+  {showModal&&
+    <Modal>
+ <ul className="error" >
+   <div className="searchBar_heading" >
+          <div>
+            <h1>Zelp</h1>
+            <i className="fa-brands fa-yelp" style={{ fontSize: "25px" }}></i>
+          </div>
+          <div
+            className="searchBar_closeModal"
+            onClick={() => setShowModal(false)}
+          >
+            <i className="fa-solid fa-xmark"></i>
+          </div>
+        </div>
+
 
         {errors.map((error,i) => (
             <li key={"error" + i}>{error} </li>
         ))}
       </ul>
+    </Modal>
+
+  }
+
       </div>
       <div className="signupForm-wrapper">
         <form className="signupForm" onSubmit={handleSubmit}>
