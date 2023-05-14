@@ -150,8 +150,9 @@ const [showModal, setShowModal] = useState(false);
 
   {showModal&&
     <Modal>
- <ul className="error" >
-   <div className="searchBar_heading" >
+ <ul className="error"  >
+  <div className="searchBarErrorDiv">
+   {/* <div className="searchBar_heading" >
           <div>
             <h1>Zelp</h1>
             <i className="fa-brands fa-yelp" style={{ fontSize: "25px" }}></i>
@@ -164,11 +165,36 @@ const [showModal, setShowModal] = useState(false);
           </div>
         </div>
 
-
         {errors.map((error,i) => (
-            <li key={"error" + i}>{error} </li>
-        ))}
+          <li key={"error" + i}>{error} </li>
+          ))} */}
+
+
+          <div className="searchBar_heading">
+        <div>
+          <h1>Zelp</h1>
+          <i className="fa-brands fa-yelp" style={{ fontSize: "25px" }}></i>
+        </div>
+        <div
+          className="searchBar_closeModal"
+          onClick={() => setShowModal(false)}
+        >
+          <i className="fa-solid fa-xmark"></i>
+        </div>
+      </div>
+      <div className="deletedSuccess">
+           {errors.map((error,i) => (
+          <p key={"error" + i} style={{margin:"10px"}}>{error} </p>
+          ))}
+      </div>
+          </div>
       </ul>
+
+
+
+
+
+
     </Modal>
 
   }

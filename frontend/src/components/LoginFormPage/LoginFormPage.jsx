@@ -39,7 +39,7 @@ const LoginFormPage = () => {
   return (
     <div
       style={{
-        height: "100vh",
+        height: "90vh",
         margin: "auto",
         display: "flex",
         justifyContent: "center",
@@ -60,7 +60,7 @@ const LoginFormPage = () => {
               onClick={() => setErrors([])}
               style={{ backgroundColor: "#fcd6d3",cursor:"pointer"}}
             >
-              x
+                <i className="fa-solid fa-xmark"></i>
             </li>
           )}
         </ul>
