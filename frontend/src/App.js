@@ -35,7 +35,7 @@ const url = location.pathname;
           </div>
         )}
 
-        <div className="contentWrapper">
+        {/* <div className="contentWrapper"> */}
           <Route exact path="/">
             <Homepage />
           </Route>
@@ -76,7 +76,7 @@ const url = location.pathname;
               <NotFound />
             </Route>
           </Switch>
-        </div>
+        {/* </div> */}
         <Footer/>
       </ModalProvider>
     </>
