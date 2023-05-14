@@ -61,59 +61,60 @@ export const logout = () => async (dispatch) => {
   return response;
 };
 
-// export const signup = (user) => async (dispatch) => {
-//   const { email, password, firstName, lastName, birthday, zipCode,avatar } = user;
-//   const formData = new FormData();
-//   formData.append("[user]email", email);
-//   formData.append("[user]password", password);
-//   formData.append("[user]first_name", firstName);
-//   formData.append("[user]last_name", lastName);
-//   formData.append("[user]birthday", birthday);
-//   formData.append("[user]zip_code", zipCode);
-//   formData.append("[user]avatar", avatar);
+export const signup = (user) => async (dispatch) => {
+  const { email, password, firstName, lastName, birthday, zipCode,avatar } = user;
+  const formData = new FormData();
+  formData.append("[user]email", email);
+  formData.append("[user]password", password);
+  formData.append("[user]first_name", firstName);
+  formData.append("[user]last_name", lastName);
+  formData.append("[user]birthday", birthday);
+  formData.append("[user]zip_code", zipCode);
+  formData.append("[user]avatar", avatar);
 
-//   const response = await csrfFetch("/api/users", {
-//     method: "POST",
-//     body:formData
+  const response = await csrfFetch("/api/users", {
+    method: "POST",
+    body:formData
 
-//   });
+  });
 
-//   const data = await response.json();
+  const data = await response.json();
 
-//   storeCurrentUser(data.user);
-//   dispatch(setCurrentUser(data.user));
-//   return response;
-// };
+  debugger
+  storeCurrentUser(data.user);
+  dispatch(setCurrentUser(data.user));
+  return data;
+};
 
 // const initialState = {
 //   user: JSON.parse(sessionStorage.getItem("currentUser")),
 // };
 
 
-export const signup = (user) => async (dispatch) => {
-  const { email, password, firstName, lastName, birthday, zipCode } = user;
-  const response = await csrfFetch("/api/users", {
-    method: "POST",
-    body: JSON.stringify({
-      email,
-      password,
-      first_name: firstName,
-      last_name: lastName,
-      birthday,
-      zip_code: zipCode,
-    }),
-  });
+// export const signup = (user) => async (dispatch) => {
+//   const { email, password, firstName, lastName, birthday, zipCode } = user;
+//   const response = await csrfFetch("/api/users", {
+//     method: "POST",
+//     body: JSON.stringify({
+//       email,
+//       password,
+//       first_name: firstName,
+//       last_name: lastName,
+//       birthday,
+//       zip_code: zipCode,
+//     }),
+//   });
 
 
-  const data = await response.json();
+//   const data = await response.json();
 
 
 
-  storeCurrentUser(data.user);
-  dispatch(setCurrentUser(data.user));
+//   storeCurrentUser(data.user);
+//   dispatch(setCurrentUser(data.user));
 
-return data
-};
+// return data
+// };
 
 const initialState = {
   user: JSON.parse(sessionStorage.getItem("currentUser")),
