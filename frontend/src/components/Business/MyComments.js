@@ -14,12 +14,17 @@ const MyComments = ({ review, business, bizId, myReview }) => {
           <div className="myInfoComment">
             <div className="userInfoSide">
               {review?.avatarUrl ? (
-                <img
+                <div
                   className="userProfilePicURL"
-                  src={`${review.avatarUrl}`}
-                  width="60px"
-                  height="60px"
-                />
+
+                  style={{
+                    backgroundImage: `url(${review.avatarUrl})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                       width:"60px",
+                  height:"60px"
+                  }}
+                ></div>
               ) : (
                 <i className="fa-solid fa-user" />
               )}

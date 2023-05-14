@@ -4,9 +4,10 @@ import { useState } from "react";
 import * as sessionActions from "../../store/session";
 import "./signup.css";
 import SignupHeader from "./SignupHeader";
-import UploadImage from "../ReviewPage/uploadImage";
-import csrfFetch from "../../store/csrf";
+import { useRef } from "react";
+
 const SignupFormPage = () => {
+  const myButton = useRef();
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
@@ -45,8 +46,8 @@ const SignupFormPage = () => {
   if (sessionUser) return <Redirect to="/" />;
 
   const handleImageDelete = () => {
-    setImageUrl(null)
-    setImageFile(null)
+    setImageUrl(null);
+    setImageFile(null);
   };
 
   const handleSubmit = async (e) => {
@@ -61,9 +62,8 @@ const SignupFormPage = () => {
 
     if (password === confirmPassword) {
       setErrors([]);
-      let newUser
-      if(imageFile){
-
+      let newUser;
+      if (imageFile) {
         newUser = sessionActions.signup({
           email,
           password,
@@ -73,8 +73,8 @@ const SignupFormPage = () => {
           birthday: isoBirthday,
           avatar: imageFile,
         });
-      }else{
-            newUser = sessionActions.signup({
+      } else {
+        newUser = sessionActions.signup({
           email,
           password,
           firstName,
@@ -87,7 +87,6 @@ const SignupFormPage = () => {
       dispatch(newUser).then((resData) => {
         if (resData.errors) {
           setErrors(resData.errors);
-
         }
       });
     } else {
@@ -153,71 +152,51 @@ const SignupFormPage = () => {
       <div className="signupForm-wrapper">
         <form className="signupForm" onSubmit={handleSubmit}>
           <SignupHeader />
-{/* -------------- */}
-          <input
-            // className="submitButton"
-            type="file"
-            onChange={handleFiles}
-            multiple
-            onClick={(e) => (e.currentTarget.value = null)}
-          />
+          {/* -------------- */}
+          <div className="preview_profile">
+            {imageUrl ? (
+              <div className="centered">
+                <div
+                  className="Background"
+                  key={imageUrl}
+                  style={{
+                    backgroundImage: `url(${imageUrl})`,
+                  }}
+                >
 
-          {imageUrl ? (
-            <div
-              style={{
-                width: "100%",
-                height: "100%",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-
-
-              <div
-                className="image__"
-                key={imageUrl}
-                style={{
-                  backgroundImage: `url(${imageUrl})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  width: "150px",
-                  height: "150px",
-                  borderRadius: "50%",
-                }}
-              >
-                <div className="deleteExit" onClick={handleImageDelete}>
- <i className="fa-solid fa-xmark"  style={{cursor:"pointer"}}></i>
- </div>
+                </div>
+                   <div className="deleteExit" onClick={handleImageDelete}>
+                    <i
+                      className="fa-solid fa-xmark"
+                      style={{ cursor: "pointer" }}
+                    ></i>
+                  </div>
               </div>
-            </div>
-          ) : (
-            <div
-              style={{
-                width: "100%",
-                height: "100%",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <div
-                className="image__"
-                key={imageUrl}
-                style={{
-                  backgroundColor: "#f3f3f3",
-                  width: "150px",
-                  height: "150px",
-                  borderRadius: "50%",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <i className="fa-solid fa-user" style={{ fontSize: "60px" }}></i>
+            ) : (
+              <div className="centered">
+                <div className="image__ Default_icon" key={imageUrl}>
+                  <i
+                    className="fa-solid fa-user"
+                    style={{ fontSize: "60px" }}
+                  ></i>
+                </div>
               </div>
+            )}
+              <div
+              className="profile_button"
+              onClick={() => myButton.current.click()}
+            >
+              Add a Profile Picture
             </div>
-          )}
+            <input
+                ref={myButton}
+                      style={{ display: "none" }}
+              type="file"
+              onChange={handleFiles}
+              multiple
+              onClick={(e) => (e.currentTarget.value = null)}
+            />
+          </div>
           {/* ------------ */}
           <div className="inputHolder">
             <div className="nameInputHolder">

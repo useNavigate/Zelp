@@ -124,21 +124,97 @@
   margin: auto;
   margin-top: 18px;
   align-items: center;
-  position:relative;
-  margin-bottom:24px;
+  position: relative;
+  margin-bottom: 24px;
 }
 .error li {
   font-size: 14px;
   width: 100%;
   min-height: 40px;
-  max-height:100%;
-  display:flex;
+  max-height: 100%;
+  display: flex;
   padding-left: 12px;
-  padding-top:3px;
+  padding-top: 3px;
   padding-bottom: 3px;
   align-items: center;
-background-color: #fcd6d3;
-/* border-radius: 5px; */
+  background-color: #fcd6d3;
+  /* border-radius: 5px; */
 
 
+}
+
+
+    .Background {
+      background-size: cover;
+      background-position: center;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      position: relative;
+      margin-top:10px;
+      margin-bottom:10px;
+
+    }
+.centered {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+
+.preview_profile{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+
+.profile_button{
+
+
+  background-color: #0073bb;
+  color:white;
+  margin-top:10px;
+  margin-bottom:10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor:pointer;
+  width: 100%;
+    height: 2.634rem;
+    border: none;
+    border-radius: 0.125rem;
+    font-weight: 500;
+    font-size: 1rem;
+    padding-left: 10px;
+      padding-right: 10px;
+}
+
+.profile_button:hover{
+    background-color: #0093ee;
+    transition:all 0.3s
+}
+.deleteExit {
+  position: absolute;
+  right: 10%;
+  top: 5px;
+  padding: 10px;
+  border-radius: 50%;
+  background-color: #ebebebbe;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+
+.deleteExit:hover {
+  background-color: #fa0101;
+  color: white;
+  transition: all 0.3s;
 }
