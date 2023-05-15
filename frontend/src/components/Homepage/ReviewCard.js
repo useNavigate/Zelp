@@ -13,15 +13,15 @@ const ReviewCard = ({ review }) => {
           {review?.userAvatar ? (
             <div
               className="userProfilePicURL"
-
               style={{
-                backgroundImage:`url(${review.userAvatar})`,
+                backgroundImage: `url(${review.userAvatar})`,
                 backgroundSize: "cover",
-                backgroundPosition:"center",
+                backgroundPosition: "center",
                 width: "40px",
                 height: "40px",
                 borderRadius: "50%",
-                boxShadow: "1px 2px 5px rgba(0, 0, 0, 0.5)",
+                border: "1px solid rgba(0,0,0,0.2)",
+                // boxShadow: "1px 2px 5px rgba(0, 0, 0, 0.5)",
               }}
             ></div>
           ) : (
@@ -38,7 +38,6 @@ const ReviewCard = ({ review }) => {
             style={{
               backgroundImage: `url(${review.imageUrls[0]})`,
               backgroundSize: "cover",
-              boxShadow: "1px 2px 5px rgba(0, 0, 0, 0.5)",
             }}
           ></li>
         ) : (
@@ -47,20 +46,28 @@ const ReviewCard = ({ review }) => {
             style={{
               backgroundImage: `url(https://cdn.discordapp.com/attachments/952591530626023464/1103138053075255326/image.png)`,
               backgroundSize: "cover",
-              boxShadow: "1px 2px 5px rgba(0, 0, 0, 0.5)",
             }}
           ></li>
         )}
-
+        {/* <ul style={{width:"100%"}}> */}
         <Link to={`/business/${review.businessId}`}>
-          <li className="bizName">{review.businessName}</li>
+          <li
+            className="bizName"
+            style={{ marginLeft: "12px", marginRight: "12px" }}
+          >
+            {review.businessName}
+          </li>
         </Link>
-        <FixedStarRating rating={review.rating} />
+        <FixedStarRating
+          rating={review.rating}
+          styles={{ marginLeft: "12px" }}
+        />
         <li className="reviewBody">
           <p>{review.body}</p>
         </li>
-        <li className="reviewBottom"></li>
+        {/* <li className="reviewBottom">asdasd</li> */}
       </ul>
+      {/* </ul> */}
     </div>
   );
 };

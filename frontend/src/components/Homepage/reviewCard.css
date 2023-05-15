@@ -6,14 +6,14 @@
 }
 
 .reviewCardHolder {
-  width: 390px;
-  height: 450px;
-  border: 1px solid rgba(0,0,0,0.1);
-  display: flex;
-  margin: 12px;
-  padding:10px;
-  border-radius: 5px;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border: 1px solid rgba(0, 0, 0, .1);
+      border-radius: 5px;
+      /* box-shadow: 0 2px 8px 0 rgba(99,99,99,.2); */
+      display: flex;
+      height: 450px;
+      margin: 12px;
+      /* padding: 10px; */
+      width: 300px;
 }
 
 .reviewCardHolder ul {
@@ -25,6 +25,7 @@
 .profileHolder {
   display: flex;
   align-items: center;
+      margin-left: 12px;
 }
 
 .profilePicture {
@@ -73,9 +74,7 @@ height:80px;
 .reviewBody::-webkit-scrollbar {
   display: none;
 }
-/* .reviewBody p{
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-} */
-
+.reviewBody p {
+  margin-left: 12px;
+  margin-right: 12px;
+}

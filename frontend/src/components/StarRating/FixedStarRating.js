@@ -1,11 +1,11 @@
 import "./starRating.css";
 import { Link } from "react-router-dom";
 
-const FixedStarRating = ({ rating }) => {
+const FixedStarRating = ({ rating,styles }) => {
 
   return (
 
-    <div className="star-rating">
+    <div className="star-rating" style={styles}>
       {[...Array(5)].map((star, i) => {
         i += 1;
         return (

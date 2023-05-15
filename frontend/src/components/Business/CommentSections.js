@@ -25,7 +25,8 @@ const CommentSections = ({ review }) => {
                 width: "60px",
                 height: "60px",
                 borderRadius: "50%",
-                boxShadow: "1px 2px 5px rgba(0, 0, 0, 0.5)",
+                border:"1px solid rgba(0,0,0,0.2)"
+                // boxShadow: "1px 2px 5px rgba(0, 0, 0, 0.5)",
              }}></div>
           ) : (
             <i className="fa-solid fa-user" />

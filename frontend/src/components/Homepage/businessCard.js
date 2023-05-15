@@ -8,7 +8,9 @@ import { Link } from "react-router-dom";
       return (
         <div className="businessCard">
           <div className="businessCardPicture">
-            {business?.photo ? <img className="bizPic" src={`${business.photo}`} width="250px" height="200px"/> :"no picture"}
+            {business?.photo ? <div className="bizPic" style={{    backgroundImage: `url(${business?.photo})`,
+          backgroundSize: "cover",
+           backgroundPosition: "center",width:"250px" ,height:"200px"}}/> :"no picture"}
           </div>
           <ul className="businessCardInfo">
             <li className="businessName">

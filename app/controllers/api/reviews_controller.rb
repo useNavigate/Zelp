@@ -91,7 +91,7 @@ class Api::ReviewsController < ApplicationController
   end
 
   def latest
-    @reviews = Review.includes(:user, :business).order(created_at: :desc).limit(6)
+    @reviews = Review.includes(:user, :business).order(created_at: :desc).limit(8)
     render :latest
   end
 

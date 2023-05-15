@@ -37,11 +37,11 @@ justify-content:center;
   display: flex;
   width: 600px;
   height: 200px;
-  /* border: 1px solid rgba(0,0,0,0.2); */
+  border: 1px solid rgba(0,0,0,0.2);
   border-radius: 5px;
   align-items: center;
   margin: 10px;
-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+/* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
 }
 
 .businessCardPicture {

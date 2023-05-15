@@ -22,7 +22,8 @@ const MyComments = ({ review, business, bizId, myReview }) => {
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                        width:"60px",
-                  height:"60px"
+                  height:"60px",
+                  border:"1px solid rgba(0,0,0,0.2)"
                   }}
                 ></div>
               ) : (
