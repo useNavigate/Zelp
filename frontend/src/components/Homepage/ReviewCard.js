@@ -5,7 +5,12 @@ import FixedStarRating from "../StarRating/FixedStarRating";
   import AOS from "aos";
   import "aos/dist/aos.css";
 const ReviewCard = ({ review }) => {
-
+    useEffect(() => {
+      AOS.init({
+        once: false,
+      });
+      AOS.refresh();
+    }, []);
 
   if (!review) {
     return null;
