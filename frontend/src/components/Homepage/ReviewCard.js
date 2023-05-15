@@ -1,13 +1,21 @@
 import "./reviewCard.css";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 import FixedStarRating from "../StarRating/FixedStarRating";
+  import AOS from "aos";
+  import "aos/dist/aos.css";
 const ReviewCard = ({ review }) => {
+
+
   if (!review) {
     return null;
   }
 
   return (
-    <div className="reviewCardHolder">
+    <div className="reviewCardHolder"
+            data-aos="fade-up"
+        data-aos-offset="300"
+         >
       <ul className="cardUl">
         <li className="profileHolder">
           {review?.userAvatar ? (

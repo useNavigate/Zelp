@@ -26,6 +26,7 @@
   "dependencies": {
     "@googlemaps/markerclusterer": "^2.0.15",
     "@ubilabs/google-maps-react-hooks": "^2.0.2",
+    "aos": "^2.3.4",
     "use-places-autocomplete": "^4.0.0"
   }
 }
