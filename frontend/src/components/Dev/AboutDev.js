@@ -30,7 +30,7 @@ const AboutDev=()=>{
           <div
             className="devImage"
             style={{
-              backgroundImage: `url(https://cdn.discordapp.com/attachments/1082730279044657222/1106698919154548756/image.png)`,
+              backgroundImage: `url(https://cdn.discordapp.com/attachments/1082730279044657222/1107451670021025792/In_Hand_Mobile_Mockup.png)`,
             }}
           ></div>
         </div>

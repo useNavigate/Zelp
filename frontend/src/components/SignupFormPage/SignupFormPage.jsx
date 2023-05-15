@@ -6,6 +6,7 @@ import "./signup.css";
 import SignupHeader from "./SignupHeader";
 import { useRef } from "react";
 import { Modal } from "../../Context/Modal";
+import { useEffect } from "react";
 const SignupFormPage = () => {
   const myButton = useRef();
   const dispatch = useDispatch();
@@ -24,6 +25,8 @@ const SignupFormPage = () => {
   const [imageFile, setImageFile] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
 const [showModal, setShowModal] = useState(false);
+
+// useEffect(()=>{setErrors([])},[errors])
   function pickDay(day) {
     return Array.from({ length: day }, (emptyArr, i) => (
       <option key={i + 1} value={i + 1}>
@@ -88,13 +91,14 @@ const [showModal, setShowModal] = useState(false);
       dispatch(newUser).then((resData) => {
         if (resData.errors) {
           setErrors(resData.errors);
-          setShowModal(true)
+ setShowModal(true)
         }
       });
     } else {
       setErrors([
         "Confirm Password field must be the same as the Password field",
       ]);
+       setShowModal(true)
     }
   };
   //---------
@@ -148,26 +152,12 @@ const [showModal, setShowModal] = useState(false);
     <>
  <div style={{position:"relative"}}>
 
+
+
   {showModal&&
     <Modal>
  <ul className="error"  >
   <div className="searchBarErrorDiv">
-   {/* <div className="searchBar_heading" >
-          <div>
-            <h1>Zelp</h1>
-            <i className="fa-brands fa-yelp" style={{ fontSize: "25px" }}></i>
-          </div>
-          <div
-            className="searchBar_closeModal"
-            onClick={() => setShowModal(false)}
-          >
-            <i className="fa-solid fa-xmark"></i>
-          </div>
-        </div>
-
-        {errors.map((error,i) => (
-          <li key={"error" + i}>{error} </li>
-          ))} */}
 
 
           <div className="searchBar_heading">
@@ -182,6 +172,7 @@ const [showModal, setShowModal] = useState(false);
           <i className="fa-solid fa-xmark"></i>
         </div>
       </div>
+
       <div className="deletedSuccess">
            {errors.map((error,i) => (
           <p key={"error" + i} style={{margin:"10px"}}>{error} </p>
