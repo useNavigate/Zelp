@@ -22,7 +22,7 @@ const AboutDev=()=>{
               <h3>Contact information listed below:</h3>
               <div>
                 <p>+1 917-963-9311 </p> <p>|</p>
-                <p>useNavigate@gmail.com</p>
+                <p>sararyudev@gmail.com</p>
               </div>
             </div>
           </div>

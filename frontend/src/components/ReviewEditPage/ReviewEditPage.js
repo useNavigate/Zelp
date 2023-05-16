@@ -145,6 +145,8 @@ const handleImageDelete = (i) => {
         </div>
 
         <textarea
+          maxlength="1300"
+          minLength="100"
           value={body}
           placeholder={"startEditing!"}
           onChange={(e) => setBody(e.target.value)}

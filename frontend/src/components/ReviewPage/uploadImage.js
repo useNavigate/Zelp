@@ -63,7 +63,7 @@ const UploadImage = ({
 
           <div className="uploadImage_ButtonsDiv">
             <div
-              className="profile_button"
+              className="modal_button"
               onClick={() => myButton.current.click()}
             >
               {imageUrls.length == 0 ? "Attach Images" : "Change Images"}

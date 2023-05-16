@@ -191,7 +191,7 @@ const [deletedAlert,setDeletedAlert] = useState(false)
   return (
     <form className="reviewForm">
       <div className="imageUploadDiv ">
-        <Link to={`/business/${BID}`} style={{color:"black"}}>
+        <Link to={`/business/${BID}`} style={{ color: "black" }}>
           <h2>{bName}</h2>
         </Link>
       </div>
@@ -213,6 +213,8 @@ const [deletedAlert,setDeletedAlert] = useState(false)
         </div>
 
         <textarea
+          maxlength="1300"
+          minLength="100"
           value={body}
           placeholder={
             "Doesn’t look like much when you walk past, but I was practically dying of hunger so I popped in. The definition of a hole-in-the-wall. I got the regular hamburger and wow…  there are no words. A classic burger done right. Crisp bun, juicy patty, stuffed with all the essentials (ketchup, shredded lettuce, tomato, and pickles). There’s about a million options available between the menu board and wall full of specials, so it can get a little overwhelming, but you really can’t go wrong. Not much else to say besides go see for yourself! You won’t be disappointed."
@@ -223,7 +225,11 @@ const [deletedAlert,setDeletedAlert] = useState(false)
       {location.pathname.includes("/edit") && (
         <>
           <div className="imageUploadDiv">
-            {prevImageUrls.length ===1 ?<h3>Previous Photo</h3> :<h3>Previous Photos</h3>}
+            {prevImageUrls.length === 1 ? (
+              <h3>Previous Photo</h3>
+            ) : (
+              <h3>Previous Photos</h3>
+            )}
           </div>
           <div className="reviewFormWrapper reviewPicPreview">
             {prevImageUrls &&
