@@ -12,16 +12,17 @@
   --lightGray: #ebebeb;
 }
 .login {
-  width: 78.88;
-  height: 40px;
-  padding: 8px 16px;
-  border: 1px solid rgba(200, 201, 202, 1);
+width: 78.88px;
+  height: 46px;
+  /* padding: 8px 16px; */
+  /* border: 1px solid rgba(200, 201, 202, 1); */
   border-radius: 4px;
   color: #2d2e2f;
   font-weight: 450;
   display: flex;
   align-items: center;
   background: #ebebeb;
+  justify-content: center;
 }
 
 .login:hover {
@@ -31,15 +32,16 @@
 }
 
 .signUp {
-  width: 78.88;
-  height: 40px;
-  padding: 8px 16px;
+width: 78.88px;
+  height: 46px;
+  /* padding: 8px 16px; */
   border-radius: 4px;
   background-color: var(--red);
   color: white;
   font-weight: 450;
   display: flex;
   align-items: center;
+    justify-content: center;
 }
 
 
