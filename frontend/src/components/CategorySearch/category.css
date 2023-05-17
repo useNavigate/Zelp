@@ -8,16 +8,25 @@
 
 
 .res-category{
-
-    background-color: var(--red);
-    color:white;
+background-color: var(--red);
+    color: white;
     border-radius: 8px;
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.5);
-    padding:10px;
+    padding: 10px;
     height: 28px;
+    width: 78.88;
+    height: 40px;
+    padding: 8px 16px;
+
+    border-radius: 4px;
+
+    font-weight: 450;
+    display: flex;
+    align-items: center;
+
 
 }
 

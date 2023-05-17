@@ -289,7 +289,7 @@ const [showModal, setShowModal] = useState(false);
 
             <input
               className="input"
-              type="text"
+              type="number"
               value={zipCode}
               onChange={(e) => setZipCode(e.target.value)}
               placeholder="Zip Code"

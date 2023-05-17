@@ -36,7 +36,7 @@ const SearchBar = () => {
           }}
           onKeyPress={handleKeyPress}
         />
-        {searchTerm ? (
+        {searchTerm.trim().length !==0 ? (
           <Link
             className="searchLink"
             to={`/search/${searchTerm}`}

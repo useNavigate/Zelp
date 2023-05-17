@@ -27,7 +27,7 @@ function Navigation() {
           Sign Up
         </NavLink>
         <NavLink to="/">
-          <DemoLogin className={"demoLogin"} string="Demo"/>
+          <DemoLogin className={"demoLogin"} string="Demo Login"/>
         </NavLink>
       </>
     );
@@ -64,7 +64,26 @@ function Navigation() {
         <a href="https://wellfound.com/u/sara-ryu" target="_blank">
           <i className="fa-brands fa-angellist"></i>
         </a>
-        <li>{sessionLinks}</li>
+        {sessionUser ? (
+          <li>
+
+            <ProfileButton user={sessionUser} />
+          </li>
+        ) : (
+          <div className="sessionUser">
+
+            <NavLink className="login" to="/login">
+              Log In
+            </NavLink>
+            <NavLink className="signUp" to="/signup">
+              Sign Up
+            </NavLink>
+            <NavLink to="/">
+              <DemoLogin className={"demoLogin"} string="Demo Login" />
+            </NavLink>
+          </div>
+        )}
+
       </div>
     </ul>
   );

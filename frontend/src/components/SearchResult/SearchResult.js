@@ -26,7 +26,7 @@ const SearchResult = () => {
     Object.values(businesses.business).length > 0 ? (
     <div className="searchPageWrapper">
       <div className="searchCardsHolder">
-        <h1>All "{searchTerm}" results</h1>
+        <h1>All "{searchTerm.trim()}" results</h1>
         {Object.values(businesses.business).map((business, i) => (
           <SearchCard
             key={business.name}
