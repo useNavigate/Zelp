@@ -24,7 +24,7 @@ const ContactMe=()=>{
 
         <a
           className="resumeLink"
-          href="https://cdn.discordapp.com/attachments/1082730279044657222/1110257443390378065/sararyu_res.pdf"
+          href="https://cdn.discordapp.com/attachments/1082730279044657222/1110257443390378065/sararyu_res.pdf" target="_blank"
         >
           Resume
         </a>
