@@ -56,11 +56,7 @@ const ReviewCard = ({ review }) => {
         ) : (
           <li
             className="reviewPicture"
-            style={{
-              backgroundImage: `url(https://cdn.discordapp.com/attachments/952591530626023464/1103138053075255326/image.png)`,
-              backgroundSize: "cover",
-            }}
-          ></li>
+          >No Image</li>
         )}
         {/* <ul style={{width:"100%"}}> */}
         <Link to={`/business/${review.businessId}`}>
