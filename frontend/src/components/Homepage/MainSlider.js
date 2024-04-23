@@ -6,9 +6,8 @@ const MainSlider=()=>{
   const [urlIndex, setUrlIndex] = useState(0);
   const imageUrls = [
     "https://cdn.shopify.com/s/files/1/2289/1873/files/Small_Portion_of_food_Elegant-min_be542f82-cfbf-4ba2-8096-fb58798cf338.jpg?v=1668530010",
-    "https://heygrillhey.com/static/3e7dcda4833982d321694fa2ad2a5040/GrilledFlankSteak-4.jpg",
+    "https://www.foodandwine.com/thmb/nesQwmMJ6zA4Fb0TtAThMwdn56g=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/steakhouse-style-rib-eyes-ft-recipe1118-235f4532bcf948efa82aab8065bb98d8.jpg",
     "https://media.istockphoto.com/id/851159308/photo/close-up-of-home-made-burgers.jpg?s=612x612&w=0&k=20&c=TqT6yxMqvv4C-kqq-256tDPHdvgJDQejtxOCsc4_O4A=",
-
   ];
 const headings=[
   "Zelp Your Favorite Places!",
